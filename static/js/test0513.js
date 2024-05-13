@@ -83,7 +83,8 @@ wavesurfer.once('decode', () => {
     wavesurfer2.zoom(minPxPerSec);
   });
 
-  document.querySelector('button').addEventListener('click', () => {
+  const playPauseBtn = document.getElementById('play-pause-btn');
+  playPauseBtn.addEventListener('click', () => {
     wavesurfer.playPause();
     wavesurfer2.playPause();
   });
@@ -94,66 +95,53 @@ wavesurfer.once('decode', () => {
 // below is the code of subtitle loading
 
 
-// Function to parse ASS subtitle format
-function parseASS(data) {
-  const events = [];
-  let format = [];
-  const lines = data.split('\n');
-  lines.forEach(line => {
-    if (line.startsWith('Format:')) {
-      format = line.split(': ')[1].split(',').map(item => item.trim());
-    } else if (line.startsWith('Dialogue:')) {
-      const parts = line.split(',').map(item => item.trim());
-      if (parts.length > 9) {
-        const startTime = parts[1];
-        const endTime = parts[2];
-        const text = parts.slice(9).join(',').replace(/\\N/g, ' ');
-        events.push({
-          start: parseTime(startTime),
-          end: parseTime(endTime),
-          text: text
-        });
-      }
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Document is ready!");
+  const loadButton = document.getElementById('load-subtitles-btn');
+  loadButton.addEventListener('click', function() {
+    console.log("Button was clicked!");
+    loadJSONSubtitles();
   });
-  return events;
-}
+});
 
-// Helper function to convert time format from ASS to seconds
-function parseTime(timeString) {
-  const [h, m, s] = timeString.split(':');
-  return parseInt(h) * 3600 + parseInt(m) * 60 + parseFloat(s);
-}
 
-// Function to load subtitles
-function loadSubtitles() {
+// Function to load subtitles from a JSON file
+function loadJSONSubtitles() {
+  wsRegions2.clearRegions();
   const fileInput = document.getElementById('subtitle-file');
   const file = fileInput.files[0];
+  console.log("File selected:", file);
+
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
+      console.log("File read complete!");
       try {
-        const subtitles = parseASS(e.target.result);
-        subtitles.forEach(sub => {
+        const subtitleData = JSON.parse(e.target.result);
+        console.log("Parsed data:", subtitleData);
+        subtitleData.forEach(sub => {
           wsRegions2.addRegion({
             start: sub.start,
             end: sub.end,
-            //data: { label: sub.text },
-            content: sub.text,
+            content: sub.subtitle,
             contentEditable: true,
           });
         });
       } catch (error) {
-        console.error('Error parsing the subtitle file:', error);
+        console.error('Error parsing the subtitle JSON file:', error);
       }
     };
     reader.readAsText(file);
+  } else {
+    console.log("No file selected.");
   }
 }
 
 
-// Expose the loadSubtitles function to the global scope
-window.loadSubtitles = loadSubtitles;
+// Expose the loadJSONSubtitles function to the global scope
+window.loadJSONSubtitles = loadJSONSubtitles;
+
+
 
 // Play a region on click
 /*
@@ -173,6 +161,27 @@ wavesurfer2.on('timeupdate', (currentTime) => {
 });
 */
 
+// Set active region on click
+let activeRegion = null;
+wsRegions2.on('region-clicked', (region, e) => {
+  activeRegion = region;
+});
+
+// Add event listener for the 'Delete' key press
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Delete' && activeRegion) {
+    deleteActiveRegion();
+  }
+});
+
+
+// Function to delete the active region
+const deleteActiveRegion = () => {
+  if (activeRegion) {
+    activeRegion.remove();
+    activeRegion = null;
+  }
+};
 
 // Add a segment to the waveform
 document.getElementById('addSegmentBtn').addEventListener('click', function() {
@@ -187,3 +196,43 @@ document.getElementById('addSegmentBtn').addEventListener('click', function() {
   });
 });
 
+
+// Below is the code for saving the region data
+// Initialize a storage for region data
+// Initialize a storage for region data
+const regionDataStore2 = {};
+
+// Function to save region data
+function saveRegionData(region) {
+  try {
+    regionDataStore2[region.id] = {
+      start: region.start,
+      end: region.end,
+      content: region.content
+    };
+    console.log("Region data saved:", region);
+  } catch (error) {
+    console.error("Error saving region data:", error);
+  }
+}
+
+// Add regions with initial data loading (if any)
+wsRegions2.on('region-created', (region) => {
+  console.log("Region created event triggered");
+  saveRegionData(region);
+  console.log("Region created in track 2:", regionDataStore2);
+});
+
+// Listen to region update events to save the new data
+wsRegions2.on('region-updated', (region) => {
+  console.log("Region update event triggered");
+  saveRegionData(region);
+  console.log("Region updated in track 2:", regionDataStore2);
+});
+
+// If you need to delete a region and update the store
+wsRegions2.on('region-removed', (region) => {
+  console.log("Region removed event triggered");
+  delete regionDataStore2[region.id];
+  console.log("Region removed in track 2:", regionDataStore2);
+});

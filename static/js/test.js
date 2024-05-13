@@ -83,7 +83,8 @@ wavesurfer.once('decode', () => {
     wavesurfer2.zoom(minPxPerSec);
   });
 
-  document.querySelector('button').addEventListener('click', () => {
+  const playPauseBtn = document.getElementById('play-pause-btn');
+  playPauseBtn.addEventListener('click', () => {
     wavesurfer.playPause();
     wavesurfer2.playPause();
   });

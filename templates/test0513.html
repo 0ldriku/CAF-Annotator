@@ -4,14 +4,14 @@
   <label>
     Zoom: <input type="range" min="0" max="1000" value="100" />
   </label>
-  <button>Play/pause</button>
+  <button id="play-pause-btn">Play/pause</button>
   <div>
-    <input type="file" id="subtitle-file" accept=".ass"/>
-    <button onclick="loadSubtitles()">Load Subtitles</button>
+    <input type="file" id="subtitle-file" accept=".json"/>
+    <button id="load-subtitles-btn">Load Transcription</button>
   </div>
   <div id="waveform1"></div>
   <div id="waveform2"></div>
   <button id="addSegmentBtn">Add a segment at current time</button>
 
-  <script type="module" src="{{ url_for('static', filename='js/test.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/test0513.js') }}"></script>
 </html>
