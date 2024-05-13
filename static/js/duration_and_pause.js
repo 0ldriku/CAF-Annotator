@@ -35,7 +35,8 @@ const wavesurfer2 = WaveSurfer.create({
 });
 
 
-
+// Assuming wavesurfer1 and wavesurfer2 are already initialized
+const wavesurfers = [wavesurfer1, wavesurfer2];
 
 // Load the audio file into the first instance
 const audioUrl = '/static/audio/en_example.wav';
@@ -72,50 +73,92 @@ RegionsPluginProto.avoidOverlapping = function(region) {
 };
 
 
+// Sync functions
 
-// Attach event listener to wavesurfer2 for scroll event
-wavesurfer2.on('ready', function() {
-  wavesurfer2.on('scroll', (visibleStartTime, visibleEndTime) => {
-    //console.log('Scroll', visibleStartTime + 's', visibleEndTime + 's');
-    wavesurfer1.setScrollTime(visibleStartTime);
+// Sync Zoom level and play/pause button
+// Function to sync zoom across all wavesurfers
+const syncZoom = (pxPerSec) => {
+  // Ensure the zoom level is not set too low
+  if (pxPerSec < 1) pxPerSec = 1;
+
+  wavesurfers.forEach(ws => {
+    // Ensure the audio is loaded before applying zoom
+    if (ws.isReady) {
+      ws.zoom(pxPerSec);
+      // Check if updateSize method exists before calling
+      if (ws.drawer && typeof ws.drawer.updateSize === 'function') {
+        ws.drawer.updateSize();
+      }
+    }
+  });
+};
+
+// Event listener for the input slider
+const slider = document.querySelector('input[type="range"]');
+slider.addEventListener('input', (e) => {
+  const minPxPerSec = e.target.valueAsNumber;
+  syncZoom(minPxPerSec);
+});
+
+// Event listener for the play/pause button
+const playPauseBtn = document.getElementById('play-pause-btn');
+playPauseBtn.addEventListener('click', () => {
+  wavesurfers.forEach(ws => ws.playPause());
+});
+
+// Call the syncZoom function initially if you want to set an initial zoom level
+slider.addEventListener('change', () => {
+  const initialZoomLevel = slider.valueAsNumber;
+  syncZoom(initialZoomLevel);
+});
+
+// Listen for the decode event for each wavesurfer to set isReady flag
+wavesurfers.forEach(ws => {
+  ws.once('decode', () => {
+    ws.isReady = true;
   });
 });
 
-// Sync the cursor with wavesurfer
-wavesurfer1.on('click', () => {
-  const currentTime = wavesurfer1.getCurrentTime(); // Get current time of wavesurfer2
-  wavesurfer2.setTime(currentTime); // Set this time on wavesurfer
-});
 
-// Click event on wavesurfer2 to sync its time to wavesurfer
-wavesurfer2.on('click', () => {
-  const currentTime = wavesurfer2.getCurrentTime(); // Get current time of wavesurfer2
-  wavesurfer1.setTime(currentTime); // Set this time on wavesurfer
-});
-
-
-
-// Update the zoom level on slider change
-wavesurfer1.once('decode', () => {
-  const slider = document.querySelector('input[type="range"]');
-  slider.addEventListener('input', (e) => {
-    const minPxPerSec = e.target.valueAsNumber;
-    wavesurfer2.zoom(minPxPerSec);
-    wavesurfer1.zoom(minPxPerSec);
-    
+// sync cursor
+// Function to sync the cursor time across all wavesurfers
+const syncCursor = (source) => {
+  if (!source.isReady) return;
+  const currentTime = source.getCurrentTime();
+  wavesurfers.forEach(target => {
+    if (target !== source && target.isReady) {
+      target.setTime(currentTime);
+    }
   });
-  
+};
 
-  const playPauseBtn = document.getElementById('play-pause-btn');
-  playPauseBtn.addEventListener('click', () => {
-    wavesurfer1.playPause();
-    wavesurfer2.playPause();
+// Attach click event listeners to each wavesurfer instance
+wavesurfers.forEach(ws => {
+  ws.on('click', () => {
+    syncCursor(ws);
   });
 });
 
 
+// sync scroll bar
+// Function to sync the scroll time across all wavesurfers
+const syncScroll = (source, visibleStartTime) => {
+  if (!source.isReady) return;
+  wavesurfers.forEach(target => {
+    if (target !== source && target.isReady) {
+      target.setScrollTime(visibleStartTime);
+    }
+  });
+};
 
-
+// Attach scroll event listeners to each wavesurfer instance
+wavesurfers.forEach(ws => {
+  ws.on('ready', () => {
+    ws.on('scroll', (visibleStartTime, visibleEndTime) => {
+      syncScroll(ws, visibleStartTime);
+    });
+  });
+});
 
 // above is the code of multitrack
 // below is the code of subtitle loading

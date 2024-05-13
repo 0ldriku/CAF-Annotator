@@ -1,3 +1,4 @@
+# Description: Flask app to serve text editor, duration adjustment and transcription results
 from flask import Flask, render_template, send_from_directory
 import os
 
@@ -10,8 +11,7 @@ def serve_node_module(filename):
 
 @app.route('/')
 def index():
-    return render_template('test0513.html')
+    return render_template('duration_and_pause.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
- 
