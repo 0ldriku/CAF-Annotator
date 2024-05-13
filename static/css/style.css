@@ -1,7 +1,7 @@
 .waveform-container {
     display: flex;
     align-items: center;
-    height: 200px;
+    height: 100px;
     margin-right: 5px;
   }
   
@@ -9,19 +9,34 @@
     width: calc(100% - 20px); /* Subtract the button width */
     margin-left: 5px; /* Add some margin to the left to create space for the button */
     margin-right: 5px; /* Add some margin to the right to create space for the button */
+    height: 100px;
+  }
+  .waveform1-container {
+    display: flex;
+    align-items: center;
     height: 200px;
+    margin-right: 5px;
   }
   
+  .waveform1 {
+    width: calc(100% - 20px); /* Subtract the button width */
+    margin-left: 5px; /* Add some margin to the left to create space for the button */
+    margin-right: 5px; /* Add some margin to the right to create space for the button */
+    height: 200px;
+  }
   .segment-button-container {
     width: 20px;
     display: flex;
     justify-content: center;
   }
-  
+  .track1placeholder {
+    width: 20px; /* Fixed width for the placeholder */
+    height: 100%; /* Ensure it takes up the full height */
+  }
   .segmentbutton {
     writing-mode: vertical-rl; /* Rotate the button text vertically */
     transform: rotate(180deg); /* Correct the text orientation */
-    height: 200px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
     padding: 5px; /* Add padding to the button */
     background-color: #007bff; /* Set a background color */
     color: white; /* Set the text color */
