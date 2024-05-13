@@ -64,7 +64,9 @@ for segment in segments:
     segment_data.append(segment_dict)
 
 # Write the segment data to a JSON file
-output_file = "output.json"
+# Change the output file's name to include text_file with a suffix
+output_file = text_file.replace(".txt", "") + ".matched.json"
+
 with open(output_file, 'w') as output_json:
     json.dump(segment_data, output_json, indent=2)
 

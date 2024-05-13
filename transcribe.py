@@ -55,7 +55,7 @@ def upload_file():
     # Use the original file extension in the result filename
     base_filename = filename.rsplit('.', 1)[0]
     file_extension = filename.rsplit('.', 1)[1] if len(filename.rsplit('.', 1)) > 1 else ''
-    result_filename = f"{base_filename}.{file_extension}.plasticated.plain.txt"
+    result_filename = f"{base_filename}.{file_extension}.subtitles.txt"
     result_path = os.path.join(app.root_path, 'results', 'transcriptions', result_filename)
 
     # Debugging: Check if the file exists
@@ -125,7 +125,7 @@ def save_transcription():
         print(f"Transcription saved successfully: {result_path}")  # Logging statement
         
         # Invoke the run_sequence_matcher function
-        run_sequence_matcher()
+        run_sequence_matcher() 
         
         return jsonify({"message": "File saved successfully and sequence matching processed"})
     
@@ -134,28 +134,36 @@ def save_transcription():
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
 
-
-def run_sequence_matcher():
+def run_sequence_matcher(export_path=None):
     base_filename = session.get('uploaded_filename', 'default_filename')
-    
-    # Extract the base filename and extension
     base_filename, file_extension = os.path.splitext(base_filename)
-    
+
+    # Paths for the text file and transcription file
     text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.txt")
     trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}{file_extension}.transcribe.json")
-    
-    # Debugging: Check if the transcription file exists
+
+    # Check if the transcription file exists
     if not os.path.exists(trans_file_path):
-        print(f"Transcription file not found: {trans_file_path}")  # Logging statement
+        print(f"Transcription file not found: {trans_file_path}")
         raise FileNotFoundError(f"Transcription file not found: {trans_file_path}")
-    
+
     script_path = os.path.join(app.root_path, 'pyfiles', 'sequencematcher.py')
     command = ['python', script_path, text_file_path, trans_file_path]
-    
+
     result = subprocess.run(command, capture_output=True, text=True)
-    
+
     if result.returncode != 0:
         raise RuntimeError(f"Sequence matcher failed: {result.stderr}")
 
+    # Define source and destination for moving the generated file
+    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.matched.json")
+    destination_folder = app.config['JSON_FOLDER']
+    destination_file = os.path.join(destination_folder, f"{base_filename}{file_extension}.matched.json")
+
+    # Move the file from TEXT_FOLDER to JSON_FOLDER
+    shutil.move(source_file, destination_file)
+    print(f"File moved to {destination_file}")
+
+    
 if __name__ == '__main__':
     app.run(debug=True)

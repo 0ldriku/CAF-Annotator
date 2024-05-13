@@ -10,12 +10,10 @@ except ImportError:
     sys.exit(1)
     
 mediaSourcePath = sys.argv[1]
-#mediaFilePath = glob.glob( f"{ mediaSourcePath }\\*" )[0]
 mediaFilePath = sys.argv[1]
 model_size = sys.argv[2]
-useLang = sys.argv[3] if sys.argv[3] else None
+useLang = sys.argv[3] if len(sys.argv) > 3 else None
 transcribe_results = []
-plasticated_result = []
 
 # float16 or int8
 model = WhisperModel(
@@ -24,7 +22,6 @@ model = WhisperModel(
 )
 segments, info = model.transcribe(
     mediaFilePath, beam_size=5, word_timestamps=True,
-    #initial_prompt="", add prmot to add instruction
     language=useLang
 )
 
@@ -37,27 +34,11 @@ for segment in segments:
     transcribe_results.append( transcribe_tmp )
     print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
 
-with open( f"{ mediaSourcePath }.transcribe.json", "w", encoding="utf-8" ) as json_file:
+with open( f"{mediaSourcePath}.transcribe.json", "w", encoding="utf-8" ) as json_file:
     json.dump( transcribe_results, json_file, indent=2, ensure_ascii=False )
-    
-if len( glob.glob( f"{ mediaSourcePath }.transcribe.json" ) ) > 0:
-    word_tmp, word_start_tmp, skip_flag = "", 0, False
-    for transcribe in transcribe_results:
-        for word in transcribe["word_timestamps"]:
-            word_tmp += word["text"]
-            if not skip_flag:
-                word_start_tmp = word["start"]
-                skip_flag = True
-            if re.search( r"(\.|\?|。)$", word["text"] ):
-                plasticated_result.append({
-                    "start": word_start_tmp,
-                    "end": word["end"], "text": re.sub( r"^\s+", "", word_tmp )
-                })
-                skip_flag = False
-                word_tmp = ""
-                
-with open( f"{ mediaSourcePath }.plasticated.json", "w", encoding="utf-8" ) as json_file:
-    json.dump( plasticated_result, json_file, indent=2, ensure_ascii=False )
-with open( f"{ mediaSourcePath }.plasticated.plain.txt", mode="w", encoding="utf-8" ) as txt_file:
-    for index, plasticated in enumerate( plasticated_result ):
-        txt_file.write(plasticated['text'] + "\n")
+
+# Extract and save subtitles to a text file
+subtitles_path = f"{mediaSourcePath}.subtitles.txt"
+with open(subtitles_path, "w", encoding="utf-8") as file:
+    for result in transcribe_results:
+        file.write(result["subtitle"] + "\n")
