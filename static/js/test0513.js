@@ -1,7 +1,19 @@
 import WaveSurfer from '/node_modules/wavesurfer.js/dist/wavesurfer.js';
 import RegionsPlugin from '/node_modules/wavesurfer.js/dist/plugins/regions.esm.js';
+import TimelinePlugin from '/node_modules/wavesurfer.js/dist/plugins/timeline.esm.js'
 
-
+// Create a timeline plugin instance with custom options
+const topTimeline = TimelinePlugin.create({
+  height: 20,
+  insertPosition: 'beforebegin',
+  timeInterval: 0.2,
+  primaryLabelInterval: 5,
+  secondaryLabelInterval: 1,
+  style: {
+    fontSize: '20px',
+    color: '#2D5B88',
+  },
+})
 
 const wavesurfer1 = WaveSurfer.create({
   container: "#waveform1",
@@ -9,6 +21,8 @@ const wavesurfer1 = WaveSurfer.create({
   progressColor: 'rgb(100, 0, 100)',
   hideScrollbar: true,
   height: "auto",
+  minPxPerSec: 100,
+  plugins: [topTimeline],
 });
 
 const wavesurfer2 = WaveSurfer.create({
@@ -16,6 +30,8 @@ const wavesurfer2 = WaveSurfer.create({
   waveColor: 'rgba(200, 0, 200, 0)',
   progressColor: 'rgba(100, 0, 100)',
   height: "auto",
+  minPxPerSec: 100,
+  plugins: [TimelinePlugin.create()],
 });
 
 

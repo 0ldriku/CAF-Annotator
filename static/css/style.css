@@ -6,7 +6,8 @@
   
   .waveform {
     width: calc(100% - 20px); /* Subtract the button width */
-    margin-left: 20px; /* Add some margin to the left to create space for the button */
+    margin-left: 5px; /* Add some margin to the left to create space for the button */
+    margin-right: 5px; /* Add some margin to the right to create space for the button */
     height: 200px;
   }
   
