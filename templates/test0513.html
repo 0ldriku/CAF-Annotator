@@ -2,16 +2,26 @@
 <html lang="en">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Linking CSS file -->
   <label>
-    Zoom: <input type="range" min="0" max="1000" value="100" />
+    Zoom: <input type="range"  min="100" max="500" value="200" />
   </label>
   <button id="play-pause-btn">Play/pause</button>
   <div>
     <input type="file" id="subtitle-file" accept=".json"/>
     <button id="load-subtitles-btn">Load Transcription</button>
   </div>
-  <div id="waveform1"></div>
-  <div id="waveform2"></div>
-  <button id="addSegmentBtn">Add a segment at current time</button>
+  <div class="waveform-container">
+    <div class="segment-button-container">
+      <button id="addSegmentBtn1" class="segmentbutton">+ segment</button>
+    </div>
+    <div id="waveform1" class="waveform"></div>
+  </div>
+  
+  <div class="waveform-container">
+    <div class="segment-button-container">
+      <button id="addSegmentBtn2" class="segmentbutton">+ segment</button>
+    </div>
+    <div id="waveform2" class="waveform"></div>
+  </div>
 
   <script type="module" src="{{ url_for('static', filename='js/test0513.js') }}"></script>
 </html>

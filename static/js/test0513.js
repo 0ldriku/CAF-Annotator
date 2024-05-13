@@ -3,28 +3,31 @@ import RegionsPlugin from '/node_modules/wavesurfer.js/dist/plugins/regions.esm.
 
 
 
-const wavesurfer = WaveSurfer.create({
+const wavesurfer1 = WaveSurfer.create({
   container: "#waveform1",
   waveColor: 'rgb(200, 0, 200)',
   progressColor: 'rgb(100, 0, 100)',
   hideScrollbar: true,
+  height: "auto",
 });
 
 const wavesurfer2 = WaveSurfer.create({
   container: "#waveform2",
-  waveColor: 'rgb(200, 0, 200)',
-  progressColor: 'rgb(100, 0, 100)',
+  waveColor: 'rgba(200, 0, 200, 0)',
+  progressColor: 'rgba(100, 0, 100)',
+  height: "auto",
 });
+
 
 
 
 // Load the audio file into the first instance
 const audioUrl = '/static/audio/en_example.wav';
-wavesurfer.load(audioUrl);
+wavesurfer1.load(audioUrl);
 //wavesurfer2.load("/static/audio/silentaudio.wav");
 
-wavesurfer.on('ready', function() {
-  const duration = wavesurfer.getDuration(); // Get the duration of the audio in seconds
+wavesurfer1.on('ready', function() {
+  const duration = wavesurfer1.getDuration(); // Get the duration of the audio in seconds
   const resolution = 1; // Define how many peaks per second you want (e.g., 10 peaks per second)
   const peaks = new Array(Math.ceil(duration * resolution)).fill(0); // Calculate total peaks and fill with zeros
 
@@ -40,6 +43,8 @@ wavesurfer2.setVolume(0);
 
 
 // Initialize the Regions plugin
+//const wsRegions1 = wavesurfer1.registerPlugin(RegionsPlugin.create()); // for test track 1
+
 const wsRegions2 = wavesurfer2.registerPlugin(RegionsPlugin.create());
 
 // Get the RegionsPlugin prototype
@@ -55,43 +60,48 @@ RegionsPluginProto.avoidOverlapping = function(region) {
 // Attach event listener to wavesurfer2 for scroll event
 wavesurfer2.on('ready', function() {
   wavesurfer2.on('scroll', (visibleStartTime, visibleEndTime) => {
-    console.log('Scroll', visibleStartTime + 's', visibleEndTime + 's');
-    wavesurfer.setScrollTime(visibleStartTime);
+    //console.log('Scroll', visibleStartTime + 's', visibleEndTime + 's');
+    wavesurfer1.setScrollTime(visibleStartTime);
   });
 });
 
 // Sync the cursor with wavesurfer
-wavesurfer.on('click', () => {
-  const currentTime = wavesurfer.getCurrentTime(); // Get current time of wavesurfer2
+wavesurfer1.on('click', () => {
+  const currentTime = wavesurfer1.getCurrentTime(); // Get current time of wavesurfer2
   wavesurfer2.setTime(currentTime); // Set this time on wavesurfer
 });
 
 // Click event on wavesurfer2 to sync its time to wavesurfer
 wavesurfer2.on('click', () => {
   const currentTime = wavesurfer2.getCurrentTime(); // Get current time of wavesurfer2
-  wavesurfer.setTime(currentTime); // Set this time on wavesurfer
+  wavesurfer1.setTime(currentTime); // Set this time on wavesurfer
 });
 
 
 
 // Update the zoom level on slider change
-wavesurfer.once('decode', () => {
+wavesurfer1.once('decode', () => {
   const slider = document.querySelector('input[type="range"]');
   slider.addEventListener('input', (e) => {
     const minPxPerSec = e.target.valueAsNumber;
-    wavesurfer.zoom(minPxPerSec);
     wavesurfer2.zoom(minPxPerSec);
+    wavesurfer1.zoom(minPxPerSec);
+    
   });
+  
 
   const playPauseBtn = document.getElementById('play-pause-btn');
   playPauseBtn.addEventListener('click', () => {
-    wavesurfer.playPause();
+    wavesurfer1.playPause();
     wavesurfer2.playPause();
   });
 });
 
-// above is the code of multitrack
 
+
+
+
+// above is the code of multitrack
 // below is the code of subtitle loading
 
 
@@ -184,8 +194,8 @@ const deleteActiveRegion = () => {
 };
 
 // Add a segment to the waveform
-document.getElementById('addSegmentBtn').addEventListener('click', function() {
-  const currentTime = wavesurfer.getCurrentTime();
+document.getElementById('addSegmentBtn2').addEventListener('click', function() {
+  const currentTime = wavesurfer1.getCurrentTime();
   const duration = 2; // Duration of the segment in seconds
   wsRegions2.addRegion({
     start: currentTime,

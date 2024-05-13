@@ -1,67 +1,87 @@
-#waveform {
-    width: 100%;
+.waveform-container {
+    display: flex;
+    align-items: center;
     height: 200px;
-}
-.region-label {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    color: red;  /* Use !important to ensure this takes precedence */
-    pointer-events: none;  /* Allows clicks to pass through to underlying elements */
-    z-index: 2;  /* Ensure it's on top */
-}
-
-
-body {
+  }
+  
+  .waveform {
+    width: calc(100% - 20px); /* Subtract the button width */
+    margin-left: 20px; /* Add some margin to the left to create space for the button */
+    height: 200px;
+  }
+  
+  .segment-button-container {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .segmentbutton {
+    writing-mode: vertical-rl; /* Rotate the button text vertically */
+    transform: rotate(180deg); /* Correct the text orientation */
+    height: 200px; /* Adjust as needed */
+    padding: 5px; /* Add padding to the button */
+    background-color: #007bff; /* Set a background color */
+    color: white; /* Set the text color */
+    border: none; /* Remove the border */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    margin:0;
+  }
+  
+  .segmentbutton:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+  }
+  
+  body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-}
-
-.navbar {
+  }
+  
+  .navbar {
     background-color: #333;
     color: white;
     padding: 10px 20px;
     text-align: center;
-}
-
-.container {
+  }
+  
+  .container {
     width: 80%;
     margin: 20px auto;
     background: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-input[type="file"] {
+  }
+  
+  input[type="file"] {
     margin: 10px 0;
-}
-
-textarea {
+  }
+  
+  textarea {
     width: 100%;
     margin-top: 10px;
-}
-
-button {
+  }
+  
+  button {
     padding: 10px 20px;
     background-color: #5cb85c;
     color: white;
     border: none;
     margin-top: 20px;
     cursor: pointer;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background-color: #4cae4c;
-}
-.CodeMirror {
+  }
+  
+  .CodeMirror {
     border: 1px solid #ccc;
     height: auto;
     width: 100%;
-}
-
-.CodeMirror-scroll {
+  }
+  
+  .CodeMirror-scroll {
     max-height: 200px;
-}
+  }
