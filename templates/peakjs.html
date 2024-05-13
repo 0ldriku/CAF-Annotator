@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peaks.js Audio with Markers</title>
+  <style>
+    #overview-container,
+    #zoomview-container {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      margin-bottom: 10px;
+    }
+
+    #marker-track-1,
+    #marker-track-2 {
+      height: 20px;
+      background-color: #f0f0f0;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Peaks.js Audio with Markers</h1>
+
+  <button id="startButton">Start</button>
+
+  <audio id="audio" controls>
+    <source src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="overview-container"></div>
+  <div id="zoomview-container"></div>
+  <div id="marker-track-1"></div>
+  <div id="marker-track-2"></div>
+
+  <script src="https://unpkg.com/peaks.js@3.3.0/dist/peaks.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var startButton = document.getElementById('startButton');
+      startButton.addEventListener('click', function() {
+        var overviewContainer = document.getElementById('overview-container');
+        var zoomviewContainer = document.getElementById('zoomview-container');
+
+        if (!overviewContainer || !zoomviewContainer) {
+          console.error('Failed to find one or more container elements.');
+          return;
+        }
+
+        var options = {
+          containers: {
+            overview: overviewContainer,
+            zoomview: zoomviewContainer,
+          },
+          mediaElement: document.getElementById('audio'),
+          webAudio: {
+            audioContext: new AudioContext(),
+          },
+          keyboard: true,
+          nudgeIncrement: 1,
+          zoomLevels: [512, 1024, 2048, 4096],
+        };
+
+        try {
+          var peaksInstance = Peaks.init(options);
+          
+          // Add markers
+          peaksInstance.markers.add({
+            time: 5,
+            editable: true,
+            color: '#ff0000',
+            labelText: 'Marker 1',
+          });
+
+          peaksInstance.markers.add({
+            time: 15,
+            editable: true,
+            color: '#00ff00',
+            labelText: 'Marker 2',
+          });
+        } catch (err) {
+          console.error('Failed to initialize Peaks.js', err);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
