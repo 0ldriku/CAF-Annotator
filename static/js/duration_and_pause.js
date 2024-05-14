@@ -75,17 +75,19 @@ RegionsPluginProto.avoidOverlapping = function(region) {
 
 // Sync functions
 
-// Sync Zoom level and play/pause button
-// Function to sync zoom across all wavesurfers
-const syncZoom = (pxPerSec) => {
-  // Ensure the zoom level is not set too low
-  if (pxPerSec < 1) pxPerSec = 1;
+// Ensure each WaveSurfer instance is ready before syncing actions
+wavesurfers.forEach(ws => {
+  ws.once('decode', () => {
+    ws.isReady = true;
+  });
+});
 
+// Function to sync zoom across all WaveSurfer instances
+const syncZoom = (pxPerSec) => {
+  if (pxPerSec < 1) pxPerSec = 1;
   wavesurfers.forEach(ws => {
-    // Ensure the audio is loaded before applying zoom
     if (ws.isReady) {
       ws.zoom(pxPerSec);
-      // Check if updateSize method exists before calling
       if (ws.drawer && typeof ws.drawer.updateSize === 'function') {
         ws.drawer.updateSize();
       }
@@ -93,35 +95,12 @@ const syncZoom = (pxPerSec) => {
   });
 };
 
-// Event listener for the input slider
-const slider = document.querySelector('input[type="range"]');
-slider.addEventListener('input', (e) => {
-  const minPxPerSec = e.target.valueAsNumber;
-  syncZoom(minPxPerSec);
-});
-
-// Event listener for the play/pause button
-const playPauseBtn = document.getElementById('play-pause-btn');
-playPauseBtn.addEventListener('click', () => {
+// Function to sync play/pause state across all WaveSurfer instances
+const syncPlayPause = () => {
   wavesurfers.forEach(ws => ws.playPause());
-});
+};
 
-// Call the syncZoom function initially if you want to set an initial zoom level
-slider.addEventListener('change', () => {
-  const initialZoomLevel = slider.valueAsNumber;
-  syncZoom(initialZoomLevel);
-});
-
-// Listen for the decode event for each wavesurfer to set isReady flag
-wavesurfers.forEach(ws => {
-  ws.once('decode', () => {
-    ws.isReady = true;
-  });
-});
-
-
-// sync cursor
-// Function to sync the cursor time across all wavesurfers
+// Function to sync cursor time across all WaveSurfer instances
 const syncCursor = (source) => {
   if (!source.isReady) return;
   const currentTime = source.getCurrentTime();
@@ -132,16 +111,7 @@ const syncCursor = (source) => {
   });
 };
 
-// Attach click event listeners to each wavesurfer instance
-wavesurfers.forEach(ws => {
-  ws.on('click', () => {
-    syncCursor(ws);
-  });
-});
-
-
-// sync scroll bar
-// Function to sync the scroll time across all wavesurfers
+// Function to sync scroll time across all WaveSurfer instances
 const syncScroll = (source, visibleStartTime) => {
   if (!source.isReady) return;
   wavesurfers.forEach(target => {
@@ -151,7 +121,31 @@ const syncScroll = (source, visibleStartTime) => {
   });
 };
 
-// Attach scroll event listeners to each wavesurfer instance
+// Event listener for the input slider to sync zoom
+const slider = document.querySelector('input[type="range"]');
+slider.addEventListener('input', (e) => {
+  const minPxPerSec = e.target.valueAsNumber;
+  syncZoom(minPxPerSec);
+});
+
+// Event listener for the play/pause button to sync play/pause state
+const playPauseBtn = document.getElementById('play-pause-btn');
+playPauseBtn.addEventListener('click', syncPlayPause);
+
+// Call the syncZoom function initially if you want to set an initial zoom level
+slider.addEventListener('change', () => {
+  const initialZoomLevel = slider.valueAsNumber;
+  syncZoom(initialZoomLevel);
+});
+
+// Attach click event listeners to sync cursor across WaveSurfer instances
+wavesurfers.forEach(ws => {
+  ws.on('click', () => {
+    syncCursor(ws);
+  });
+});
+
+// Attach scroll event listeners to sync scroll across WaveSurfer instances
 wavesurfers.forEach(ws => {
   ws.on('ready', () => {
     ws.on('scroll', (visibleStartTime, visibleEndTime) => {
@@ -268,7 +262,6 @@ document.getElementById('addSegmentBtn2').addEventListener('click', function() {
 
 // Below is the code for saving the region data
 // Initialize a storage for region data
-// Initialize a storage for region data
 const regionDataStore2 = {};
 
 // Function to save region data
@@ -277,13 +270,37 @@ function saveRegionData(region) {
     regionDataStore2[region.id] = {
       start: region.start,
       end: region.end,
-      content: region.content
+      content: region.content.innerText,
     };
     console.log("Region data saved:", region);
   } catch (error) {
     console.error("Error saving region data:", error);
   }
 }
+
+// Function to send region data to the server
+function saveRegionDataToServer() {
+  fetch('/save-region-data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(regionDataStore2)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    alert('Region data saved successfully');
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    alert('Error saving region data');
+  });
+}
+
+// Add event listener to the save button
+document.getElementById("save-region-data-btn").addEventListener("click", saveRegionDataToServer);
+
 
 // Add regions with initial data loading (if any)
 wsRegions2.on('region-created', (region) => {
