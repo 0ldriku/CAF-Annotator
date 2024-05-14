@@ -1,55 +1,62 @@
 {
-  "wsRegions2": {
-    "region-33u2io98cg": {
-      "content": "marker",
-      "end": 4.24,
-      "start": 2.24
-    },
-    "region-61poeo1511g": {
-      "content": "marker",
-      "end": 59.99,
-      "start": 59.85
-    },
-    "region-e0g7m6sb1eg": {
-      "content": "marker",
-      "end": 54.44,
-      "start": 52.44
-    }
+  "region-0k8g96cbic": {
+    "content": "And this spills over into normative arguments made by other scholars.",
+    "end": 35.28,
+    "start": 29.2
   },
-  "wsRegions3": {
-    "region-9f590hhdtig": {
-      "content": "marker",
-      "end": 4.24,
-      "start": 2.24
-    },
-    "region-r1438lb9o88": {
-      "content": "marker",
-      "end": 54.44,
-      "start": 52.44
-    },
-    "region-rmhbhviikjg": {
-      "content": "marker",
-      "end": 59.99,
-      "start": 59.85
-    }
+  "region-1q4nr5jh47o": {
+    "content": "and says, how do I get to Dublin?",
+    "end": 1.8,
+    "start": 0
   },
-  "wsRegions4": {
-    "region-4mmr8nls4co": {
-      "content": "marker",
-      "end": 59.99,
-      "start": 59.85
-    },
-    "region-vp16qmn9vfg": {
-      "content": "marker",
-      "end": 4.24,
-      "start": 2.24
-    }
+  "region-2tidr6moib": {
+    "content": "Thomas Piketty, in his book, Capital in the 21st Century,",
+    "end": 41.62,
+    "start": 35.82
   },
-  "wsRegions5": {
-    "region-qt8hgt80k9g": {
-      "content": "marker",
-      "end": 59.99,
-      "start": 59.85
-    }
+  "region-5ek88stql28": {
+    "content": "argues for a 4% global wealth tax. Well, good luck with that.",
+    "end": 49.92,
+    "start": 42
+  },
+  "region-7pt9hluqc48": {
+    "content": "That is to say, much of political philosophy",
+    "end": 12.38,
+    "start": 8.92
+  },
+  "region-9khc3u4qdig": {
+    "content": "So I, when I think about normative questions,",
+    "end": 59.34,
+    "start": 54.12
+  },
+  "region-bcffu4e8q9o": {
+    "content": "And the answer that comes back is, well, I wouldn't start from here, Sonny.",
+    "end": 6.76,
+    "start": 2.6
+  },
+  "region-hmdhdd7t5v": {
+    "content": "it's like,",
+    "end": 59.98,
+    "start": 59.56
+  },
+  "region-ir6h99jvrs8": {
+    "content": "of where we actually are and how the theories that people argue about in the journals",
+    "end": 25.06,
+    "start": 18.38
+  },
+  "region-jb3imj0mr68": {
+    "content": "Who's gonna implement a 4% global wealth tax?",
+    "end": 54.12,
+    "start": 50.98
+  },
+  "region-rscvqp5pnjo": {
+    "content": "and in the literature actually could be implemented in the world, if at all.",
+    "end": 29.2,
+    "start": 25.06
+  },
+  "region-ve402feol2": {
+    "content": "develops theories that take no account",
+    "end": 17.76,
+    "start": 13.66
   }
 }

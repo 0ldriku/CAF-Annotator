@@ -249,13 +249,34 @@ const deleteActiveRegion = () => {
 // Add a segment to the waveform
 document.getElementById('addSegmentBtn2').addEventListener('click', function() {
   const currentTime = wavesurfer1.getCurrentTime();
-  const duration = 2; // Duration of the segment in seconds
+  const maxDuration = wavesurfer1.getDuration();
+  const segmentDuration = 2; // Duration of the segment in seconds
+  let endTime = currentTime + segmentDuration;
+
+  // Ensure the end time does not exceed max duration - 0.01 seconds
+  if (endTime > maxDuration - 0.01) {
+    endTime = maxDuration - 0.01;
+  }
+
+  // Calculate remaining time
+  const remainingTime = endTime - currentTime;
+
+  // Create a custom content element
+  const contentElement = document.createElement('div');
+  contentElement.textContent = 'marker';
+
+  // Apply right alignment if remaining time is less than 0.5 seconds
+  if (remainingTime < 0.5) {
+    contentElement.style.textAlign = 'right';
+  }
+
+  // Create region with custom content element
   wsRegions2.addRegion({
     start: currentTime,
-    end: currentTime + duration,
+    end: endTime,
     data: { label: 'Segment' }, // Additional data for the segment
-    content: "marker",
-    contentEditable: true
+    content: contentElement,
+    contentEditable: true,
   });
 });
 
