@@ -3,6 +3,7 @@
     align-items: center;
     height: 100px;
     margin-right: 5px;
+    position: relative;
   }
   
   .waveform {
@@ -16,6 +17,7 @@
     align-items: center;
     height: 200px;
     margin-right: 5px;
+    position: relative;
   }
   
   .waveform1 {
@@ -107,3 +109,5 @@
   .CodeMirror-scroll {
     max-height: 200px;
   }
+
+  
