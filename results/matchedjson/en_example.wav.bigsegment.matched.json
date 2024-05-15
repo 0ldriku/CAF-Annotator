@@ -522,8 +522,8 @@
   },
   {
     "start": 48.580000000000005,
-    "end": 54.12,
-    "subtitle": " Well, good luck with that. Who's gonna implement a 4% global wealth tax?",
+    "end": 49.92,
+    "subtitle": " Well, good luck with that.",
     "word_timestamps": [
       {
         "start": 48.580000000000005,
@@ -549,7 +549,14 @@
         "start": 49.6,
         "end": 49.92,
         "text": " that."
-      },
+      }
+    ]
+  },
+  {
+    "start": 50.98,
+    "end": 54.12,
+    "subtitle": " Who's gonna implement a 4% global wealth tax?",
+    "word_timestamps": [
       {
         "start": 50.98,
         "end": 51.34,

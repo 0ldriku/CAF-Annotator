@@ -100,14 +100,5 @@
     background-color: #004E89;
   }
   
-  .CodeMirror {
-    border: 1px solid #ccc;
-    height: auto;
-    width: 100%;
-  }
-  
-  .CodeMirror-scroll {
-    max-height: 200px;
-  }
 
   
