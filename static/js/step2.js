@@ -17,8 +17,8 @@ const topTimeline = TimelinePlugin.create({
 
 const wavesurfer1 = WaveSurfer.create({
   container: "#waveform1",
-  waveColor: 'rgb(200, 0, 200)',
-  progressColor: 'rgb(100, 0, 100)',
+  waveColor: 'rgb(255, 107, 53)',
+  progressColor: 'rgb(100, 50, 25)',
   hideScrollbar: true,
   height: "auto",
   minPxPerSec: 100,
@@ -245,6 +245,7 @@ function loadJSONSubtitles_small_segment() {
             end: region.end,
             content: contentElement,
             contentEditable: true,
+            color: 'rgba(26, 101, 158, 0.2)',
           });
         });
       } catch (error) {
@@ -290,6 +291,7 @@ function loadJSONSubtitles_big_segment() {
             end: region.end,
             content: contentElement,
             contentEditable: true,
+            color: 'rgba(255, 107, 53, 0.2)',
           });
         });
       } catch (error) {
@@ -359,7 +361,7 @@ document.getElementById('addSegmentBtn2').addEventListener('click', function() {
     end: endTime,
     data: { label: 'Segment' }, // Additional data for the segment
     content: contentElement,
-    color: 'rgba(50, 1, 47, 0.5)',
+    color: 'rgba(26, 101, 158, 0.2)',
     contentEditable: true,
   });
 });
@@ -395,7 +397,7 @@ document.getElementById('addSegmentBtn3').addEventListener('click', function() {
     end: endTime,
     data: { label: 'Segment' }, // Additional data for the segment
     content: contentElement,
-    color: 'rgba(226, 223, 208, 0.5)',
+    color: 'rgba(255, 107, 53, 0.2)',
     contentEditable: true,
   });
 });
@@ -431,7 +433,7 @@ document.getElementById('addSegmentBtn4').addEventListener('click', function() {
     end: endTime,
     data: { label: 'Segment' }, // Additional data for the segment
     content: contentElement,
-    color: 'rgba(82, 76, 66, 0.5)',
+    color: 'rgba(26, 101, 158, 0.2)',
     contentEditable: true,
   });
 });
@@ -467,7 +469,7 @@ document.getElementById('addSegmentBtn5').addEventListener('click', function() {
     end: endTime,
     data: { label: 'Segment' }, // Additional data for the segment
     content: contentElement,
-    color: 'rgba(249, 115, 0, 0.5)',
+    color: 'rgba(255, 107, 53, 0.2)',
     contentEditable: true,
   });
 });
@@ -502,7 +504,7 @@ document.getElementById('addSegmentBtn6').addEventListener('click', function() {
     end: endTime,
     data: { label: 'Segment' }, // Additional data for the segment
     content: contentElement,
-    color: 'rgba(249, 115, 0, 0.5)',
+    color: 'rgba(26, 101, 158, 0.2)',
     contentEditable: true,
   });
 });
@@ -744,7 +746,7 @@ document.getElementById('silence-detection').addEventListener('click', function(
               content: contentElement, // Set content to 'E' or 'M'
               drag: true,
               resize: true,
-              color: 'rgba(226, 223, 208, 0.5)',
+              color: 'rgba(26, 101, 158, 0.2)',
           });
       });
   }

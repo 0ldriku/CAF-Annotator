@@ -45,19 +45,23 @@
         <li>Ensure you finished the step 1 and 2 then go nex step.</li>
         <li>Press the "Detect Silence" button to add pause segments in track 2. Once press the button, all segments in track 2 will be removed. It will auto detect mid-pause with a "M" markder and end-pause with a "E" marker.</li>
     </ul>
-    <label>
-        Zoom: <input type="range" id="zoom-slider" min="100" max="500" value="200" />
-      </label>
-      <button id="play-pause-btn">Play/pause</button>
+
       <div>
         <input type="file" id="small_segment_json" accept=".json"/>
         <button id="load-small-segment-btn">Load Small Segments</button>
+      </div>
+      <div>
         <input type="file" id="big_segment_json" accept=".json"/>
         <button id="load-big-segment-btn">Load Big Segments</button>
+        </div>
+        <div>
         <button id="save-region-data-btn">Save Region Data</button>
         <button id="silence-detection">Detect Silence</button>
       </div>
-      
+      <label>
+        Zoom: <input type="range" id="zoom-slider" min="100" max="500" value="200" />
+      </label>
+      <button id="play-pause-btn">Play/pause</button>
       <div class="waveform1-container">
         <div class="segment-button-container">
           <div class="track1placeholder"></div>

@@ -28,7 +28,7 @@
   }
   .waveform ::part(region-handle-right) {
     border-right-width: 4px !important;
-    border-right-color: #fff000 !important;
+    border-right-color: #FF6B35 !important;
   }
 
   .segment-button-container {
@@ -45,7 +45,7 @@
     transform: rotate(180deg); /* Correct the text orientation */
     height: 100px; /* Adjust as needed */
     padding: 5px; /* Add padding to the button */
-    background-color: #007bff; /* Set a background color */
+    background-color: #1A659E; /* Set a background color */
     color: white; /* Set the text color */
     border: none; /* Remove the border */
     cursor: pointer; /* Add a pointer cursor on hover */
@@ -53,7 +53,7 @@
   }
   
   .segmentbutton:hover {
-    background-color: #0056b3; /* Change the background color on hover */
+    background-color: #004E89; /* Change the background color on hover */
   }
   
   body {
@@ -64,7 +64,7 @@
   }
   
   .navbar {
-    background-color: #333;
+    background-color: #1A659E;
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -89,7 +89,7 @@
   
   button {
     padding: 10px 20px;
-    background-color: #5cb85c;
+    background-color: #1A659E;
     color: white;
     border: none;
     margin-top: 20px;
@@ -97,7 +97,7 @@
   }
   
   button:hover {
-    background-color: #4cae4c;
+    background-color: #004E89;
   }
   
   .CodeMirror {
