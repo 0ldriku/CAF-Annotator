@@ -20,7 +20,7 @@
 <body>
 <div class="navbar">MARUKO</div>
 <div class="container">
-    <h1>Transcribe</h1>
+    <h1>1. Transcribe</h1>
     <h2>File Upload</h2>
     <p>Please upload the audio file</p>
     <form id="upload-form" enctype="multipart/form-data">
@@ -33,22 +33,65 @@
     <button id="save-button">Save and Next Step</button>
 </div>
 <div class="container">
-    <h1>Step 2 Edit the transcription and duration of regions.</h1>
+    <h1>2. Annotate</h1>
+    <ul>
+        <li>Adjust the segments in first track (the track below the audiowave).</li>
+        <li>Adjust the boundaries of segments.</li>
+        <li>Ensure you finished the step 1 and 2 then go nex step.</li>
+        <li>Press the "Detect Silence" button to add pause segments in track 2. Once press the button, all segments in track 2 will be removed. It will auto detect mid-pause with a "M" markder and end-pause with a "E" marker.</li>
+    </ul>
     <label>
-        Zoom: <input type="range" min="0" max="1000" value="100" />
-    </label>
-    <button id="play-pause-btn">Play/pause</button>
-    <div>
-        <input type="file" id="subtitle-file" accept=".ass"/>
-        <button onclick="loadSubtitles()">Load Subtitles</button>
-    </div>
-    <div id="waveform1"></div>
-    <div id="waveform2"></div>
-    <button id="addSegmentBtn">Add a segment at current time</button>
-    <script type="module" src="{{ url_for('static', filename='js/test.js') }}"></script>
+        Zoom: <input type="range" id="zoom-slider" min="100" max="500" value="200" />
+      </label>
+      <button id="play-pause-btn">Play/pause</button>
+      <div>
+        <input type="file" id="subtitle-file" accept=".json"/>
+        <button id="load-subtitles-btn">Load Transcription</button>
+        <button id="save-region-data-btn">Save Region Data</button>
+        <button id="silence-detection">Detect Silence</button>
+      </div>
+      
+      <div class="waveform1-container">
+        <div class="segment-button-container">
+          <div class="track1placeholder"></div>
+        </div>
+        <div id="waveform1" class="waveform1"></div>
+      </div>
+      
+      <div class="waveform-container">
+        <div class="segment-button-container">
+          <button id="addSegmentBtn2" class="segmentbutton">+ SEGMENT</button>
+        </div>
+        <div id="waveform2" class="waveform"></div>
+      </div>
+    
+      <div class="waveform-container">
+        <div class="segment-button-container">
+          <button id="addSegmentBtn3" class="segmentbutton">+ PAUSE</button>
+        </div>
+        <div id="waveform3" class="waveform"></div>
+      </div>
+    
+      <div class="waveform-container">
+        <div class="segment-button-container">
+          <button id="addSegmentBtn4" class="segmentbutton">+ ACCURACY</button>
+        </div>
+        <div id="waveform4" class="waveform"></div>
+      </div>
+    
+      <div class="waveform-container">
+        <div class="segment-button-container">
+          <button id="addSegmentBtn5" class="segmentbutton">+ DYSY</button>
+        </div>
+        <div id="waveform5" class="waveform"></div>
+      </div>
+      <script type="module" src="{{ url_for('static', filename='js/step3copy.js') }}"></script>
 </div>
 
-
+<div class="container">
+    <h1>3. Calculation</h1>
+    <p>Calculate the results</p>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.js"></script>
