@@ -1,12 +1,16 @@
+let myCodeMirror_small_segment;
+let myCodeMirror_big_segment;
+
 $(document).ready(function() {
-    var myCodeMirror_small_segment = CodeMirror(document.getElementById('editor-small-segment'), {
-        value: 'Edit the small segments.\nThe transcription will be displayed here once the process is complete.\n...', // Ensure there's an initial newline for a    cleaner experience
+    myCodeMirror_small_segment = CodeMirror(document.getElementById('editor-small-segment'), {
+        value: 'Edit the small segments.\nThe transcription will be displayed here once the process is complete.\n...', // Ensure there's an initial newline for a cleaner experience
         mode: "plaintext",
         lineNumbers: true,
         lineWrapping: true
     });
-    var myCodeMirror_big_segment = CodeMirror(document.getElementById('editor-big-segment'), {
-        value: 'Edit the big segments.\nThe transcription will be displayed here once the process is complete.\n...', // Ensure there's an initial newline for a    cleaner experience
+
+    myCodeMirror_big_segment = CodeMirror(document.getElementById('editor-big-segment'), {
+        value: 'Edit the big segments.\nThe transcription will be displayed here once the process is complete.\n...', // Ensure there's an initial newline for a cleaner experience
         mode: "plaintext",
         lineNumbers: true,
         lineWrapping: true
@@ -132,3 +136,5 @@ $(document).ready(function() {
         });
     });
 });
+
+export { myCodeMirror_small_segment, myCodeMirror_big_segment };
