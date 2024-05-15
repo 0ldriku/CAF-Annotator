@@ -58,11 +58,20 @@ const wavesurfer5 = WaveSurfer.create({
   progressColor: 'rgba(100, 0, 100)',
   height: "auto",
   minPxPerSec: 100,
+  hideScrollbar: true,
+});
+
+const wavesurfer6 = WaveSurfer.create({
+  container: "#waveform6",
+  waveColor: 'rgba(200, 0, 200, 0)',
+  progressColor: 'rgba(100, 0, 100)',
+  height: "auto",
+  minPxPerSec: 100,
   plugins: [TimelinePlugin.create()],
 });
 
 // Assuming wavesurfer1 and wavesurfer2 are already initialized
-const wavesurfers = [wavesurfer1, wavesurfer2, wavesurfer3, wavesurfer4, wavesurfer5];
+const wavesurfers = [wavesurfer1, wavesurfer2, wavesurfer3, wavesurfer4, wavesurfer5, wavesurfer6];
 
 
 // Load the audio file into the first instance
@@ -80,12 +89,14 @@ wavesurfer1.on('ready', function() {
   wavesurfer3.load(audioUrl, peaks, duration);
   wavesurfer4.load(audioUrl, peaks, duration);
   wavesurfer5.load(audioUrl, peaks, duration);
+  wavesurfer6.load(audioUrl, peaks, duration);
 });
 
 wavesurfer2.setVolume(0);
 wavesurfer3.setVolume(0);
 wavesurfer4.setVolume(0);
 wavesurfer5.setVolume(0);
+wavesurfer6.setVolume(0);
 
 
 
@@ -97,6 +108,7 @@ const wsRegions2 = wavesurfer2.registerPlugin(RegionsPlugin.create({ minLength: 
 const wsRegions3 = wavesurfer3.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
 const wsRegions4 = wavesurfer4.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
 const wsRegions5 = wavesurfer5.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
+const wsRegions6 = wavesurfer6.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
 
 // Get the RegionsPlugin prototype
 const RegionsPluginProto = Object.getPrototypeOf(wsRegions2);
@@ -416,13 +428,49 @@ document.getElementById('addSegmentBtn5').addEventListener('click', function() {
   });
 });
 
+// Add a segment to the waveform 6
+document.getElementById('addSegmentBtn6').addEventListener('click', function() {
+  const currentTime = wavesurfer1.getCurrentTime();
+  const maxDuration = wavesurfer1.getDuration();
+  const segmentDuration = 2; // Duration of the segment in seconds
+  let endTime = currentTime + segmentDuration;
+
+  // Ensure the end time does not exceed max duration - 0.01 seconds
+  if (endTime > maxDuration - 0.01) {
+    endTime = maxDuration - 0.01;
+  }
+
+  // Calculate remaining time
+  const remainingTime = endTime - currentTime;
+
+  // Create a custom content element
+  const contentElement = document.createElement('div');
+  contentElement.textContent = 'marker';
+
+  // Apply right alignment if remaining time is less than 0.5 seconds
+  if (remainingTime < 0.5) {
+    contentElement.style.textAlign = 'right';
+  }
+
+  // Create region with custom content element
+  wsRegions6.addRegion({
+    start: currentTime,
+    end: endTime,
+    data: { label: 'Segment' }, // Additional data for the segment
+    content: contentElement,
+    color: 'rgba(249, 115, 0, 0.5)',
+    contentEditable: true,
+  });
+});
+
 // Below is the code for saving the region data of tack2-5
 // Initialize a storage for region data
 const regionDataStores = {
   wsRegions2: {},
   wsRegions3: {},
   wsRegions4: {},
-  wsRegions5: {}
+  wsRegions5: {},
+  wsRegions6: {},
 };
 function saveRegionData(region, store) {
   try {
@@ -441,7 +489,8 @@ function saveRegionDataToServer() {
     wsRegions2: regionDataStores.wsRegions2,
     wsRegions3: regionDataStores.wsRegions3,
     wsRegions4: regionDataStores.wsRegions4,
-    wsRegions5: regionDataStores.wsRegions5
+    wsRegions5: regionDataStores.wsRegions5,
+    wsRegions6: regionDataStores.wsRegions6,
   };
 
   fetch('/save-region-data', {
@@ -465,8 +514,8 @@ function saveRegionDataToServer() {
 // Add event listener to the save button
 document.getElementById("save-region-data-btn").addEventListener("click", saveRegionDataToServer);
 
-const wsRegions = [wsRegions2, wsRegions3, wsRegions4, wsRegions5];
-const stores = [regionDataStores.wsRegions2, regionDataStores.wsRegions3, regionDataStores.wsRegions4, regionDataStores.wsRegions5];
+const wsRegions = [wsRegions2, wsRegions3, wsRegions4, wsRegions5, wsRegions6];
+const stores = [regionDataStores.wsRegions2, regionDataStores.wsRegions3, regionDataStores.wsRegions4, regionDataStores.wsRegions5, regionDataStores.wsRegions6];
 
 
 wsRegions.forEach((wsRegion, index) => {
@@ -603,8 +652,8 @@ function generateSilentRegions(nonSilentRegions, duration) {
 }
 
 // Function to check if two regions overlap
-function isOverlap(region1, region2) {
-  return region1.start < region2.end && region2.start < region1.end;
+function isOverlap(region1, region3) {
+  return region1.start < region3.end && region3.start < region1.end;
 }
 
 // Function to filter regions that overlap with silent regions
@@ -616,7 +665,7 @@ function filterRegionsBySilentRegions(regions, silentRegions) {
 
 // Event listener for silence detection
 document.getElementById('silence-detection').addEventListener('click', function() {
-  wsRegions3.clearRegions();
+  wsRegions4.clearRegions();
   const duration = wavesurfer1.getDuration(); // Assuming you can get the duration from the Wavesurfer instance
   const decodedData = wavesurfer1.getDecodedData();
   if (decodedData) {
@@ -645,7 +694,7 @@ document.getElementById('silence-detection').addEventListener('click', function(
               contentElement.style.textAlign = 'right';
           }
 
-          wsRegions3.addRegion({
+          wsRegions4.addRegion({
               start: region.start,
               end: region.end,
               content: contentElement, // Set content to 'E' or 'M'

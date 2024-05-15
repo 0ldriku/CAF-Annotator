@@ -196,33 +196,35 @@ def compute_caf():
 
 def compute_caf_values(data):
     wsRegions2 = data.get('wsRegions2', {})
-    wsRegions3 = data.get('wsRegions3', {})
+    wsRegions4 = data.get('wsRegions4', {})
     
     # Calculate total words and audio duration
     total_words = sum(len(region['content'].split()) for region in wsRegions2.values())
     total_audio_duration = max(region['end'] for region in wsRegions2.values())
     
     # Calculate total speech duration excluding pauses
-    total_speech_duration = total_audio_duration - sum(region['end'] - region['start'] for region in wsRegions3.values())
+    total_speech_duration = total_audio_duration - sum(region['end'] - region['start'] for region in wsRegions4.values())
     
     # Calculate speed fluency measures
     speed_rate = total_words / total_audio_duration
     articulation_rate = total_words / total_speech_duration
     
     # Calculate breakdown fluency measures
-    mid_clause_pauses = sum(1 for region in wsRegions3.values() if region['content'] == 'M')
-    final_clause_pauses = sum(1 for region in wsRegions3.values() if region['content'] == 'E')
+    mid_clause_pauses = sum(1 for region in wsRegions4.values() if region['content'] == 'M')
+    final_clause_pauses = sum(1 for region in wsRegions4.values() if region['content'] == 'E')
     
     mid_clause_pause_ratio = mid_clause_pauses / total_words
     final_clause_pause_ratio = final_clause_pauses / total_words
     
-    mid_clause_pause_duration = sum(region['end'] - region['start'] for region in wsRegions3.values() if region['content'] == 'M')
-    final_clause_pause_duration = sum(region['end'] - region['start'] for region in wsRegions3.values() if region['content'] == 'E')
+    mid_clause_pause_duration = sum(region['end'] - region['start'] for region in wsRegions4.values() if region['content'] == 'M')
+    final_clause_pause_duration = sum(region['end'] - region['start'] for region in wsRegions4.values() if region['content'] == 'E')
     
     avg_mid_clause_pause_duration = mid_clause_pause_duration / mid_clause_pauses if mid_clause_pauses > 0 else 0
     avg_final_clause_pause_duration = final_clause_pause_duration / final_clause_pauses if final_clause_pauses > 0 else 0
     
     # Print the results
+    
+
     print("Speed Fluency:")
     print(f"- Speed rate: {speed_rate} words per second")
     print(f"- Articulation rate: {articulation_rate} words per second")
