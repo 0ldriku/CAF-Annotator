@@ -208,23 +208,22 @@ wavesurfers.forEach(ws => {
 
 // above is the code of multitrack
 
-// below is the code of subtitle loading
+// below is the code of matched json loading
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("Document is ready!");
-  const loadButton = document.getElementById('load-subtitles-btn');
+  const loadButton = document.getElementById('load-small-segment-btn');
   loadButton.addEventListener('click', function() {
-    console.log("Button was clicked!");
-    loadJSONSubtitles();
+    console.log("Load small segment button was clicked!");
+    loadJSONSubtitles_small_segment();
   });
 });
 
 
-// Function to load subtitles from a JSON file
-function loadJSONSubtitles() {
+// Function to load small segments from a JSON file
+function loadJSONSubtitles_small_segment() {
   wsRegions2.clearRegions();
-  const fileInput = document.getElementById('subtitle-file');
+  const fileInput = document.getElementById('small_segment_json');
   const file = fileInput.files[0];
   console.log("File selected:", file);
 
@@ -257,10 +256,55 @@ function loadJSONSubtitles() {
     console.log("No file selected.");
   }
 }
+document.addEventListener('DOMContentLoaded', function() {
+  const loadButton = document.getElementById('load-big-segment-btn');
+  loadButton.addEventListener('click', function() {
+    console.log("Load big segment button was clicked!");
+    loadJSONSubtitles_big_segment();
+  });
+});
 
+
+// Function to load big segments from a JSON file
+function loadJSONSubtitles_big_segment() {
+  wsRegions3.clearRegions();
+  const fileInput = document.getElementById('big_segment_json');
+  const file = fileInput.files[0];
+  console.log("File selected:", file);
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      console.log("File read complete!");
+      try {
+        const subtitleData = JSON.parse(e.target.result);
+        console.log("Parsed data:", subtitleData);
+        subtitleData.forEach(region => {
+          const contentElement = document.createElement('div');
+          contentElement.textContent = region.subtitle;
+          if (region.end - region.start < 0.5) {
+              contentElement.style.textAlign = 'right';
+          }
+          wsRegions3.addRegion({
+            start: region.start,
+            end: region.end,
+            content: contentElement,
+            contentEditable: true,
+          });
+        });
+      } catch (error) {
+        console.error('Error parsing the subtitle JSON file:', error);
+      }
+    };
+    reader.readAsText(file);
+  } else {
+    console.log("No file selected.");
+  }
+}
 
 // Expose the loadJSONSubtitles function to the global scope
-window.loadJSONSubtitles = loadJSONSubtitles;
+window.loadJSONSubtitles_small_segment = loadJSONSubtitles_small_segment;
+window.loadJSONSubtitles_big_segment = loadJSONSubtitles_big_segment;
 
 
 
