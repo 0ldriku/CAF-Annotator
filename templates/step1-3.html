@@ -50,12 +50,13 @@
 
 <div class="container">
     <h1>2. Annotate</h1>
-    <ul>
-        <li>Adjust the segments in first track (the track below the audiowave).</li>
-        <li>Adjust the boundaries of segments.</li>
-        <li>Ensure you finished the step 1 and 2 then go nex step.</li>
-        <li>Press the "Detect Silence" button to add pause segments in track 2. Once press the button, all segments in track 2 will be removed. It will auto detect mid-pause with a "M" markder and end-pause with a "E" marker.</li>
-    </ul>
+    <ol>
+        <li>Edit the text of each segment in the first track.</li>
+        <li>Adjust the boundaries of each segment in first track (the track below the audiowave).</li>
+        <li>Adjust the boundaries of segments in track 3.</li>
+        <li>Ensure you finished the step 1-3 then go nex step.</li>
+        <li>Press the "Detect Silence" button to add pause segments in track "PAUSE". Once press the button, all segments in track "PAUSE" will be removed. It will label mid-pause with a "M" markder and end-pause with a "E" marker.</li>
+    </ol>
 
       <div>
         <input type="file" id="small_segment_json" accept=".json"/>
@@ -121,6 +122,20 @@
 <div class="container">
     <h1>3. Calculation</h1>
     <p>Calculate the results</p>
+    <p>Currently only support the below dimensions.</p>
+    <h2>Speed Fluency</h2>
+    <ul>
+        <li><strong>Speed rate:</strong> The mean number of words produced per second, divided by total audio duration.</li>
+        <li><strong>Articulation rate:</strong> The mean number of words per second, divided by total phonation time (i.e., total speech duration excluding pauses).</li>
+    </ul>
+
+    <h2>Breakdown Fluency</h2>
+    <ul>
+        <li><strong>Mid-clause pause ratio:</strong> The total number of unfilled pauses within clauses was divided by the total number of words.</li>
+        <li><strong>Final-clause pause ratio:</strong> The total number of unfilled pauses between clauses was divided by the total number of words.</li>
+        <li><strong>Mid-clause pause duration:</strong> Mean duration of pauses within clauses, expressed in seconds.</li>
+        <li><strong>Final-clause pause duration:</strong> Mean duration of pauses between clauses, expressed in seconds.</li>
+    </ul>
     <input type="file" id="regiondatajsonfileInput" accept=".json">
     <button onclick="loadFile()">Load File and Compute CAF</button>
     <div id="results"></div>

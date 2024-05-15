@@ -28,7 +28,7 @@ const wavesurfer1 = WaveSurfer.create({
 const wavesurfer2 = WaveSurfer.create({
   container: "#waveform2",
   waveColor: 'rgba(200, 0, 200, 0)',
-  progressColor: 'rgba(100, 0, 100)',
+  progressColor: 'rgba(100, 0, 100, 0)',
   height: "auto",
   minPxPerSec: 100,
   hideScrollbar: true,
@@ -37,7 +37,7 @@ const wavesurfer2 = WaveSurfer.create({
 const wavesurfer3 = WaveSurfer.create({
   container: "#waveform3",
   waveColor: 'rgba(200, 0, 200, 0)',
-  progressColor: 'rgba(100, 0, 100)',
+  progressColor: 'rgba(100, 0, 100, 0)',
   height: "auto",
   minPxPerSec: 100,
   hideScrollbar: true,
@@ -46,7 +46,7 @@ const wavesurfer3 = WaveSurfer.create({
 const wavesurfer4 = WaveSurfer.create({
   container: "#waveform4",
   waveColor: 'rgba(200, 0, 200, 0)',
-  progressColor: 'rgba(100, 0, 100)',
+  progressColor: 'rgba(100, 0, 100, 0)',
   height: "auto",
   minPxPerSec: 100,
   hideScrollbar: true,
@@ -55,7 +55,7 @@ const wavesurfer4 = WaveSurfer.create({
 const wavesurfer5 = WaveSurfer.create({
   container: "#waveform5",
   waveColor: 'rgba(200, 0, 200, 0)',
-  progressColor: 'rgba(100, 0, 100)',
+  progressColor: 'rgba(100, 0, 100, 0)',
   height: "auto",
   minPxPerSec: 100,
   hideScrollbar: true,
@@ -64,7 +64,7 @@ const wavesurfer5 = WaveSurfer.create({
 const wavesurfer6 = WaveSurfer.create({
   container: "#waveform6",
   waveColor: 'rgba(200, 0, 200, 0)',
-  progressColor: 'rgba(100, 0, 100)',
+  progressColor: 'rgba(100, 0, 100, 0)',
   height: "auto",
   minPxPerSec: 100,
   plugins: [TimelinePlugin.create()],
