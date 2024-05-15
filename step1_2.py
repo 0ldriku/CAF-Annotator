@@ -101,8 +101,8 @@ def run_transcription(audio_path):
     else:
         return f"Error: {result.stderr}"
 
-@app.route('/save_transcription', methods=['POST'])
-def save_transcription():
+@app.route('/save_transcription_small_segment', methods=['POST'])
+def save_transcription_small_segment():
     data = request.get_json()
     text = data['text']
     
@@ -113,7 +113,7 @@ def save_transcription():
     base_filename, file_extension = os.path.splitext(base_filename)
     
     # Construct the result filename with the .txt extension
-    result_filename = f"{base_filename}{file_extension}.txt"
+    result_filename = f"{base_filename}{file_extension}.smallsegment.txt"
     
     result_path = os.path.join(app.config['TEXT_FOLDER'], result_filename)
     
@@ -127,7 +127,7 @@ def save_transcription():
         print(f"Transcription saved successfully: {result_path}")  # Logging statement
         
         # Invoke the run_sequence_matcher function
-        run_sequence_matcher() 
+        run_sequence_matcher_small_segment() 
         
         return jsonify({"message": "File saved successfully and sequence matching processed"})
     
@@ -135,12 +135,12 @@ def save_transcription():
         print(f"Failed to save transcription: {str(e)}")  # Logging statement
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
-def run_sequence_matcher(export_path=None):
+def run_sequence_matcher_small_segment(export_path=None):
     base_filename = session.get('uploaded_filename', 'default_filename')
     base_filename, file_extension = os.path.splitext(base_filename)
 
     # Paths for the text file and transcription file
-    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.txt")
+    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.smallsegment.txt")
     trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}{file_extension}.transcribe.json")
 
     # Check if the transcription file exists
@@ -157,9 +157,73 @@ def run_sequence_matcher(export_path=None):
         raise RuntimeError(f"Sequence matcher failed: {result.stderr}")
 
     # Define source and destination for moving the generated file
-    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.matched.json")
+    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.smallsegment.matched.json")
     destination_folder = app.config['JSON_FOLDER']
-    destination_file = os.path.join(destination_folder, f"{base_filename}{file_extension}.matched.json")
+    destination_file = os.path.join(destination_folder, f"{base_filename}{file_extension}.smallsegment.matched.json")
+
+    # Move the file from TEXT_FOLDER to JSON_FOLDER
+    shutil.move(source_file, destination_file)
+    print(f"File moved to {destination_file}")
+
+@app.route('/save_transcription_big_segment', methods=['POST'])
+def save_transcription_big_segment():
+    data = request.get_json()
+    text = data['text']
+    
+    # Retrieve the base filename from session or use a default filename
+    base_filename = session.get('uploaded_filename', 'default_filename')
+    
+    # Extract the base filename and extension
+    base_filename, file_extension = os.path.splitext(base_filename)
+    
+    # Construct the result filename with the .txt extension
+    result_filename = f"{base_filename}{file_extension}.bigsegment.txt"
+    
+    result_path = os.path.join(app.config['TEXT_FOLDER'], result_filename)
+    
+    try:
+        # Create the directory if it doesn't exist
+        os.makedirs(app.config['TEXT_FOLDER'], exist_ok=True)
+        
+        with open(result_path, 'w') as file:
+            file.write(text)
+        
+        print(f"Transcription saved successfully: {result_path}")  # Logging statement
+        
+        # Invoke the run_sequence_matcher function
+        run_sequence_matcher_big_segment() 
+        
+        return jsonify({"message": "File saved successfully and sequence matching processed"})
+    
+    except IOError as e:
+        print(f"Failed to save transcription: {str(e)}")  # Logging statement
+        return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
+
+def run_sequence_matcher_big_segment(export_path=None):
+    base_filename = session.get('uploaded_filename', 'default_filename')
+    base_filename, file_extension = os.path.splitext(base_filename)
+
+    # Paths for the text file and transcription file
+    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.bigsegment.txt")
+    trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}{file_extension}.transcribe.json")
+
+    # Check if the transcription file exists
+    if not os.path.exists(trans_file_path):
+        print(f"Transcription file not found: {trans_file_path}")
+        raise FileNotFoundError(f"Transcription file not found: {trans_file_path}")
+
+    script_path = os.path.join(app.root_path, 'pyfiles', 'sequencematcher.py')
+    command = ['python', script_path, text_file_path, trans_file_path]
+
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    if result.returncode != 0:
+        raise RuntimeError(f"Sequence matcher failed: {result.stderr}")
+
+    # Define source and destination for moving the generated file
+    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.bigsegment.matched.json")
+    destination_folder = app.config['JSON_FOLDER']
+    destination_file = os.path.join(destination_folder, f"{base_filename}{file_extension}.bigsegment.matched.json")
 
     # Move the file from TEXT_FOLDER to JSON_FOLDER
     shutil.move(source_file, destination_file)
@@ -223,7 +287,7 @@ def compute_caf_values(data):
     avg_final_clause_pause_duration = final_clause_pause_duration / final_clause_pauses if final_clause_pauses > 0 else 0
     
     # Print the results
-    
+
 
     print("Speed Fluency:")
     print(f"- Speed rate: {speed_rate} words per second")

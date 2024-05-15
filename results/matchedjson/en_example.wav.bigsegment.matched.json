@@ -132,8 +132,8 @@
   },
   {
     "start": 8.92,
-    "end": 12.38,
-    "subtitle": " That is to say, much of political philosophy",
+    "end": 17.76,
+    "subtitle": " That is to say, much of political philosophy develops theories that take no account",
     "word_timestamps": [
       {
         "start": 8.92,
@@ -174,14 +174,7 @@
         "start": 11.92,
         "end": 12.38,
         "text": " philosophy"
-      }
-    ]
-  },
-  {
-    "start": 13.66,
-    "end": 17.76,
-    "subtitle": " develops theories that take no account",
-    "word_timestamps": [
+      },
       {
         "start": 13.66,
         "end": 14.26,
@@ -216,8 +209,8 @@
   },
   {
     "start": 18.38,
-    "end": 22.88,
-    "subtitle": " of where we actually are and how the theories",
+    "end": 25.06,
+    "subtitle": " of where we actually are and how the theories that people argue about in the journals",
     "word_timestamps": [
       {
         "start": 18.38,
@@ -263,14 +256,7 @@
         "start": 22.5,
         "end": 22.88,
         "text": " theories"
-      }
-    ]
-  },
-  {
-    "start": 22.88,
-    "end": 25.06,
-    "subtitle": " that people argue about in the journals",
-    "word_timestamps": [
+      },
       {
         "start": 22.88,
         "end": 23.24,
@@ -449,8 +435,8 @@
   },
   {
     "start": 35.82,
-    "end": 41.62,
-    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century,",
+    "end": 46.66,
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century, argues for a 4% global wealth tax.",
     "word_timestamps": [
       {
         "start": 35.82,
@@ -501,14 +487,7 @@
         "start": 41.2,
         "end": 41.62,
         "text": " Century,"
-      }
-    ]
-  },
-  {
-    "start": 42.0,
-    "end": 46.66,
-    "subtitle": " argues for a 4% global wealth tax.",
-    "word_timestamps": [
+      },
       {
         "start": 42.0,
         "end": 42.38,
@@ -543,8 +522,8 @@
   },
   {
     "start": 48.580000000000005,
-    "end": 49.92,
-    "subtitle": " Well, good luck with that.",
+    "end": 54.12,
+    "subtitle": " Well, good luck with that. Who's gonna implement a 4% global wealth tax?",
     "word_timestamps": [
       {
         "start": 48.580000000000005,
@@ -570,14 +549,7 @@
         "start": 49.6,
         "end": 49.92,
         "text": " that."
-      }
-    ]
-  },
-  {
-    "start": 50.98,
-    "end": 54.12,
-    "subtitle": " Who's gonna implement a 4% global wealth tax?",
-    "word_timestamps": [
+      },
       {
         "start": 50.98,
         "end": 51.34,
