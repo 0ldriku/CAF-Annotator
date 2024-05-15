@@ -91,8 +91,17 @@
 <div class="container">
     <h1>3. Calculation</h1>
     <p>Calculate the results</p>
+    <input type="file" id="regiondatajsonfileInput" accept=".json">
+    <button onclick="loadFile()">Load File and Compute CAF</button>
+    <div id="results"></div>
+    <script src="{{ url_for('static', filename='js/computation.js') }}"></script>
 </div>
 
+
+
+
+
+<!-- below is the code editor for first container-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.js"></script>
 <script>

@@ -22,9 +22,6 @@ os.makedirs(app.config['TEXT_FOLDER'], exist_ok=True)
 os.makedirs(app.config['JSON_FOLDER'], exist_ok=True)
 os.makedirs(app.config['TRANS_FOLDER'], exist_ok=True)
 
-
-
-
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -49,6 +46,9 @@ def upload_file():
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(filepath)
 
+    # Store the filename in the session
+    session['uploaded_filename'] = filename
+
     # Call to your transcription function
     run_transcription(filepath)  # Ensure this is correctly creating the output file
 
@@ -69,9 +69,6 @@ def upload_file():
         return transcription
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
-
 
 def run_transcription(audio_path):
     script_path = os.path.join(app.root_path, 'pyfiles', 'fasterwhisper.py')
@@ -110,7 +107,7 @@ def save_transcription():
     # Extract the base filename and extension
     base_filename, file_extension = os.path.splitext(base_filename)
     
-    # Construct the result filename with the original extension
+    # Construct the result filename with the .txt extension
     result_filename = f"{base_filename}{file_extension}.txt"
     
     result_path = os.path.join(app.config['TEXT_FOLDER'], result_filename)
@@ -132,7 +129,6 @@ def save_transcription():
     except IOError as e:
         print(f"Failed to save transcription: {str(e)}")  # Logging statement
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
-
 
 def run_sequence_matcher(export_path=None):
     base_filename = session.get('uploaded_filename', 'default_filename')
@@ -164,6 +160,5 @@ def run_sequence_matcher(export_path=None):
     shutil.move(source_file, destination_file)
     print(f"File moved to {destination_file}")
 
-    
 if __name__ == '__main__':
     app.run(debug=True)

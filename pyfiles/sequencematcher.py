@@ -18,7 +18,7 @@ with open(text_file, 'r') as txt_data:
     text = txt_data.read()
 
 # Split the text into segments based on the edited segmentation
-segments = text.split('\n')
+segments = [segment for segment in text.split('\n') if segment.strip()]
 
 # Initialize variables
 word_timestamps = []
