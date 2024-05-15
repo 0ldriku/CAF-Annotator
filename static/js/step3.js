@@ -93,10 +93,10 @@ wavesurfer5.setVolume(0);
 
 // Initialize the Regions plugin
 //const wsRegions1 = wavesurfer1.registerPlugin(RegionsPlugin.create()); // for test track 1
-const wsRegions2 = wavesurfer2.registerPlugin(RegionsPlugin.create());
-const wsRegions3 = wavesurfer3.registerPlugin(RegionsPlugin.create());
-const wsRegions4 = wavesurfer4.registerPlugin(RegionsPlugin.create());
-const wsRegions5 = wavesurfer5.registerPlugin(RegionsPlugin.create());
+const wsRegions2 = wavesurfer2.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
+const wsRegions3 = wavesurfer3.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
+const wsRegions4 = wavesurfer4.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
+const wsRegions5 = wavesurfer5.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
 
 // Get the RegionsPlugin prototype
 const RegionsPluginProto = Object.getPrototypeOf(wsRegions2);
@@ -223,11 +223,16 @@ function loadJSONSubtitles() {
       try {
         const subtitleData = JSON.parse(e.target.result);
         console.log("Parsed data:", subtitleData);
-        subtitleData.forEach(sub => {
+        subtitleData.forEach(region => {
+          const contentElement = document.createElement('div');
+          contentElement.textContent = region.subtitle;
+          if (region.end - region.start < 0.5) {
+              contentElement.style.textAlign = 'right';
+          }
           wsRegions2.addRegion({
-            start: sub.start,
-            end: sub.end,
-            content: sub.subtitle,
+            start: region.start,
+            end: region.end,
+            content: contentElement,
             contentEditable: true,
           });
         });
@@ -463,36 +468,6 @@ document.getElementById("save-region-data-btn").addEventListener("click", saveRe
 const wsRegions = [wsRegions2, wsRegions3, wsRegions4, wsRegions5];
 const stores = [regionDataStores.wsRegions2, regionDataStores.wsRegions3, regionDataStores.wsRegions4, regionDataStores.wsRegions5];
 
-wsRegions.forEach((wsRegion, index) => {
-  const store = stores[index];
-
-  wsRegion.on('region-created', (region) => {
-    console.log(`Region created event triggered for wsRegions${index + 2}`);
-    saveRegionData(region, store);
-    console.log(`Region created in track ${index + 2}:`, store);
-  });
-
-  wsRegion.on('region-updated', (region) => {
-    console.log(`Region update event triggered for wsRegions${index + 2}`);
-    saveRegionData(region, store);
-    console.log(`Region updated in track ${index + 2}:`, store);
-  });
-
-  wsRegion.on('region-removed', (region) => {
-    console.log(`Region removed event triggered for wsRegions${index + 2}`);
-    delete store[region.id];
-    console.log(`Region removed in track ${index + 2}:`, store);
-  });
-});
-
-// remove region
-const deleteActiveRegion = () => {
-  if (activeRegion) {
-    activeRegion.remove();
-    activeRegion = null;
-  }
-};
-let activeRegion = null;
 
 wsRegions.forEach((wsRegion, index) => {
   const store = stores[index];
@@ -518,7 +493,7 @@ wsRegions.forEach((wsRegion, index) => {
 
   // Set active region on click
   wsRegion.on('region-clicked', (region, e) => {
-    e.stopPropagation() 
+    e.stopPropagation();
     activeRegion = region;
   });
 });
@@ -530,3 +505,152 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+
+// remove region
+const deleteActiveRegion = () => {
+  if (activeRegion) {
+    activeRegion.remove();
+    activeRegion = null;
+  }
+};
+let activeRegion = null;
+
+
+
+
+// Find regions separated by silence
+const extractRegions = (audioData, duration) => {
+  const minValue = 0.01;
+  const minSilenceDuration = 0.5;
+  const mergeDuration = 0.2;
+  const scale = duration / audioData.length;
+  const silentRegions = [];
+
+  // Find all silent regions longer than minSilenceDuration
+  let start = 0;
+  let end = 0;
+  let isSilent = false;
+  for (let i = 0; i < audioData.length; i++) {
+    if (audioData[i] < minValue) {
+      if (!isSilent) {
+        start = i;
+        isSilent = true;
+      }
+    } else if (isSilent) {
+      end = i;
+      isSilent = false;
+      if (scale * (end - start) > minSilenceDuration) {
+        silentRegions.push({ start: scale * start, end: scale * end });
+      }
+    }
+  }
+
+  // Merge silent regions that are close together
+  const mergedRegions = [];
+  let lastRegion = null;
+  for (let i = 0; i < silentRegions.length; i++) {
+    if (lastRegion && silentRegions[i].start - lastRegion.end < mergeDuration) {
+      lastRegion.end = silentRegions[i].end;
+    } else {
+      lastRegion = silentRegions[i];
+      mergedRegions.push(lastRegion);
+    }
+  }
+
+  return mergedRegions;
+};
+
+
+// Create regions for each silent part of the audio
+// Function to generate silent regions from the given non-silent regions and duration
+// Function to generate silent regions from the given non-silent regions and duration
+function generateSilentRegions(nonSilentRegions, duration) {
+  let silentRegions = [];
+  let end = 0;
+  const threshold = 0.2; // Threshold for minimum duration of silent regions
+
+  // Convert store object to array for sorting
+  const regionsArray = Object.values(nonSilentRegions);
+
+  // Sort regions by start time
+  regionsArray.sort((a, b) => a.start - b.start);
+
+  // Find silent regions
+  regionsArray.forEach(region => {
+      if (region.start > end) {
+          const silentRegionStart = end;
+          const silentRegionEnd = region.start;
+          const silentRegionDuration = silentRegionEnd - silentRegionStart;
+          if (silentRegionDuration >= threshold) {
+              silentRegions.push({ start: silentRegionStart, end: silentRegionEnd });
+          }
+      }
+      end = region.end;
+  });
+
+  // Add the final silent region if it exists and meets the threshold
+  if (end < duration) {
+      const finalSilentRegionStart = end;
+      const finalSilentRegionEnd = duration;
+      const finalSilentRegionDuration = finalSilentRegionEnd - finalSilentRegionStart;
+      if (finalSilentRegionDuration >= threshold) {
+          silentRegions.push({ start: finalSilentRegionStart, end: finalSilentRegionEnd });
+      }
+  }
+
+  return silentRegions;
+}
+
+// Function to check if two regions overlap
+function isOverlap(region1, region2) {
+  return region1.start < region2.end && region2.start < region1.end;
+}
+
+// Function to filter regions that overlap with silent regions
+function filterRegionsBySilentRegions(regions, silentRegions) {
+  return regions.filter(region => {
+      return !silentRegions.some(silentRegion => isOverlap(region, silentRegion));
+  });
+}
+
+// Event listener for silence detection
+document.getElementById('silence-detection').addEventListener('click', function() {
+  const duration = wavesurfer1.getDuration(); // Assuming you can get the duration from the Wavesurfer instance
+  const decodedData = wavesurfer1.getDecodedData();
+  if (decodedData) {
+      // Extract regions from audio data
+      const regions = extractRegions(decodedData.getChannelData(0), duration);
+
+      // Generate silent regions
+      const silentRegions = generateSilentRegions(regionDataStores.wsRegions2, duration);
+
+      // Filter regions by silent regions
+      const filteredRegions = filterRegionsBySilentRegions(regions, silentRegions);
+
+      // Combine silent regions with filtered regions
+      const combinedRegions = [...filteredRegions, ...silentRegions];
+
+      // Convert regionDataStores.wsRegions2 to an array
+      const wsRegions2Array = Array.isArray(regionDataStores.wsRegions2) ? regionDataStores.wsRegions2 : Object.values(regionDataStores.wsRegions2);
+
+      // Add regions to the waveform
+      combinedRegions.forEach((region, index) => {
+          const contentElement = document.createElement('div');
+          const isOverlapping = wsRegions2Array.some(existingRegion => isOverlap(region, existingRegion));
+          contentElement.textContent = isOverlapping ? 'M' : 'E';
+
+          if (region.end - region.start < 0.5) {
+              contentElement.style.textAlign = 'right';
+          }
+
+          wsRegions3.addRegion({
+              start: region.start,
+              end: region.end,
+              content: contentElement, // Set content to 'E' or 'M'
+              drag: true,
+              resize: true,
+              color: 'rgba(226, 223, 208, 0.5)',
+          });
+      });
+  }
+});

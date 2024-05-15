@@ -1,62 +1,67 @@
 {
-  "region-0k8g96cbic": {
-    "content": "And this spills over into normative arguments made by other scholars.",
-    "end": 35.28,
-    "start": 29.2
+  "wsRegions2": {
+    "region-0lid3j9868": {
+      "content": "that people argue about in the journals and in the literature actually could be implemented in the world, if at all.",
+      "end": 29.2,
+      "start": 22.88
+    },
+    "region-486rbb0tu8": {
+      "content": "and says, how do I get to Dublin?",
+      "end": 1.8,
+      "start": 0
+    },
+    "region-6q2mqtm2hco": {
+      "content": "That is to say, much of political philosophy",
+      "end": 12.38,
+      "start": 8.92
+    },
+    "region-9q218o2ibdg": {
+      "content": "Thomas Piketty, in his book, Capital in the 21st Century, argues for a 4% global wealth tax.",
+      "end": 46.66,
+      "start": 35.82
+    },
+    "region-9ruuptr0dbg": {
+      "content": "Well, good luck with that.",
+      "end": 49.92,
+      "start": 48.580000000000005
+    },
+    "region-av13atcm51g": {
+      "content": "And the answer that comes back is,",
+      "end": 4.5,
+      "start": 2.6
+    },
+    "region-dl9jjegtfl": {
+      "content": "So I, when I think about normative questions,",
+      "end": 59.34,
+      "start": 54.12
+    },
+    "region-ff4telthen": {
+      "content": "And this spills over into normative arguments made by other scholars.",
+      "end": 35.28,
+      "start": 29.2
+    },
+    "region-gep7g842es": {
+      "content": "it's like,",
+      "end": 59.98,
+      "start": 59.56
+    },
+    "region-qlqt8std5": {
+      "content": "develops theories that take no account of where we actually are and how the theories",
+      "end": 22.88,
+      "start": 13.66
+    },
+    "region-r8j5mnujobg": {
+      "content": "well, I wouldn't start from here, Sonny.",
+      "end": 6.76,
+      "start": 5.02
+    },
+    "region-vqg37vdjiq": {
+      "content": "Who's gonna implement a 4% global wealth tax?",
+      "end": 54.12,
+      "start": 50.98
+    }
   },
-  "region-1q4nr5jh47o": {
-    "content": "and says, how do I get to Dublin?",
-    "end": 1.8,
-    "start": 0
-  },
-  "region-2tidr6moib": {
-    "content": "Thomas Piketty, in his book, Capital in the 21st Century,",
-    "end": 41.62,
-    "start": 35.82
-  },
-  "region-5ek88stql28": {
-    "content": "argues for a 4% global wealth tax. Well, good luck with that.",
-    "end": 49.92,
-    "start": 42
-  },
-  "region-7pt9hluqc48": {
-    "content": "That is to say, much of political philosophy",
-    "end": 12.38,
-    "start": 8.92
-  },
-  "region-9khc3u4qdig": {
-    "content": "So I, when I think about normative questions,",
-    "end": 59.34,
-    "start": 54.12
-  },
-  "region-bcffu4e8q9o": {
-    "content": "And the answer that comes back is, well, I wouldn't start from here, Sonny.",
-    "end": 6.76,
-    "start": 2.6
-  },
-  "region-hmdhdd7t5v": {
-    "content": "it's like,",
-    "end": 59.98,
-    "start": 59.56
-  },
-  "region-ir6h99jvrs8": {
-    "content": "of where we actually are and how the theories that people argue about in the journals",
-    "end": 25.06,
-    "start": 18.38
-  },
-  "region-jb3imj0mr68": {
-    "content": "Who's gonna implement a 4% global wealth tax?",
-    "end": 54.12,
-    "start": 50.98
-  },
-  "region-rscvqp5pnjo": {
-    "content": "and in the literature actually could be implemented in the world, if at all.",
-    "end": 29.2,
-    "start": 25.06
-  },
-  "region-ve402feol2": {
-    "content": "develops theories that take no account",
-    "end": 17.76,
-    "start": 13.66
-  }
+  "wsRegions3": {},
+  "wsRegions4": {},
+  "wsRegions5": {}
 }

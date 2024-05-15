@@ -48,8 +48,8 @@
   },
   {
     "start": 2.6,
-    "end": 6.76,
-    "subtitle": " And the answer that comes back is, well, I wouldn't start from here, Sonny.",
+    "end": 4.5,
+    "subtitle": " And the answer that comes back is,",
     "word_timestamps": [
       {
         "start": 2.6,
@@ -85,7 +85,14 @@
         "start": 4.22,
         "end": 4.5,
         "text": " is,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 5.02,
+    "end": 6.76,
+    "subtitle": " well, I wouldn't start from here, Sonny.",
+    "word_timestamps": [
       {
         "start": 5.02,
         "end": 5.14,
@@ -172,8 +179,8 @@
   },
   {
     "start": 13.66,
-    "end": 17.76,
-    "subtitle": " develops theories that take no account",
+    "end": 22.88,
+    "subtitle": " develops theories that take no account of where we actually are and how the theories",
     "word_timestamps": [
       {
         "start": 13.66,
@@ -204,14 +211,7 @@
         "start": 17.18,
         "end": 17.76,
         "text": " account"
-      }
-    ]
-  },
-  {
-    "start": 18.38,
-    "end": 25.06,
-    "subtitle": " of where we actually are and how the theories that people argue about in the journals",
-    "word_timestamps": [
+      },
       {
         "start": 18.38,
         "end": 18.8,
@@ -256,7 +256,14 @@
         "start": 22.5,
         "end": 22.88,
         "text": " theories"
-      },
+      }
+    ]
+  },
+  {
+    "start": 22.88,
+    "end": 29.2,
+    "subtitle": " that people argue about in the journals and in the literature actually could be implemented in the world, if at all.",
+    "word_timestamps": [
       {
         "start": 22.88,
         "end": 23.24,
@@ -291,14 +298,7 @@
         "start": 24.74,
         "end": 25.06,
         "text": " journals"
-      }
-    ]
-  },
-  {
-    "start": 25.06,
-    "end": 29.2,
-    "subtitle": " and in the literature actually could be implemented in the world, if at all.",
-    "word_timestamps": [
+      },
       {
         "start": 25.06,
         "end": 25.38,
@@ -435,8 +435,8 @@
   },
   {
     "start": 35.82,
-    "end": 41.62,
-    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century,",
+    "end": 46.66,
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century, argues for a 4% global wealth tax.",
     "word_timestamps": [
       {
         "start": 35.82,
@@ -487,14 +487,7 @@
         "start": 41.2,
         "end": 41.62,
         "text": " Century,"
-      }
-    ]
-  },
-  {
-    "start": 42.0,
-    "end": 49.92,
-    "subtitle": " argues for a 4% global wealth tax. Well, good luck with that.",
-    "word_timestamps": [
+      },
       {
         "start": 42.0,
         "end": 42.38,
@@ -524,7 +517,14 @@
         "start": 46.12,
         "end": 46.66,
         "text": " tax."
-      },
+      }
+    ]
+  },
+  {
+    "start": 48.580000000000005,
+    "end": 49.92,
+    "subtitle": " Well, good luck with that.",
+    "word_timestamps": [
       {
         "start": 48.580000000000005,
         "end": 49.02,
