@@ -6,7 +6,7 @@ import TimelinePlugin from '/node_modules/wavesurfer.js/dist/plugins/timeline.es
 const topTimeline = TimelinePlugin.create({
   height: 20,
   insertPosition: 'beforebegin',
-  timeInterval: 0.2,
+  timeInterval: 0.1,
   primaryLabelInterval: 5,
   secondaryLabelInterval: 1,
   style: {
@@ -93,10 +93,10 @@ wavesurfer5.setVolume(0);
 
 // Initialize the Regions plugin
 //const wsRegions1 = wavesurfer1.registerPlugin(RegionsPlugin.create()); // for test track 1
-const wsRegions2 = wavesurfer2.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
-const wsRegions3 = wavesurfer3.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
-const wsRegions4 = wavesurfer4.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
-const wsRegions5 = wavesurfer5.registerPlugin(RegionsPlugin.create({ minLength: 0.1 }));
+const wsRegions2 = wavesurfer2.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
+const wsRegions3 = wavesurfer3.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
+const wsRegions4 = wavesurfer4.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
+const wsRegions5 = wavesurfer5.registerPlugin(RegionsPlugin.create({ minLength: 0.05 }));
 
 // Get the RegionsPlugin prototype
 const RegionsPluginProto = Object.getPrototypeOf(wsRegions2);
@@ -326,7 +326,7 @@ document.getElementById('addSegmentBtn3').addEventListener('click', function() {
 
   // Create a custom content element
   const contentElement = document.createElement('div');
-  contentElement.textContent = 'marker';
+  contentElement.textContent = 'M';
 
   // Apply right alignment if remaining time is less than 0.5 seconds
   if (remainingTime < 0.5) {
@@ -519,9 +519,10 @@ let activeRegion = null;
 
 
 // Find regions separated by silence
+// Current minSilenceDuration is set to 0.25 seconds
 const extractRegions = (audioData, duration) => {
   const minValue = 0.01;
-  const minSilenceDuration = 0.5;
+  const minSilenceDuration = 0.25;
   const mergeDuration = 0.2;
   const scale = duration / audioData.length;
   const silentRegions = [];
@@ -615,6 +616,7 @@ function filterRegionsBySilentRegions(regions, silentRegions) {
 
 // Event listener for silence detection
 document.getElementById('silence-detection').addEventListener('click', function() {
+  wsRegions3.clearRegions();
   const duration = wavesurfer1.getDuration(); // Assuming you can get the duration from the Wavesurfer instance
   const decodedData = wavesurfer1.getDecodedData();
   if (decodedData) {
@@ -634,7 +636,7 @@ document.getElementById('silence-detection').addEventListener('click', function(
       const wsRegions2Array = Array.isArray(regionDataStores.wsRegions2) ? regionDataStores.wsRegions2 : Object.values(regionDataStores.wsRegions2);
 
       // Add regions to the waveform
-      combinedRegions.forEach((region, index) => {
+      combinedRegions.forEach((region) => {
           const contentElement = document.createElement('div');
           const isOverlapping = wsRegions2Array.some(existingRegion => isOverlap(region, existingRegion));
           contentElement.textContent = isOverlapping ? 'M' : 'E';
