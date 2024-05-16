@@ -5,10 +5,10 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 print("########## Start of character arrival ##########")
 
 try:
-    from torch import cuda
+#    from torch import cuda // if you want to use GPU
     from faster_whisper import WhisperModel
 except ImportError:
-    sys.stderr.write("The 'faster_whisper' or 'pytorch' module was not found.\n")
+    sys.stderr.write("The 'faster_whisper' module was not found.\n")
     sys.exit(1)
     
 mediaSourcePath = sys.argv[1]
@@ -18,9 +18,13 @@ useLang = sys.argv[3] if len(sys.argv) > 3 else None
 transcribe_results = []
 
 # float16 or int8
+# For GPU,
+# model = WhisperModel(model_size, device="cuda", compute_type="float16")
+# or run on GPU with INT8
+# model = WhisperModel(model_size, device="cuda", compute_type="int8_float16")
 model = WhisperModel(
     model_size, compute_type="int8",
-    device= 'cuda' if cuda.is_available() else 'cpu'
+    device= 'cpu'
 )
 segments, info = model.transcribe(
     mediaFilePath, beam_size=5, word_timestamps=True,
