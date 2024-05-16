@@ -166,8 +166,8 @@
   },
   {
     "start": 10.42,
-    "end": 14.86,
-    "subtitle": " much of political philosophy develops theories",
+    "end": 12.38,
+    "subtitle": " much of political philosophy",
     "word_timestamps": [
       {
         "start": 10.42,
@@ -188,7 +188,14 @@
         "start": 11.92,
         "end": 12.38,
         "text": " philosophy"
-      },
+      }
+    ]
+  },
+  {
+    "start": 13.66,
+    "end": 14.86,
+    "subtitle": " develops theories",
+    "word_timestamps": [
       {
         "start": 13.66,
         "end": 14.26,
@@ -203,8 +210,8 @@
   },
   {
     "start": 14.86,
-    "end": 21.66,
-    "subtitle": " that take no account of where we actually are",
+    "end": 17.76,
+    "subtitle": " that take no account",
     "word_timestamps": [
       {
         "start": 14.86,
@@ -225,7 +232,14 @@
         "start": 17.18,
         "end": 17.76,
         "text": " account"
-      },
+      }
+    ]
+  },
+  {
+    "start": 18.38,
+    "end": 21.66,
+    "subtitle": " of where we actually are",
+    "word_timestamps": [
       {
         "start": 18.38,
         "end": 18.8,
@@ -255,8 +269,8 @@
   },
   {
     "start": 21.66,
-    "end": 28.36,
-    "subtitle": " and how the theories that people argue about in the journals and in the literature actually could be implemented in the world,",
+    "end": 22.88,
+    "subtitle": " and how the theories",
     "word_timestamps": [
       {
         "start": 21.66,
@@ -277,7 +291,14 @@
         "start": 22.5,
         "end": 22.88,
         "text": " theories"
-      },
+      }
+    ]
+  },
+  {
+    "start": 22.88,
+    "end": 25.06,
+    "subtitle": " that people argue about in the journals",
+    "word_timestamps": [
       {
         "start": 22.88,
         "end": 23.24,
@@ -312,7 +333,14 @@
         "start": 24.74,
         "end": 25.06,
         "text": " journals"
-      },
+      }
+    ]
+  },
+  {
+    "start": 25.06,
+    "end": 27.68,
+    "subtitle": " and in the literature actually could be implemented",
+    "word_timestamps": [
       {
         "start": 25.06,
         "end": 25.38,
@@ -352,7 +380,14 @@
         "start": 27.2,
         "end": 27.68,
         "text": " implemented"
-      },
+      }
+    ]
+  },
+  {
+    "start": 27.68,
+    "end": 29.2,
+    "subtitle": " in the world, if at all.",
+    "word_timestamps": [
       {
         "start": 27.68,
         "end": 27.94,
@@ -367,14 +402,7 @@
         "start": 28.06,
         "end": 28.36,
         "text": " world,"
-      }
-    ]
-  },
-  {
-    "start": 28.5,
-    "end": 29.2,
-    "subtitle": " if at all.",
-    "word_timestamps": [
+      },
       {
         "start": 28.5,
         "end": 28.86,
@@ -394,8 +422,8 @@
   },
   {
     "start": 29.2,
-    "end": 35.28,
-    "subtitle": " And this spills over into normative arguments made by other scholars.",
+    "end": 32.36,
+    "subtitle": " And this spills over into normative arguments",
     "word_timestamps": [
       {
         "start": 29.2,
@@ -431,7 +459,14 @@
         "start": 31.72,
         "end": 32.36,
         "text": " arguments"
-      },
+      }
+    ]
+  },
+  {
+    "start": 32.36,
+    "end": 35.28,
+    "subtitle": " made by other scholars.",
+    "word_timestamps": [
       {
         "start": 32.36,
         "end": 33.14,
@@ -456,8 +491,8 @@
   },
   {
     "start": 35.82,
-    "end": 46.66,
-    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century, argues for a 4% global wealth tax.",
+    "end": 41.62,
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century,",
     "word_timestamps": [
       {
         "start": 35.82,
@@ -508,7 +543,14 @@
         "start": 41.2,
         "end": 41.62,
         "text": " Century,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 42.0,
+    "end": 46.66,
+    "subtitle": " argues for a 4% global wealth tax.",
+    "word_timestamps": [
       {
         "start": 42.0,
         "end": 42.38,
@@ -617,8 +659,8 @@
   },
   {
     "start": 54.12,
-    "end": 55.26,
-    "subtitle": " So I,",
+    "end": 59.34,
+    "subtitle": " So I, when I think about normative questions,",
     "word_timestamps": [
       {
         "start": 54.12,
@@ -629,14 +671,7 @@
         "start": 54.68,
         "end": 55.26,
         "text": " I,"
-      }
-    ]
-  },
-  {
-    "start": 55.98,
-    "end": 59.34,
-    "subtitle": " when I think about normative questions,",
-    "word_timestamps": [
+      },
       {
         "start": 55.98,
         "end": 56.78,

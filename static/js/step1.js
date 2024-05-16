@@ -11,7 +11,7 @@ $(document).ready(function() {
         lineWrapping: true
     });
     myCodeMirror_prompt_small_segment = CodeMirror(document.getElementById('editor-prompt-small-segment'), {
-        value: "Adopt the role of a researcher in second language acquisition. Your task is to segment the given English text written by an English language learner into clauses (a production unit containing either a subject and a finite verb or a subject and a finite or non-finite verb form), formatting your response with each clause on a separate line without changing any words, for the purpose of labeling data to analyze the complexity, accuracy, and fluency (CAF) dimensions of English learners' language production. Only response the segmented text. Text to be segmented:", 
+        value: "Adopt the role of a researcher in second language acquisition. Your task is to segment the given English text written by an English language learner into clauses (a production unit containing either a subject and a finite verb or a subject and a finite or non-finite verb form), formatting your response with each clause on a separate line without changing or adding any words and symbols, for the purpose of labeling data to analyze the complexity, accuracy, and fluency (CAF) dimensions of English learners' language production. Only response the segmented text. Text to be segmented:", 
         mode: "plaintext",
         lineNumbers: true,
         lineWrapping: true
@@ -23,7 +23,7 @@ $(document).ready(function() {
         lineWrapping: true
     });
     myCodeMirror_prompt_big_segment = CodeMirror(document.getElementById('editor-prompt-big-segment'), {
-        value: "Adopt the role of a researcher in second language acquisition. Your task is to segment the given English text written by an English language learner into AS-units (a single speaker’s utterance consisting of an independent clause or subclausal unit, together with any subordinate clause(s) associated with either), formatting your response with each AS-unit on a separate line without changing any words, for the purpose of labeling data to analyze the complexity, accuracy, and fluency (CAF) dimensions of English learners' language production. Only response the segmented text. Text to be segmented:", // Ensure there's an initial newline for a cleaner experience
+        value: "Adopt the role of a researcher in second language acquisition. Your task is to segment the given English text written by an English language learner into sentences (a sentence end with a period), formatting your response with each sentence on a separate line without changing or adding any words and symbols, for the purpose of labeling data to analyze the complexity, accuracy, and fluency (CAF) dimensions of English learners' language production. Only response the segmented text. Text to be segmented:", // Ensure there's an initial newline for a cleaner experience
         mode: "plaintext",
         lineNumbers: true,
         lineWrapping: true
@@ -127,7 +127,7 @@ $(document).ready(function() {
             data: JSON.stringify({ text: textContent }),
             contentType: 'application/json;charset=UTF-8',
             success: function(response) {
-                alert('Transcription of small segment saved successfully.');
+                alert('Transcription of small segment saved successfully:', response.responseText);
             },
             error: function() {
                 alert('Failed to save the transcription of small segment.');
@@ -142,7 +142,7 @@ $(document).ready(function() {
             data: JSON.stringify({ text: textContent }),
             contentType: 'application/json;charset=UTF-8',
             success: function(response) {
-                alert('Transcription of big segment saved successfully.');
+                alert('Transcription of big segment saved successfully:', response.responseText);
             },
             error: function() {
                 alert('Failed to save the transcription of big segment.');
@@ -152,3 +152,25 @@ $(document).ready(function() {
 });
 
 export { myCodeMirror_small_segment, myCodeMirror_prompt_small_segment, myCodeMirror_prompt_big_segment, myCodeMirror_big_segment };
+
+document.getElementById('LoadSubtitleBtn').addEventListener('click', () => {
+    document.getElementById('SubtitleInput').click();
+  });
+  
+  document.getElementById('SubtitleInput').addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const data = e.target.result;
+        myCodeMirror_small_segment.setValue(data);
+        myCodeMirror_big_segment.setValue(data);
+      };
+      reader.onerror = function(e) {
+        console.error("Error reading file:", e);
+        alert("Failed to read file. Please try again.");
+      };
+      reader.readAsText(file);
+    }
+  });
+  

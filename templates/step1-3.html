@@ -31,6 +31,11 @@
         <input type="file" name="audiofile" id="file-upload" accept="audio/*">
         <button type="submit">Upload and Transcribe</button>
     </form>
+    <h2>Load the transcription</h2>
+    <p>If you have already transcribed the audio.<br>Load the file ends with subtitle.txt.</p>
+    <button id="LoadSubtitleBtn">Load File</button>
+    <input type="file" id="SubtitleInput" style="display: none;" />
+    <br>
     <h2>Small segments of transcription</h2>
     <p>Edit the small segments (e.g., clause) by adding or deleting lines</p>
     <div id="editor-small-segment"></div> <!-- Placeholder for CodeMirror -->
@@ -38,14 +43,17 @@
     <div id="editor-prompt-small-segment"></div>
     <button id="save-button-small-segment">Save and Next Step</button>
     <button id="Ai-refine-button-small-segment">AI Segment</button>
+    <p>Don't forget to save the segment data.</p>
 
     <h2>Big segments of transcription</h2>
-    <p>Edit the big segments (e.g., AS-unit) by adding or deleting lines</p>
+    <p>Edit the big segments (e.g., sentence, AS-unit) by adding or deleting lines</p>
     <div id="editor-big-segment"></div> <!-- Placeholder for CodeMirror -->
     <br>
     <div id="editor-prompt-big-segment"></div>
     <button id="save-button-big-segment">Save and Next Step</button>
     <button id="Ai-refine-button-big-segment">AI Segment</button>
+    <p>Don't forget to save the segment data.</p>
+
 </div>
 
 
@@ -80,10 +88,12 @@
 
       <div>
         <input type="file" id="small_segment_json" accept=".json"/>
+        <p>Load the file ends with smallsegment.matched.json</p>
         <button id="load-small-segment-btn">Load Small Segments</button>
       </div>
       <div>
         <input type="file" id="big_segment_json" accept=".json"/>
+        <p>Load the file ends with bigsegment.matched.json</p>
         <button id="load-big-segment-btn">Load Big Segments</button>
         </div>
         <div>
@@ -156,6 +166,7 @@
         <li><strong>Mid-clause pause duration:</strong> Mean duration of pauses within clauses, expressed in seconds.</li>
         <li><strong>Final-clause pause duration:</strong> Mean duration of pauses between clauses, expressed in seconds.</li>
     </ul>
+    <p>Load the file ends with reigionData.json</p>
     <input type="file" id="regiondatajsonfileInput" accept=".json">
     <button onclick="loadFile()">Load File and Compute CAF</button>
     <div id="results"></div>
