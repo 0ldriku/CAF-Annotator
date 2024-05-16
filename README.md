@@ -3,7 +3,7 @@ Maruko is an annotation tool designed to help researchers and students in the fi
 
 ## Motivation
 Currently, when extracting CAF measures from audio files, researchers often use a complex workflow involving multiple tools. They may use Praat for annotation, a separate transcription tool for transcribing the audio, and tools like Coh-Metrix to calculate transcription-based measures. This fragmented workflow can be time-consuming and cumbersome.
-Maruko aims to simplify and streamline this process by integrating the entire workflow into a single web application. By leveraging Speech-to-Text (STT) models and JavaScript for waveform rendering and annotation, this tool enables researchers to perform transcription, annotation, and computation tasks within a unified interface.
+Maruko aims to simplify and streamline this process by integrating the entire workflow into a single web application. By leveraging Speech-to-Text models and JavaScript for waveform rendering and annotation, this tool enables researchers to perform transcription, annotation, and computation tasks within a unified interface.
 
 ## Features
 
@@ -12,7 +12,8 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 - Customizable annotation labels and categories
 - Cross-platform compatibility
 
-## Installation
+## Getting started
+
 
 1. Clone the repository:
    ```bash
@@ -116,11 +117,21 @@ Now the Gemini from google offers free api to access the LLM. I intergrated it t
 ## Technologies Used
 
 ### Transcription
-faster-whisper
+faster-whisper -> currently set on CPU mode, if you want to use GPU mode, you can change the code in ....
 Gemini API
 
 ### Annotation
 Wavesurfer.js
+
+
+
+## The CPU usage in the transcription step.
+In my setup, for 60 seconds audio file, the transcription step will take around 1 minute to finish.
+The transcription step will take a long time to finish due to the low CPU spec.
+If you want to speed up the transcription step, I recommend to use the below Google Colab notebook to generate the transcription file.
+The Google Colab offers free GPU runtime. The transcription step will be much faster than the local CPU.
+[LINKHERE]
+You can load the transcription file into the Maruko to continue the annotation step.
 
 
 ## Roadmap
