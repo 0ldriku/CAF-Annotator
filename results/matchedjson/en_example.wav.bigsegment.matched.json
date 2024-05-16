@@ -1,8 +1,8 @@
 [
   {
     "start": 0.0,
-    "end": 0.46,
-    "subtitle": " and says ",
+    "end": 1.8,
+    "subtitle": " and says, how do I get to Dublin?",
     "word_timestamps": [
       {
         "start": 0.0,
@@ -13,14 +13,7 @@
         "start": 0.16,
         "end": 0.46,
         "text": " says,"
-      }
-    ]
-  },
-  {
-    "start": 0.68,
-    "end": 1.8,
-    "subtitle": " how do I get to Dublin?  ",
-    "word_timestamps": [
+      },
       {
         "start": 0.68,
         "end": 0.7,
@@ -55,8 +48,8 @@
   },
   {
     "start": 2.6,
-    "end": 6.76,
-    "subtitle": " And the answer that comes back is  well  I wouldn't start from here  Sonny ",
+    "end": 4.5,
+    "subtitle": " And the answer that comes back is,",
     "word_timestamps": [
       {
         "start": 2.6,
@@ -92,7 +85,14 @@
         "start": 4.22,
         "end": 4.5,
         "text": " is,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 5.02,
+    "end": 6.76,
+    "subtitle": " well, I wouldn't start from here, Sonny.",
+    "word_timestamps": [
       {
         "start": 5.02,
         "end": 5.14,
@@ -132,8 +132,8 @@
   },
   {
     "start": 8.92,
-    "end": 29.2,
-    "subtitle": " That is to say  much of political philosophy  develops theories that take no account  of where we actually are  and how the theories  that people argue about in the journals  and in the literature  actually could be implemented  in the world  if at all  ",
+    "end": 12.38,
+    "subtitle": " That is to say, much of political philosophy",
     "word_timestamps": [
       {
         "start": 8.92,
@@ -174,7 +174,14 @@
         "start": 11.92,
         "end": 12.38,
         "text": " philosophy"
-      },
+      }
+    ]
+  },
+  {
+    "start": 13.66,
+    "end": 17.76,
+    "subtitle": " develops theories that take no account",
+    "word_timestamps": [
       {
         "start": 13.66,
         "end": 14.26,
@@ -204,7 +211,14 @@
         "start": 17.18,
         "end": 17.76,
         "text": " account"
-      },
+      }
+    ]
+  },
+  {
+    "start": 18.38,
+    "end": 22.88,
+    "subtitle": " of where we actually are and how the theories",
+    "word_timestamps": [
       {
         "start": 18.38,
         "end": 18.8,
@@ -249,7 +263,14 @@
         "start": 22.5,
         "end": 22.88,
         "text": " theories"
-      },
+      }
+    ]
+  },
+  {
+    "start": 22.88,
+    "end": 25.06,
+    "subtitle": " that people argue about in the journals",
+    "word_timestamps": [
       {
         "start": 22.88,
         "end": 23.24,
@@ -284,7 +305,14 @@
         "start": 24.74,
         "end": 25.06,
         "text": " journals"
-      },
+      }
+    ]
+  },
+  {
+    "start": 25.06,
+    "end": 29.2,
+    "subtitle": " and in the literature actually could be implemented in the world, if at all.",
+    "word_timestamps": [
       {
         "start": 25.06,
         "end": 25.38,
@@ -359,8 +387,8 @@
   },
   {
     "start": 29.2,
-    "end": 35.28,
-    "subtitle": " And this spills over into normative arguments  made by other scholars  ",
+    "end": 32.36,
+    "subtitle": " And this spills over into normative arguments",
     "word_timestamps": [
       {
         "start": 29.2,
@@ -396,7 +424,14 @@
         "start": 31.72,
         "end": 32.36,
         "text": " arguments"
-      },
+      }
+    ]
+  },
+  {
+    "start": 32.36,
+    "end": 35.28,
+    "subtitle": " made by other scholars.",
+    "word_timestamps": [
       {
         "start": 32.36,
         "end": 33.14,
@@ -422,7 +457,7 @@
   {
     "start": 35.82,
     "end": 46.66,
-    "subtitle": " Thomas Piketty  in his book  Capital in the 21st Century  argues for a 4% global wealth tax  ",
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century, argues for a 4% global wealth tax.",
     "word_timestamps": [
       {
         "start": 35.82,
@@ -513,8 +548,8 @@
   },
   {
     "start": 48.580000000000005,
-    "end": 49.92,
-    "subtitle": " Well  good luck with that  ",
+    "end": 54.12,
+    "subtitle": " Well, good luck with that. Who's gonna implement a 4% global wealth tax?",
     "word_timestamps": [
       {
         "start": 48.580000000000005,
@@ -540,14 +575,7 @@
         "start": 49.6,
         "end": 49.92,
         "text": " that."
-      }
-    ]
-  },
-  {
-    "start": 50.98,
-    "end": 54.12,
-    "subtitle": " Who's gonna implement a 4% global wealth tax?  ",
-    "word_timestamps": [
+      },
       {
         "start": 50.98,
         "end": 51.34,
@@ -592,8 +620,8 @@
   },
   {
     "start": 54.12,
-    "end": 59.98,
-    "subtitle": " So I  when I think about normative questions  it's like ",
+    "end": 59.34,
+    "subtitle": " So I, when I think about normative questions,",
     "word_timestamps": [
       {
         "start": 54.12,
@@ -634,7 +662,14 @@
         "start": 58.68,
         "end": 59.34,
         "text": " questions,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 59.56,
+    "end": 59.98,
+    "subtitle": " it's like,",
+    "word_timestamps": [
       {
         "start": 59.56,
         "end": 59.98,

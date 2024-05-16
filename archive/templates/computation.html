@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAF Calculator</title>
+</head>
+<body>
+    <h1>CAF Calculator</h1>
+    <input type="file" id="regiondatajsonfileInput" accept=".json">
+    <button onclick="loadFile()">Load File and Compute CAF</button>
+    <div id="results"></div>
+    <script src="{{ url_for('static', filename='js/computation.js') }}"></script>
+</body>
+</html>
