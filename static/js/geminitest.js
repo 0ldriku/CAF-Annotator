@@ -52,13 +52,6 @@ async function generateTextSmallSegment() {
   }
 }
 
-generateSmallSegmentBtn.addEventListener("click", async () => {
-  try {
-    await generateTextSmallSegment();
-  } catch (error) {
-    console.error("Unexpected error:", error);
-  }
-});
 
 async function generateTextBigSegment() {
   if (!myCodeMirror_big_segment) {
@@ -105,10 +98,18 @@ async function generateTextBigSegment() {
   }
 }
 
-generateBigSegmentBtn.addEventListener("click", async () => {
-  try {
-    await generateTextBigSegment();
-  } catch (error) {
+
+
+
+
+generateSmallSegmentBtn.addEventListener("click", () => {
+  generateTextSmallSegment().catch((error) => {
     console.error("Unexpected error:", error);
-  }
+  });
+});
+
+generateBigSegmentBtn.addEventListener("click", () => {
+  generateTextBigSegment().catch((error) => {
+    console.error("Unexpected error:", error);
+  });
 });

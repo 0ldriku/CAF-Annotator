@@ -2,7 +2,7 @@
   {
     "start": 0.0,
     "end": 1.8,
-    "subtitle": " and says, how do I get to Dublin",
+    "subtitle": " and says, how do I get to Dublin?",
     "word_timestamps": [
       {
         "start": 0.0,
@@ -436,8 +436,8 @@
   },
   {
     "start": 32.36,
-    "end": 35.28,
-    "subtitle": " made by other scholars.",
+    "end": 41.62,
+    "subtitle": " made by other scholars. Thomas Piketty, in his book, Capital in the 21st Century,",
     "word_timestamps": [
       {
         "start": 32.36,
@@ -458,14 +458,7 @@
         "start": 34.52,
         "end": 35.28,
         "text": " scholars."
-      }
-    ]
-  },
-  {
-    "start": 35.82,
-    "end": 41.62,
-    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century,",
-    "word_timestamps": [
+      },
       {
         "start": 35.82,
         "end": 36.08,
@@ -595,7 +588,7 @@
   {
     "start": 50.98,
     "end": 54.12,
-    "subtitle": " Who's gonna implement a 4% global wealth tax",
+    "subtitle": " Who's gonna implement a 4% global wealth tax?",
     "word_timestamps": [
       {
         "start": 50.98,

@@ -235,9 +235,17 @@ def save_region_data():
     base_filename, file_extension = os.path.splitext(base_filename)
     data = request.get_json()
     file_path = os.path.join(app.config['ADJUSTEDREGIONS_FOLDER'], f"{base_filename}{file_extension}.regionData.json")
+    
     try:
+        # Check if the file already exists
+        if os.path.exists(file_path):
+            # If the file exists, delete it
+            os.remove(file_path)
+        
+        # Write the new data to the file
         with open(file_path, 'w') as f:
             json.dump(data, f, indent=2)
+        
         return jsonify({"message": "Region data saved successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
