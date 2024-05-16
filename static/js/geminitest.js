@@ -32,7 +32,7 @@ async function generateTextSmallSegment() {
 
   try {
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
     const result = await model.generateContent(prompt);
     const response = await result.response;
     let text = await response.text();
@@ -78,7 +78,7 @@ async function generateTextBigSegment() {
 
   try {
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
     const result = await model.generateContent(prompt);
     const response = await result.response;
     let text = await response.text();

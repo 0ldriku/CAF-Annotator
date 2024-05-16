@@ -1,8 +1,8 @@
 [
   {
     "start": 0.0,
-    "end": 1.8,
-    "subtitle": " and says, how do I get to Dublin?",
+    "end": 0.46,
+    "subtitle": " and says",
     "word_timestamps": [
       {
         "start": 0.0,
@@ -13,7 +13,14 @@
         "start": 0.16,
         "end": 0.46,
         "text": " says,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 0.68,
+    "end": 1.8,
+    "subtitle": " how do I get to Dublin?",
+    "word_timestamps": [
       {
         "start": 0.68,
         "end": 0.7,
@@ -49,7 +56,7 @@
   {
     "start": 2.6,
     "end": 4.5,
-    "subtitle": " And the answer that comes back is,",
+    "subtitle": " And the answer that comes back is",
     "word_timestamps": [
       {
         "start": 2.6,
@@ -90,14 +97,21 @@
   },
   {
     "start": 5.02,
-    "end": 6.76,
-    "subtitle": " well, I wouldn't start from here, Sonny.",
+    "end": 5.14,
+    "subtitle": " well",
     "word_timestamps": [
       {
         "start": 5.02,
         "end": 5.14,
         "text": " well,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 5.22,
+    "end": 6.4,
+    "subtitle": " I wouldn't start from here",
+    "word_timestamps": [
       {
         "start": 5.22,
         "end": 5.28,
@@ -122,7 +136,14 @@
         "start": 6.1,
         "end": 6.4,
         "text": " here,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 6.48,
+    "end": 6.76,
+    "subtitle": " Sonny",
+    "word_timestamps": [
       {
         "start": 6.48,
         "end": 6.76,
@@ -132,8 +153,8 @@
   },
   {
     "start": 8.92,
-    "end": 12.38,
-    "subtitle": " That is to say, much of political philosophy",
+    "end": 10.1,
+    "subtitle": " That is to say",
     "word_timestamps": [
       {
         "start": 8.92,
@@ -154,7 +175,14 @@
         "start": 9.86,
         "end": 10.1,
         "text": " say,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 10.42,
+    "end": 14.86,
+    "subtitle": " much of political philosophy develops theories",
+    "word_timestamps": [
       {
         "start": 10.42,
         "end": 10.84,
@@ -174,14 +202,7 @@
         "start": 11.92,
         "end": 12.38,
         "text": " philosophy"
-      }
-    ]
-  },
-  {
-    "start": 13.66,
-    "end": 17.76,
-    "subtitle": " develops theories that take no account",
-    "word_timestamps": [
+      },
       {
         "start": 13.66,
         "end": 14.26,
@@ -191,7 +212,14 @@
         "start": 14.26,
         "end": 14.86,
         "text": " theories"
-      },
+      }
+    ]
+  },
+  {
+    "start": 14.86,
+    "end": 21.66,
+    "subtitle": " that take no account of where we actually are",
+    "word_timestamps": [
       {
         "start": 14.86,
         "end": 16.48,
@@ -211,14 +239,7 @@
         "start": 17.18,
         "end": 17.76,
         "text": " account"
-      }
-    ]
-  },
-  {
-    "start": 18.38,
-    "end": 22.88,
-    "subtitle": " of where we actually are and how the theories",
-    "word_timestamps": [
+      },
       {
         "start": 18.38,
         "end": 18.8,
@@ -243,7 +264,14 @@
         "start": 21.22,
         "end": 21.66,
         "text": " are"
-      },
+      }
+    ]
+  },
+  {
+    "start": 21.66,
+    "end": 28.36,
+    "subtitle": " and how the theories that people argue about in the journals and in the literature actually could be implemented in the world",
+    "word_timestamps": [
       {
         "start": 21.66,
         "end": 21.92,
@@ -263,14 +291,7 @@
         "start": 22.5,
         "end": 22.88,
         "text": " theories"
-      }
-    ]
-  },
-  {
-    "start": 22.88,
-    "end": 25.06,
-    "subtitle": " that people argue about in the journals",
-    "word_timestamps": [
+      },
       {
         "start": 22.88,
         "end": 23.24,
@@ -305,14 +326,7 @@
         "start": 24.74,
         "end": 25.06,
         "text": " journals"
-      }
-    ]
-  },
-  {
-    "start": 25.06,
-    "end": 27.68,
-    "subtitle": " and in the literature actually could be implemented",
-    "word_timestamps": [
+      },
       {
         "start": 25.06,
         "end": 25.38,
@@ -352,14 +366,7 @@
         "start": 27.2,
         "end": 27.68,
         "text": " implemented"
-      }
-    ]
-  },
-  {
-    "start": 27.68,
-    "end": 29.2,
-    "subtitle": " in the world, if at all.",
-    "word_timestamps": [
+      },
       {
         "start": 27.68,
         "end": 27.94,
@@ -374,7 +381,14 @@
         "start": 28.06,
         "end": 28.36,
         "text": " world,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 28.5,
+    "end": 29.2,
+    "subtitle": " if at all",
+    "word_timestamps": [
       {
         "start": 28.5,
         "end": 28.86,
@@ -394,8 +408,8 @@
   },
   {
     "start": 29.2,
-    "end": 32.36,
-    "subtitle": " And this spills over into normative arguments",
+    "end": 35.28,
+    "subtitle": " And this spills over into normative arguments made by other scholars",
     "word_timestamps": [
       {
         "start": 29.2,
@@ -431,14 +445,7 @@
         "start": 31.72,
         "end": 32.36,
         "text": " arguments"
-      }
-    ]
-  },
-  {
-    "start": 32.36,
-    "end": 41.62,
-    "subtitle": " made by other scholars. Thomas Piketty, in his book, Capital in the 21st Century,",
-    "word_timestamps": [
+      },
       {
         "start": 32.36,
         "end": 33.14,
@@ -458,7 +465,14 @@
         "start": 34.52,
         "end": 35.28,
         "text": " scholars."
-      },
+      }
+    ]
+  },
+  {
+    "start": 35.82,
+    "end": 36.58,
+    "subtitle": " Thomas Piketty",
+    "word_timestamps": [
       {
         "start": 35.82,
         "end": 36.08,
@@ -468,7 +482,14 @@
         "start": 36.08,
         "end": 36.58,
         "text": " Piketty,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 36.86,
+    "end": 38.78,
+    "subtitle": " in his book",
+    "word_timestamps": [
       {
         "start": 36.86,
         "end": 37.04,
@@ -483,7 +504,14 @@
         "start": 37.52,
         "end": 38.78,
         "text": " book,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 39.94,
+    "end": 41.62,
+    "subtitle": " Capital in the 21st Century",
+    "word_timestamps": [
       {
         "start": 39.94,
         "end": 40.24,
@@ -514,7 +542,7 @@
   {
     "start": 42.0,
     "end": 46.66,
-    "subtitle": " argues for a 4% global wealth tax.",
+    "subtitle": " argues for a 4% global wealth tax",
     "word_timestamps": [
       {
         "start": 42.0,
@@ -555,14 +583,21 @@
   },
   {
     "start": 48.580000000000005,
-    "end": 49.92,
-    "subtitle": " Well, good luck with that.",
+    "end": 49.02,
+    "subtitle": " Well",
     "word_timestamps": [
       {
         "start": 48.580000000000005,
         "end": 49.02,
         "text": " Well,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 49.1,
+    "end": 49.92,
+    "subtitle": " good luck with that",
+    "word_timestamps": [
       {
         "start": 49.1,
         "end": 49.22,
@@ -634,8 +669,8 @@
   },
   {
     "start": 54.12,
-    "end": 59.34,
-    "subtitle": " So I, when I think about normative questions,",
+    "end": 55.26,
+    "subtitle": " So I",
     "word_timestamps": [
       {
         "start": 54.12,
@@ -646,7 +681,14 @@
         "start": 54.68,
         "end": 55.26,
         "text": " I,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 55.98,
+    "end": 59.34,
+    "subtitle": " when I think about normative questions",
+    "word_timestamps": [
       {
         "start": 55.98,
         "end": 56.78,
@@ -682,7 +724,7 @@
   {
     "start": 59.56,
     "end": 59.98,
-    "subtitle": " it's like,",
+    "subtitle": " it's like ",
     "word_timestamps": [
       {
         "start": 59.56,

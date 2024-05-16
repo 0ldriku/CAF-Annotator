@@ -294,6 +294,10 @@ def compute_caf_values(data):
     avg_mid_clause_pause_duration = mid_clause_pause_duration / mid_clause_pauses if mid_clause_pauses > 0 else 0
     avg_final_clause_pause_duration = final_clause_pause_duration / final_clause_pauses if final_clause_pauses > 0 else 0
     
+    # Calculate the Complexity measures
+    num_small_segments = sum(1 for region in wsRegions2.values() if 'end' in region)
+    mean_small_segment_length = total_words / num_small_segments if num_small_segments > 0 else 0
+
     # Print the results
 
 
@@ -306,14 +310,20 @@ def compute_caf_values(data):
     print(f"- Final-clause pause ratio: {final_clause_pause_ratio} pauses per word")
     print(f"- Mid-clause pause duration: {avg_mid_clause_pause_duration} seconds on average")
     print(f"- Final-clause pause duration: {avg_final_clause_pause_duration} seconds on average")
-    
+    print()
+    print("Complexity:")
+    print(f"- Number of small segments: {num_small_segments}")
+    print(f"- Mean length of small segment length: {mean_small_segment_length}")
+
     results = {
         'speed_rate': speed_rate,
         'articulation_rate': articulation_rate,
         'mid_clause_pause_ratio': mid_clause_pause_ratio,
         'final_clause_pause_ratio': final_clause_pause_ratio,
         'mid_clause_pause_duration': avg_mid_clause_pause_duration,
-        'final_clause_pause_duration': avg_final_clause_pause_duration
+        'final_clause_pause_duration': avg_final_clause_pause_duration,
+        'num_small_segments': num_small_segments,
+        'mean_small_segment_length': mean_small_segment_length
     }
     
     return results
