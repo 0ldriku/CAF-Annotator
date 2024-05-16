@@ -6,7 +6,7 @@ try:
     from torch import cuda
     from faster_whisper import WhisperModel
 except ImportError:
-    sys.stderr.write("「faster_whisper」か「pytorch」モジュールが見つかりません。\n")
+    sys.stderr.write("The 'faster_whisper' or 'pytorch' module was not found.\n")
     sys.exit(1)
     
 mediaSourcePath = sys.argv[1]
