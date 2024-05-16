@@ -1,0 +1,633 @@
+[
+  {
+    "start": 0.0,
+    "end": 1.8,
+    "subtitle": " and says, how do I get to Dublin?",
+    "word_timestamps": [
+      {
+        "start": 0.0,
+        "end": 0.16,
+        "text": " and"
+      },
+      {
+        "start": 0.16,
+        "end": 0.46,
+        "text": " says,"
+      },
+      {
+        "start": 0.68,
+        "end": 0.7,
+        "text": " how"
+      },
+      {
+        "start": 0.7,
+        "end": 0.86,
+        "text": " do"
+      },
+      {
+        "start": 0.86,
+        "end": 1.02,
+        "text": " I"
+      },
+      {
+        "start": 1.02,
+        "end": 1.24,
+        "text": " get"
+      },
+      {
+        "start": 1.24,
+        "end": 1.48,
+        "text": " to"
+      },
+      {
+        "start": 1.48,
+        "end": 1.8,
+        "text": " Dublin?"
+      }
+    ]
+  },
+  {
+    "start": 2.6,
+    "end": 6.76,
+    "subtitle": " And the answer that comes back is,  well, I wouldn't start from here, Sonny.",
+    "word_timestamps": [
+      {
+        "start": 2.6,
+        "end": 2.84,
+        "text": " And"
+      },
+      {
+        "start": 2.84,
+        "end": 2.98,
+        "text": " the"
+      },
+      {
+        "start": 2.98,
+        "end": 3.28,
+        "text": " answer"
+      },
+      {
+        "start": 3.28,
+        "end": 3.5,
+        "text": " that"
+      },
+      {
+        "start": 3.5,
+        "end": 3.82,
+        "text": " comes"
+      },
+      {
+        "start": 3.82,
+        "end": 4.22,
+        "text": " back"
+      },
+      {
+        "start": 4.22,
+        "end": 4.5,
+        "text": " is,"
+      },
+      {
+        "start": 5.02,
+        "end": 5.14,
+        "text": " well,"
+      },
+      {
+        "start": 5.22,
+        "end": 5.28,
+        "text": " I"
+      },
+      {
+        "start": 5.28,
+        "end": 5.56,
+        "text": " wouldn't"
+      },
+      {
+        "start": 5.56,
+        "end": 5.86,
+        "text": " start"
+      },
+      {
+        "start": 5.86,
+        "end": 6.1,
+        "text": " from"
+      },
+      {
+        "start": 6.1,
+        "end": 6.4,
+        "text": " here,"
+      },
+      {
+        "start": 6.48,
+        "end": 6.76,
+        "text": " Sonny."
+      }
+    ]
+  },
+  {
+    "start": 8.92,
+    "end": 29.2,
+    "subtitle": " That is to say, much of political philosophy  develops theories that take no account  of where we actually are and how the theories  that people argue about in the journals  and in the literature actually could be implemented  in the world, if at all.",
+    "word_timestamps": [
+      {
+        "start": 8.92,
+        "end": 9.52,
+        "text": " That"
+      },
+      {
+        "start": 9.52,
+        "end": 9.72,
+        "text": " is"
+      },
+      {
+        "start": 9.72,
+        "end": 9.86,
+        "text": " to"
+      },
+      {
+        "start": 9.86,
+        "end": 10.1,
+        "text": " say,"
+      },
+      {
+        "start": 10.42,
+        "end": 10.84,
+        "text": " much"
+      },
+      {
+        "start": 10.84,
+        "end": 11.3,
+        "text": " of"
+      },
+      {
+        "start": 11.3,
+        "end": 11.92,
+        "text": " political"
+      },
+      {
+        "start": 11.92,
+        "end": 12.38,
+        "text": " philosophy"
+      },
+      {
+        "start": 13.66,
+        "end": 14.26,
+        "text": " develops"
+      },
+      {
+        "start": 14.26,
+        "end": 14.86,
+        "text": " theories"
+      },
+      {
+        "start": 14.86,
+        "end": 16.48,
+        "text": " that"
+      },
+      {
+        "start": 16.48,
+        "end": 16.86,
+        "text": " take"
+      },
+      {
+        "start": 16.86,
+        "end": 17.18,
+        "text": " no"
+      },
+      {
+        "start": 17.18,
+        "end": 17.76,
+        "text": " account"
+      },
+      {
+        "start": 18.38,
+        "end": 18.8,
+        "text": " of"
+      },
+      {
+        "start": 18.8,
+        "end": 20.54,
+        "text": " where"
+      },
+      {
+        "start": 20.54,
+        "end": 20.78,
+        "text": " we"
+      },
+      {
+        "start": 20.78,
+        "end": 21.22,
+        "text": " actually"
+      },
+      {
+        "start": 21.22,
+        "end": 21.66,
+        "text": " are"
+      },
+      {
+        "start": 21.66,
+        "end": 21.92,
+        "text": " and"
+      },
+      {
+        "start": 21.92,
+        "end": 22.24,
+        "text": " how"
+      },
+      {
+        "start": 22.24,
+        "end": 22.5,
+        "text": " the"
+      },
+      {
+        "start": 22.5,
+        "end": 22.88,
+        "text": " theories"
+      },
+      {
+        "start": 22.88,
+        "end": 23.24,
+        "text": " that"
+      },
+      {
+        "start": 23.24,
+        "end": 23.6,
+        "text": " people"
+      },
+      {
+        "start": 23.6,
+        "end": 23.98,
+        "text": " argue"
+      },
+      {
+        "start": 23.98,
+        "end": 24.32,
+        "text": " about"
+      },
+      {
+        "start": 24.32,
+        "end": 24.54,
+        "text": " in"
+      },
+      {
+        "start": 24.54,
+        "end": 24.74,
+        "text": " the"
+      },
+      {
+        "start": 24.74,
+        "end": 25.06,
+        "text": " journals"
+      },
+      {
+        "start": 25.06,
+        "end": 25.38,
+        "text": " and"
+      },
+      {
+        "start": 25.38,
+        "end": 25.5,
+        "text": " in"
+      },
+      {
+        "start": 25.5,
+        "end": 25.62,
+        "text": " the"
+      },
+      {
+        "start": 25.62,
+        "end": 25.96,
+        "text": " literature"
+      },
+      {
+        "start": 25.96,
+        "end": 26.7,
+        "text": " actually"
+      },
+      {
+        "start": 26.7,
+        "end": 26.92,
+        "text": " could"
+      },
+      {
+        "start": 26.92,
+        "end": 27.2,
+        "text": " be"
+      },
+      {
+        "start": 27.2,
+        "end": 27.68,
+        "text": " implemented"
+      },
+      {
+        "start": 27.68,
+        "end": 27.94,
+        "text": " in"
+      },
+      {
+        "start": 27.94,
+        "end": 28.06,
+        "text": " the"
+      },
+      {
+        "start": 28.06,
+        "end": 28.36,
+        "text": " world,"
+      },
+      {
+        "start": 28.5,
+        "end": 28.86,
+        "text": " if"
+      },
+      {
+        "start": 28.86,
+        "end": 29.0,
+        "text": " at"
+      },
+      {
+        "start": 29.0,
+        "end": 29.2,
+        "text": " all."
+      }
+    ]
+  },
+  {
+    "start": 29.2,
+    "end": 35.28,
+    "subtitle": " And this spills over into normative arguments  made by other scholars.",
+    "word_timestamps": [
+      {
+        "start": 29.2,
+        "end": 29.44,
+        "text": " And"
+      },
+      {
+        "start": 29.44,
+        "end": 29.64,
+        "text": " this"
+      },
+      {
+        "start": 29.64,
+        "end": 30.04,
+        "text": " spills"
+      },
+      {
+        "start": 30.04,
+        "end": 30.5,
+        "text": " over"
+      },
+      {
+        "start": 30.5,
+        "end": 31.14,
+        "text": " into"
+      },
+      {
+        "start": 31.14,
+        "end": 31.72,
+        "text": " normative"
+      },
+      {
+        "start": 31.72,
+        "end": 32.36,
+        "text": " arguments"
+      },
+      {
+        "start": 32.36,
+        "end": 33.14,
+        "text": " made"
+      },
+      {
+        "start": 33.14,
+        "end": 33.74,
+        "text": " by"
+      },
+      {
+        "start": 33.74,
+        "end": 34.52,
+        "text": " other"
+      },
+      {
+        "start": 34.52,
+        "end": 35.28,
+        "text": " scholars."
+      }
+    ]
+  },
+  {
+    "start": 35.82,
+    "end": 46.66,
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century,  argues for a 4% global wealth tax.",
+    "word_timestamps": [
+      {
+        "start": 35.82,
+        "end": 36.08,
+        "text": " Thomas"
+      },
+      {
+        "start": 36.08,
+        "end": 36.58,
+        "text": " Piketty,"
+      },
+      {
+        "start": 36.86,
+        "end": 37.04,
+        "text": " in"
+      },
+      {
+        "start": 37.04,
+        "end": 37.52,
+        "text": " his"
+      },
+      {
+        "start": 37.52,
+        "end": 38.78,
+        "text": " book,"
+      },
+      {
+        "start": 39.94,
+        "end": 40.24,
+        "text": " Capital"
+      },
+      {
+        "start": 40.24,
+        "end": 40.5,
+        "text": " in"
+      },
+      {
+        "start": 40.5,
+        "end": 40.62,
+        "text": " the"
+      },
+      {
+        "start": 40.62,
+        "end": 41.2,
+        "text": " 21st"
+      },
+      {
+        "start": 41.2,
+        "end": 41.62,
+        "text": " Century,"
+      },
+      {
+        "start": 42.0,
+        "end": 42.38,
+        "text": " argues"
+      },
+      {
+        "start": 42.38,
+        "end": 42.78,
+        "text": " for"
+      },
+      {
+        "start": 42.78,
+        "end": 43.14,
+        "text": " a"
+      },
+      {
+        "start": 44.46,
+        "end": 45.62,
+        "text": " global"
+      },
+      {
+        "start": 45.62,
+        "end": 46.12,
+        "text": " wealth"
+      },
+      {
+        "start": 46.12,
+        "end": 46.66,
+        "text": " tax."
+      }
+    ]
+  },
+  {
+    "start": 48.580000000000005,
+    "end": 49.92,
+    "subtitle": " Well, good luck with that.",
+    "word_timestamps": [
+      {
+        "start": 48.580000000000005,
+        "end": 49.02,
+        "text": " Well,"
+      },
+      {
+        "start": 49.1,
+        "end": 49.22,
+        "text": " good"
+      },
+      {
+        "start": 49.22,
+        "end": 49.44,
+        "text": " luck"
+      },
+      {
+        "start": 49.44,
+        "end": 49.6,
+        "text": " with"
+      },
+      {
+        "start": 49.6,
+        "end": 49.92,
+        "text": " that."
+      }
+    ]
+  },
+  {
+    "start": 50.98,
+    "end": 54.12,
+    "subtitle": " Who's gonna implement a 4% global wealth tax?",
+    "word_timestamps": [
+      {
+        "start": 50.98,
+        "end": 51.34,
+        "text": " Who's"
+      },
+      {
+        "start": 51.34,
+        "end": 51.52,
+        "text": " gonna"
+      },
+      {
+        "start": 51.52,
+        "end": 52.02,
+        "text": " implement"
+      },
+      {
+        "start": 52.02,
+        "end": 52.2,
+        "text": " a"
+      },
+      {
+        "start": 52.66,
+        "end": 53.18,
+        "text": " global"
+      },
+      {
+        "start": 53.18,
+        "end": 53.8,
+        "text": " wealth"
+      },
+      {
+        "start": 53.8,
+        "end": 54.12,
+        "text": " tax?"
+      }
+    ]
+  },
+  {
+    "start": 54.12,
+    "end": 59.98,
+    "subtitle": " So I, when I think about normative questions,  it's like,",
+    "word_timestamps": [
+      {
+        "start": 54.12,
+        "end": 54.68,
+        "text": " So"
+      },
+      {
+        "start": 54.68,
+        "end": 55.26,
+        "text": " I,"
+      },
+      {
+        "start": 55.98,
+        "end": 56.78,
+        "text": " when"
+      },
+      {
+        "start": 56.78,
+        "end": 57.12,
+        "text": " I"
+      },
+      {
+        "start": 57.12,
+        "end": 57.74,
+        "text": " think"
+      },
+      {
+        "start": 57.74,
+        "end": 58.08,
+        "text": " about"
+      },
+      {
+        "start": 58.08,
+        "end": 58.68,
+        "text": " normative"
+      },
+      {
+        "start": 58.68,
+        "end": 59.34,
+        "text": " questions,"
+      },
+      {
+        "start": 59.56,
+        "end": 59.98,
+        "text": " it's"
+      },
+      {
+        "start": 59.98,
+        "end": 59.98,
+        "text": " like,"
+      }
+    ]
+  }
+]

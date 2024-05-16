@@ -100,5 +100,9 @@
     background-color: #004E89;
   }
   
-
-  
+  #editor-prompt-small-segment .CodeMirror {
+    background-color: #1a659e8c;
+  }
+  #editor-prompt-big-segment .CodeMirror {
+    background-color: #1a659e8c;
+  }

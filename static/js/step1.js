@@ -1,5 +1,7 @@
 let myCodeMirror_small_segment;
+let myCodeMirror_prompt_small_segment;
 let myCodeMirror_big_segment;
+let myCodeMirror_prompt_big_segment;
 
 $(document).ready(function() {
     myCodeMirror_small_segment = CodeMirror(document.getElementById('editor-small-segment'), {
@@ -8,13 +10,25 @@ $(document).ready(function() {
         lineNumbers: true,
         lineWrapping: true
     });
-
+    myCodeMirror_prompt_small_segment = CodeMirror(document.getElementById('editor-prompt-small-segment'), {
+        value: "Adopt the role of a researcher in second language acquisition. Your task is to segment the given English text written by an English language learner into clauses (a production unit containing either a subject and a finite verb or a subject and a finite or non-finite verb form), formatting your response with each clause on a separate line without changing any words, for the purpose of labeling data to analyze the complexity, accuracy, and fluency (CAF) dimensions of English learners' language production. Only response the segmented text. Text to be segmented:", 
+        mode: "plaintext",
+        lineNumbers: true,
+        lineWrapping: true
+    });
     myCodeMirror_big_segment = CodeMirror(document.getElementById('editor-big-segment'), {
         value: 'Edit the big segments.\nThe transcription will be displayed here once the process is complete.\n...', // Ensure there's an initial newline for a cleaner experience
         mode: "plaintext",
         lineNumbers: true,
         lineWrapping: true
     });
+    myCodeMirror_prompt_big_segment = CodeMirror(document.getElementById('editor-prompt-big-segment'), {
+        value: "Adopt the role of a researcher in second language acquisition. Your task is to segment the given English text written by an English language learner into AS-units (a single speaker’s utterance consisting of an independent clause or subclausal unit, together with any subordinate clause(s) associated with either), formatting your response with each AS-unit on a separate line without changing any words, for the purpose of labeling data to analyze the complexity, accuracy, and fluency (CAF) dimensions of English learners' language production. Only response the segmented text. Text to be segmented:", // Ensure there's an initial newline for a cleaner experience
+        mode: "plaintext",
+        lineNumbers: true,
+        lineWrapping: true
+    });
+
     // Enforce modifications only at spaces or end of lines
     myCodeMirror_small_segment.on('beforeChange', function(cm, change) {
         if (change.origin === "+input" || change.origin === "paste") {
@@ -137,4 +151,4 @@ $(document).ready(function() {
     });
 });
 
-export { myCodeMirror_small_segment, myCodeMirror_big_segment };
+export { myCodeMirror_small_segment, myCodeMirror_prompt_small_segment, myCodeMirror_prompt_big_segment, myCodeMirror_big_segment };
