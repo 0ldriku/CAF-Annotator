@@ -15,20 +15,45 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 ## Installation
 
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/your-username/your-repo.git
    ```
 
-2. Install the required dependencies:
+
+2. Navigate to your project directory:
+
+   ```bash
+   cd /path/to/your/project
    ```
-   cd your-repo
+
+3. Create a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   ```
+
+4. Activate the virtual environment:
+
+   - For Linux/Mac:
+
+     ```bash
+     source .venv/bin/activate
+     ```
+
+   - For Windows:
+
+     ```bash
+     .venv\Scripts\activate
+     ```
+
+4. Install the required dependencies:
+
+   ```bash
    pip install -r requirements.txt
    ```
 
-3. Set up the necessary environment variables (if applicable).
-
-4. Run the application:
-   ```
+5. Run the application:
+   ```bash
    python app.py
    ```
 
