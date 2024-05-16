@@ -1,4 +1,6 @@
 import sys, glob, json, re
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 print("########## Start of character arrival ##########")
 

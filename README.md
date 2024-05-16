@@ -1,5 +1,5 @@
 # Maruko
-Maruko is an annotation tool designed to help researchers and students in the field of Second Language Acquisition (SLA) efficiently annotate audio files for CAF (Complexity, Accuracy, and Fluency) measures.
+Maruko is an annotation tool designed to help researchers and students in the field of Second Language Acquisition (SLA) efficiently transcribe, annotate, computate CAF (Complexity, Accuracy, and Fluency) measures for audio files.
 
 ## Motivation
 Currently, when extracting CAF measures from audio files, researchers often use a complex workflow involving multiple tools. They may use Praat for annotation, a separate transcription tool for transcribing the audio, and tools like Coh-Metrix to calculate transcription-based measures. This fragmented workflow can be time-consuming and cumbersome.
@@ -55,8 +55,9 @@ The annotation for track 5 and 6 can only be done manually by the user currently
 
 
 ## Experimental Features
-
-1. Gemini API Integration
+ 
+### Gemini API Integration
+Now the Gemini from google offers free api to access the LLM. I intergrated it to the segmentation step. The user can click the AI refine segement button to let Gemini to segment the transcription into clauses or AS-units. But the precision is highly depend on the prompt. For use this, user should get the API from gemini, and input it into /static/js/gemini.js file.
 
 ## Supported CAF Measures
 
@@ -102,6 +103,7 @@ Wavesurfer.js
 - [] Refine the file management system.
 - [] The feature to export the data into csv file.
 - [] Make the annotated json file can be converted into Praat textgrid file.
+- [] Support for other languages than English.
 
 ## Contributing
 
