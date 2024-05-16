@@ -78,20 +78,24 @@ const wavesurfers = [wavesurfer1, wavesurfer2, wavesurfer3, wavesurfer4, wavesur
 
 let audioUrl = null;
 
-document.getElementById('load-audio-btn').addEventListener('click', () => {
-  document.getElementById('audio_input').click();
-});
-
 document.getElementById('audio_input').addEventListener('change', function() {
   const file = this.files[0];
   if (file) {
     audioUrl = URL.createObjectURL(file);
     console.log("Audio URL:", audioUrl);
-    
-    // Load the audio file into Wavesurfer
-    wavesurfer1.load(audioUrl);
   }
 });
+
+document.getElementById('load-audio-btn').addEventListener('click', () => {
+  if (audioUrl) {
+    // Load the audio file into Wavesurfer if audioUrl is set
+    wavesurfer1.load(audioUrl);
+  } else {
+    console.error("No audio file selected.");
+    alert("Please select an audio file first.");
+  }
+});
+
 // Load the audio file into the first instance
 //const audioUrl = '/static/audio/en_example.wav';
 //wavesurfer1.load(audioUrl);

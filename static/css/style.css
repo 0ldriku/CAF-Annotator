@@ -122,3 +122,42 @@
     border: 1px solid #ccc; /* Customize the line color */
     width: 100%; /* Make the line span the full width of the container */
   }  
+  .savebutton {
+    padding: 10px 20px;
+    background-color: #FF6B35;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .savebutton:hover {
+    background-color: #F7C59F;
+  }
+  .control-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .left-button {
+    margin-right: auto;
+  }
+  
+  .center-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .zoom-label {
+    display: flex;
+    align-items: center;
+    transform: translateY(10px);
+  }
+  
+  .right-button {
+    margin-left: auto;
+  }
+  

@@ -1,8 +1,8 @@
 [
   {
     "start": 0.0,
-    "end": 0.46,
-    "subtitle": " and says,",
+    "end": 1.48,
+    "subtitle": " and says, how do I get to Dublin",
     "word_timestamps": [
       {
         "start": 0.0,
@@ -13,14 +13,7 @@
         "start": 0.16,
         "end": 0.46,
         "text": " says,"
-      }
-    ]
-  },
-  {
-    "start": 0.68,
-    "end": 1.8,
-    "subtitle": " how do I get to Dublin?",
-    "word_timestamps": [
+      },
       {
         "start": 0.68,
         "end": 0.7,
@@ -45,11 +38,6 @@
         "start": 1.24,
         "end": 1.48,
         "text": " to"
-      },
-      {
-        "start": 1.48,
-        "end": 1.8,
-        "text": " Dublin?"
       }
     ]
   },
@@ -97,8 +85,8 @@
   },
   {
     "start": 5.02,
-    "end": 6.76,
-    "subtitle": " well, I wouldn't start from here, Sonny.",
+    "end": 6.4,
+    "subtitle": " well, I wouldn't start from here, Sonny",
     "word_timestamps": [
       {
         "start": 5.02,
@@ -129,11 +117,6 @@
         "start": 6.1,
         "end": 6.4,
         "text": " here,"
-      },
-      {
-        "start": 6.48,
-        "end": 6.76,
-        "text": " Sonny."
       }
     ]
   },
@@ -166,8 +149,8 @@
   },
   {
     "start": 10.42,
-    "end": 12.38,
-    "subtitle": " much of political philosophy",
+    "end": 17.76,
+    "subtitle": " much of political philosophy develops theories that take no account",
     "word_timestamps": [
       {
         "start": 10.42,
@@ -188,14 +171,7 @@
         "start": 11.92,
         "end": 12.38,
         "text": " philosophy"
-      }
-    ]
-  },
-  {
-    "start": 13.66,
-    "end": 14.86,
-    "subtitle": " develops theories",
-    "word_timestamps": [
+      },
       {
         "start": 13.66,
         "end": 14.26,
@@ -205,14 +181,7 @@
         "start": 14.26,
         "end": 14.86,
         "text": " theories"
-      }
-    ]
-  },
-  {
-    "start": 14.86,
-    "end": 17.76,
-    "subtitle": " that take no account",
-    "word_timestamps": [
+      },
       {
         "start": 14.86,
         "end": 16.48,
@@ -385,8 +354,8 @@
   },
   {
     "start": 27.68,
-    "end": 29.2,
-    "subtitle": " in the world, if at all.",
+    "end": 29.0,
+    "subtitle": " in the world, if at all",
     "word_timestamps": [
       {
         "start": 27.68,
@@ -412,11 +381,6 @@
         "start": 28.86,
         "end": 29.0,
         "text": " at"
-      },
-      {
-        "start": 29.0,
-        "end": 29.2,
-        "text": " all."
       }
     ]
   },
@@ -464,8 +428,8 @@
   },
   {
     "start": 32.36,
-    "end": 35.28,
-    "subtitle": " made by other scholars.",
+    "end": 34.52,
+    "subtitle": " made by other scholars",
     "word_timestamps": [
       {
         "start": 32.36,
@@ -481,11 +445,6 @@
         "start": 33.74,
         "end": 34.52,
         "text": " other"
-      },
-      {
-        "start": 34.52,
-        "end": 35.28,
-        "text": " scholars."
       }
     ]
   },
@@ -548,8 +507,8 @@
   },
   {
     "start": 42.0,
-    "end": 46.66,
-    "subtitle": " argues for a 4% global wealth tax.",
+    "end": 46.12,
+    "subtitle": " argues for a 4% global wealth tax",
     "word_timestamps": [
       {
         "start": 42.0,
@@ -575,18 +534,13 @@
         "start": 45.62,
         "end": 46.12,
         "text": " wealth"
-      },
-      {
-        "start": 46.12,
-        "end": 46.66,
-        "text": " tax."
       }
     ]
   },
   {
     "start": 48.580000000000005,
-    "end": 49.92,
-    "subtitle": " Well, good luck with that.",
+    "end": 49.6,
+    "subtitle": " Well, good luck with that",
     "word_timestamps": [
       {
         "start": 48.580000000000005,
@@ -607,18 +561,13 @@
         "start": 49.44,
         "end": 49.6,
         "text": " with"
-      },
-      {
-        "start": 49.6,
-        "end": 49.92,
-        "text": " that."
       }
     ]
   },
   {
     "start": 50.98,
-    "end": 54.12,
-    "subtitle": " Who's gonna implement a 4% global wealth tax?",
+    "end": 53.8,
+    "subtitle": " Who's gonna implement a 4% global wealth tax",
     "word_timestamps": [
       {
         "start": 50.98,
@@ -649,11 +598,6 @@
         "start": 53.18,
         "end": 53.8,
         "text": " wealth"
-      },
-      {
-        "start": 53.8,
-        "end": 54.12,
-        "text": " tax?"
       }
     ]
   },

@@ -13,7 +13,7 @@ async function generateTextSmallSegment() {
     return;
   }
 
-  const customPrompt = myCodeMirror_prompt_small_segment.getValue();
+  const customPrompt = myCodeMirror_prompt_small_segment.getValue().replace(/\n/g, ' ');;
   const textSegments = myCodeMirror_small_segment.getValue();
   const prompt = customPrompt + textSegments.replace(/\n/g, ' ');
   console.log("prompt:", prompt);
@@ -66,7 +66,7 @@ async function generateTextBigSegment() {
     return;
   }
 
-  const customPrompt = myCodeMirror_prompt_big_segment.getValue();
+  const customPrompt = myCodeMirror_prompt_big_segment.getValue().replace(/\n/g, ' ');;
   const textSegments = myCodeMirror_big_segment.getValue();
   const prompt = customPrompt + textSegments.replace(/\n/g, ' ');
   console.log("prompt:", prompt);
