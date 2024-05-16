@@ -27,14 +27,14 @@
     <h1>1. Transcribe</h1>
     <h2>File Upload</h2>
     <p>Please upload the audio file</p>
-    <form id="upload-form" enctype="multipart/form-data">
+    <form id="upload-form" enctype="multipart/form-data" >
         <input type="file" name="audiofile" id="file-upload" accept="audio/*">
         <button type="submit">Upload and Transcribe</button>
     </form>
     <h2>Load the transcription</h2>
     <p>If you have already transcribed the audio.<br>Load the file ends with subtitle.txt.</p>
+    <input type="file" id="SubtitleInput">
     <button id="LoadSubtitleBtn">Load File</button>
-    <input type="file" id="SubtitleInput" style="display: none;" />
     <br>
     <h2>Small segments of transcription</h2>
     <p>Edit the small segments (e.g., clause) by adding or deleting lines</p>
@@ -86,16 +86,29 @@
         <li>Press the "Detect Silence" button to add pause segments in track "PAUSE". Once press the button, all segments in track "PAUSE" will be removed. It will label mid-pause with a "M" markder and end-pause with a "E" marker.</li>
     </ol>
 
-      <div>
-        <input type="file" id="small_segment_json" accept=".json"/>
+    <div class="audio-container">
+      <h2>Load Audio</h2>
+      <input type="file" id="audio_input" accept="audio/*" style="display:none;"/>
+      <button id="load-audio-btn">Load Audio</button>
+    </div>
+    
+    <div class="segments-container">
+      <div class="segment-column">
+        <h2>Small Segments</h2>
         <p>Load the file ends with smallsegment.matched.json</p>
+        <input type="file" id="small_segment_json" accept=".json"/>
         <button id="load-small-segment-btn">Load Small Segments</button>
       </div>
-      <div>
-        <input type="file" id="big_segment_json" accept=".json"/>
+      <div class="segment-column">
+        <h2>Big Segments</h2>
         <p>Load the file ends with bigsegment.matched.json</p>
+        <input type="file" id="big_segment_json" accept=".json"/>
         <button id="load-big-segment-btn">Load Big Segments</button>
-        </div>
+      </div>
+    </div>
+    <hr>
+
+
         <div>
         <button id="save-region-data-btn">Save Region Data</button>
         <button id="silence-detection">Detect Silence</button>

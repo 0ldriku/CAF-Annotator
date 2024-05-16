@@ -2,6 +2,9 @@ import WaveSurfer from '/node_modules/wavesurfer.js/dist/wavesurfer.js';
 import RegionsPlugin from '/node_modules/wavesurfer.js/dist/plugins/regions.esm.js';
 import TimelinePlugin from '/node_modules/wavesurfer.js/dist/plugins/timeline.esm.js'
 
+
+
+
 // Create a timeline plugin instance with custom options
 const topTimeline = TimelinePlugin.create({
   height: 20,
@@ -73,10 +76,25 @@ const wavesurfer6 = WaveSurfer.create({
 // Assuming wavesurfer1 and wavesurfer2 are already initialized
 const wavesurfers = [wavesurfer1, wavesurfer2, wavesurfer3, wavesurfer4, wavesurfer5, wavesurfer6];
 
+let audioUrl = null;
 
+document.getElementById('load-audio-btn').addEventListener('click', () => {
+  document.getElementById('audio_input').click();
+});
+
+document.getElementById('audio_input').addEventListener('change', function() {
+  const file = this.files[0];
+  if (file) {
+    audioUrl = URL.createObjectURL(file);
+    console.log("Audio URL:", audioUrl);
+    
+    // Load the audio file into Wavesurfer
+    wavesurfer1.load(audioUrl);
+  }
+});
 // Load the audio file into the first instance
-const audioUrl = '/static/audio/en_example.wav';
-wavesurfer1.load(audioUrl);
+//const audioUrl = '/static/audio/en_example.wav';
+//wavesurfer1.load(audioUrl);
 //wavesurfer2.load("/static/audio/silentaudio.wav");
 
 wavesurfer1.on('ready', function() {

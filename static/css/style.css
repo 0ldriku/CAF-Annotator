@@ -106,3 +106,19 @@
   #editor-prompt-big-segment .CodeMirror {
     background-color: #1a659e8c;
   }
+  .segments-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .segment-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  hr {
+    border: 1px solid #ccc; /* Customize the line color */
+    width: 100%; /* Make the line span the full width of the container */
+  }  
