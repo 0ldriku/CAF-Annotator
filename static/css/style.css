@@ -160,4 +160,17 @@
   .right-button {
     margin-left: auto;
   }
-  
+  .file-box {
+    width: 400px;
+    height: 100px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+ 
+  .file-selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }

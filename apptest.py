@@ -34,7 +34,7 @@ def serve_node_module(filename):
 
 @app.route('/')
 def index():
-    return render_template('app.html')
+    return render_template('apptest.html')
 
 
 def run_transcription(audio_path):

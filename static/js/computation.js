@@ -1,3 +1,43 @@
+let regiondataFile = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('/regiondatafilelist')
+    .then(response => response.json())
+    .then(files => {
+      const RegiondatafileSelector = document.getElementById('RegiondatafileSelector');
+      files.forEach(file => {
+        if (file.endsWith('.regionData.json')) {
+          const option = document.createElement('option');
+          option.value = file;
+          option.textContent = file;
+          RegiondatafileSelector.appendChild(option);
+        }
+      });
+    });
+});
+
+document.getElementById('RegiondatafileSelector').addEventListener('change', function() {
+  regiondataFile = this.value;
+  console.log('Selected region data file:', regiondataFile);
+});
+
+document.getElementById('LoadRegiondataFromListBtn').addEventListener('click', function() {
+  if (regiondataFile) {
+    fetch(`/regiondatafiles/${regiondataFile}`)
+      .then(response => response.json())
+      .then(data => {
+        computeCAF(data);
+      })
+      .catch(error => {
+        console.error("Error fetching region data file:", error);
+        alert("Failed to load region data file. Please try again.");
+      });
+  } else {
+    alert("Please select a region data file first.");
+  }
+});
+//
+
 function loadFile() {
     const fileInput = document.getElementById('regiondatajsonfileInput');
     const file = fileInput.files[0];
