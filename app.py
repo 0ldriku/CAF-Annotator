@@ -250,7 +250,7 @@ def audio_files2():
 def serve_audio_file2(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-## read the list of small segment files
+## read the list of small segment json files
 @app.route('/smallsegmentfile', methods=['GET'])
 def smallsegment_file():
     current_file_step1 = session.get('current_file_step1', 'default_filename')
@@ -262,13 +262,36 @@ def smallsegment_file():
     else:
         return jsonify({"error": "File not found"}), 404
 
-## read the list of big segment files
+## read the list of big segment json files
 @app.route('/bigsegmentfile', methods=['GET'])
 def bigsegment_file():
     current_file_step1 = session.get('current_file_step1', 'default_filename')
     file_name = f"{current_file_step1}.bigsegment.matched.json"
     file_path = os.path.join(app.config['JSON_FOLDER'], file_name)
     
+    if os.path.exists(file_path):
+        return send_file(file_path)
+    else:
+        return jsonify({"error": "File not found"}), 404
+
+## read the list of small segment text files
+
+@app.route('/smallsegmenttextfile', methods=['GET'])
+def smallsegment_text_file():
+    current_file_step1 = session.get('current_file_step1', 'default_filename')
+    file_name = f"{current_file_step1}.smallsegment.txt"
+    file_path = os.path.join(app.config['TEXT_FOLDER'], file_name)
+    if os.path.exists(file_path):
+        return send_file(file_path)
+    else:
+        return jsonify({"error": "File not found"}), 404
+
+## read the list of big segment text files
+@app.route('/bigsegmenttextfile', methods=['GET'])
+def bigsegment_text_file():
+    current_file_step1 = session.get('current_file_step1', 'default_filename')
+    file_name = f"{current_file_step1}.bigsegment.txt"
+    file_path = os.path.join(app.config['TEXT_FOLDER'], file_name)
     if os.path.exists(file_path):
         return send_file(file_path)
     else:

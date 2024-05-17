@@ -178,20 +178,57 @@ document.getElementById('SubtitlefileSelector').addEventListener('change', funct
 });
 
 document.getElementById('LoadSubtitleFromListBtn').addEventListener('click', function() {
-    if (subtitleFile) {
-      fetch(`/subtitlefiles/${subtitleFile}`)
-        .then(response => response.text())
-        .then(data => {
-          myCodeMirror_small_segment.setValue(data);
-          myCodeMirror_big_segment.setValue(data);
-        })
-        .catch(error => {
-          console.error("Error fetching subtitle file:", error);
-          alert("Failed to load subtitle file. Please try again.");
-        });
-    } else {
-      alert("Please select a subtitle file first.");
-    }
+  if (subtitleFile) {
+    // Check if the big segment text file exists
+    fetch('/bigsegmenttextfile')
+      .then(response => {
+        if (response.ok) {
+          // If the big segment text file exists, load it into myCodeMirror_big_segment
+          return response.text().then(data => {
+            myCodeMirror_big_segment.setValue(data);
+            console.log(`Loaded ${subtitleFile.split('.')[0]}.bigsegment.txt into myCodeMirror_big_segment`);
+          });
+        } else {
+          // If the big segment text file doesn't exist, load the subtitle file into myCodeMirror_big_segment
+          return fetch(`/subtitlefiles/${subtitleFile}`)
+            .then(response => response.text())
+            .then(data => {
+              myCodeMirror_big_segment.setValue(data);
+              console.log(`Loaded ${subtitleFile} into myCodeMirror_big_segment`);
+            });
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching big segment file:", error);
+        alert("Failed to load big segment file. Please try again.");
+      });
+
+    // Check if the small segment text file exists
+    fetch('/smallsegmenttextfile')
+      .then(response => {
+        if (response.ok) {
+          // If the small segment text file exists, load it into myCodeMirror_small_segment
+          return response.text().then(data => {
+            myCodeMirror_small_segment.setValue(data);
+            console.log(`Loaded ${subtitleFile.split('.')[0]}.smallsegment.txt into myCodeMirror_small_segment`);
+          });
+        } else {
+          // If the small segment text file doesn't exist, load the subtitle file into myCodeMirror_small_segment
+          return fetch(`/subtitlefiles/${subtitleFile}`)
+            .then(response => response.text())
+            .then(data => {
+              myCodeMirror_small_segment.setValue(data);
+              console.log(`Loaded ${subtitleFile} into myCodeMirror_small_segment`);
+            });
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching small segment file:", error);
+        alert("Failed to load small segment file. Please try again.");
+      });
+  } else {
+    alert("Please select a subtitle file first.");
+  }
 });
 
 
