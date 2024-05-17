@@ -78,7 +78,7 @@ const wavesurfers = [wavesurfer1, wavesurfer2, wavesurfer3, wavesurfer4, wavesur
 
 
 // file list for audio
-let audioFile=null;
+let audioFile2=null;
 
 document.addEventListener('DOMContentLoaded', function() {
   const supportedAudioFormats = ['.wav', '.mp3', '.ogg'];
@@ -100,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.getElementById('AudiofileSelector2').addEventListener('change', function() {
-  audioFile = this.value;
-  console.log('Selected audio file:', audioFile);
+  audioFile2 = this.value;
+  console.log('Selected audio file:', audioFile2);
   
   // Declare CurrentAudioFile inside the event listener scope
-  const audioFileNameWithExt = audioFile.split('/').pop();
+  const audioFileNameWithExt = audioFile2.split('/').pop();
   console.log('Current audio file name:', audioFileNameWithExt);
   
   // Send the current audio file name to Flask via AJAX
@@ -125,13 +125,13 @@ document.getElementById('AudiofileSelector2').addEventListener('change', functio
 });
 
 document.getElementById('LoadAudioFromListBtn2').addEventListener('click', function() {
-  if (audioFile) {
-    fetch(`/audiofiles2/${audioFile}`)
+  if (audioFile2) {
+    fetch(`/audiofiles2/${audioFile2}`)
       .then(response => response.blob())
       .then(blob => {
-        audioFile = URL.createObjectURL(blob);
-        console.log("Audio URL:", audioFile);
-        wavesurfer1.load(audioFile);
+        audioFile2 = URL.createObjectURL(blob);
+        console.log("Audio URL:", audioFile2);
+        wavesurfer1.load(audioFile2);
       })
       .catch(error => {
         console.error("Error fetching audio file:", error);
@@ -145,16 +145,16 @@ document.getElementById('LoadAudioFromListBtn2').addEventListener('click', funct
 
 // Load the audio file into the first instance
 wavesurfer1.on('ready', function() {
-  const duration = wavesurfer1.getDuration(); // Get the duration of the audio in seconds
-  const resolution = 1; // Define how many peaks per second you want (e.g., 10 peaks per second)
-  const peaks = new Array(Math.ceil(duration * resolution)).fill(0); // Calculate total peaks and fill with zeros
+  //const duration = wavesurfer1.getDuration(); // Get the duration of the audio in seconds
+  //const resolution = 1; // Define how many peaks per second you want (e.g., 10 peaks per second)
+  //const peaks = new Array(Math.ceil(duration * resolution)).fill(0); // Calculate total peaks and fill with zeros
 
   // Load the silent waveform into wavesurfer2 with the calculated peaks
-  wavesurfer2.load(audioFile, peaks, duration);
-  wavesurfer3.load(audioFile, peaks, duration);
-  wavesurfer4.load(audioFile, peaks, duration);
-  wavesurfer5.load(audioFile, peaks, duration);
-  wavesurfer6.load(audioFile, peaks, duration);
+  wavesurfer2.load(audioFile2);//, peaks, duration);
+  wavesurfer3.load(audioFile2);//, peaks, duration);
+  wavesurfer4.load(audioFile2);//, peaks, duration);
+  wavesurfer5.load(audioFile2);//, peaks, duration);
+  wavesurfer6.load(audioFile2);//, peaks, duration);
   wsRegions2.clearRegions();
   wsRegions3.clearRegions();
   wsRegions4.clearRegions();

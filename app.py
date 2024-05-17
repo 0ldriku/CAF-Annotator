@@ -47,10 +47,7 @@ def set_current_file_subtitle():
     session['current_file_step1'] = current_file_subtitle
     return jsonify({'message': 'Current file in step 1 name set in Flask: ' + current_file_subtitle})
 
-
-
-
-
+# Serve static files from the 'node_modules' directory
 @app.route('/node_modules/<path:filename>')
 def serve_node_module(filename):
     node_modules_dir = os.path.join(app.root_path, 'node_modules')
@@ -60,7 +57,7 @@ def serve_node_module(filename):
 def index():
     return render_template('app.html')
 
-
+# Function to run transcription using a subprocess
 def run_transcription(audio_path):
     script_path = os.path.join(app.root_path, 'pyfiles', 'fasterwhisper.py')
     command = ['python', script_path, audio_path, 'large-v2', 'en']
@@ -87,6 +84,7 @@ def run_transcription(audio_path):
     else:
         return f"Error: {result.stderr}"
 
+# Save transcription of a small segment
 @app.route('/save_transcription_small_segment', methods=['POST'])
 def save_transcription_small_segment():
     data = request.get_json()
@@ -118,6 +116,7 @@ def save_transcription_small_segment():
         print(f"Failed to save transcription: {str(e)}")  # Logging statement
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
+# Function to run sequence matching for a small segment
 def run_sequence_matcher_small_segment(export_path=None):
     base_filename = session.get('current_file_step1', 'default_filename')
 
@@ -147,6 +146,7 @@ def run_sequence_matcher_small_segment(export_path=None):
     shutil.move(source_file, destination_file)
     print(f"File moved to {destination_file}")
 
+# Save transcription of a big segment
 @app.route('/save_transcription_big_segment', methods=['POST'])
 def save_transcription_big_segment():
     data = request.get_json()
@@ -178,6 +178,7 @@ def save_transcription_big_segment():
         print(f"Failed to save transcription: {str(e)}")  # Logging statement
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
+# Function to run sequence matching for a big segment
 def run_sequence_matcher_big_segment(export_path=None):
     base_filename = session.get('current_file_step1', 'default_filename')
 
@@ -207,6 +208,7 @@ def run_sequence_matcher_big_segment(export_path=None):
     shutil.move(source_file, destination_file)
     print(f"File moved to {destination_file}")
 
+# Save region data to a file
 @app.route('/save-region-data', methods=['POST'])
 def save_region_data():
     base_filename = session.get('current_file_step1', 'default_filename')
@@ -228,29 +230,29 @@ def save_region_data():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-# File list
-## read the list of faster-whisper generated files
+# Get the list of subtitle files
 @app.route('/subtitlefilelist', methods=['GET'])
 def subtitle_files():
     files = os.listdir(os.path.join(app.config['TRANS_FOLDER']))
     return jsonify(files)
 
+# Serve a subtitle file
 @app.route('/subtitlefiles/<path:filename>', methods=['GET'])
 def serve_subtitle_file(filename):
     return send_from_directory(app.config['TRANS_FOLDER'], filename)
 
-## read the list of audio files for annotation
+# Get the list of audio files for annotation
 @app.route('/audiofilelist2', methods=['GET'])
 def audio_files2():
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER']))
     return jsonify(files)
 
+# Serve an audio file for annotation
 @app.route('/audiofiles2/<path:filename>', methods=['GET'])
 def serve_audio_file2(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-## read the list of small segment json files
+# Get the small segment JSON file
 @app.route('/smallsegmentfile', methods=['GET'])
 def smallsegment_file():
     current_file_step1 = session.get('current_file_step1', 'default_filename')
@@ -262,7 +264,7 @@ def smallsegment_file():
     else:
         return jsonify({"error": "File not found"}), 404
 
-## read the list of big segment json files
+# Get the big segment JSON file
 @app.route('/bigsegmentfile', methods=['GET'])
 def bigsegment_file():
     current_file_step1 = session.get('current_file_step1', 'default_filename')
@@ -274,8 +276,7 @@ def bigsegment_file():
     else:
         return jsonify({"error": "File not found"}), 404
 
-## read the list of small segment text files
-
+# Get the small segment text file
 @app.route('/smallsegmenttextfile', methods=['GET'])
 def smallsegment_text_file():
     current_file_step1 = session.get('current_file_step1', 'default_filename')
@@ -286,7 +287,7 @@ def smallsegment_text_file():
     else:
         return jsonify({"error": "File not found"}), 404
 
-## read the list of big segment text files
+# Get the big segment text file
 @app.route('/bigsegmenttextfile', methods=['GET'])
 def bigsegment_text_file():
     current_file_step1 = session.get('current_file_step1', 'default_filename')
@@ -297,22 +298,24 @@ def bigsegment_text_file():
     else:
         return jsonify({"error": "File not found"}), 404
 
-## read the list of regiondata files
+# Get the list of region data files
 @app.route('/regiondatafilelist', methods=['GET'])
 def regiondata_files():
     files = os.listdir(os.path.join(app.config['ADJUSTEDREGIONS_FOLDER']))
     return jsonify(files)
 
+# Serve a region data file
 @app.route('/regiondatafiles/<path:filename>', methods=['GET'])
 def serve_regiondata_file(filename):
     return send_from_directory(app.config['ADJUSTEDREGIONS_FOLDER'], filename)
 
-## transcribe the audio file
+# Get the list of audio files
 @app.route('/audiofilelist', methods=['GET'])
 def audio_files():
     files = os.listdir(app.config['UPLOAD_FOLDER'])
     return jsonify(files)
 
+# Transcribe an audio file
 @app.route('/transcribe', methods=['POST'])
 def transcribe_file():
     data = request.get_json()
@@ -340,7 +343,7 @@ def transcribe_file():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# Below is the code for the CAF computation
+# Compute CAF values
 @app.route('/compute_caf', methods=['POST'])
 def compute_caf():
     try:
@@ -357,6 +360,7 @@ def compute_caf():
     except Exception as e:
         return jsonify({'error': str(e)})
 
+# Function to compute CAF values
 def compute_caf_values(data):
     wsRegions2 = data.get('wsRegions2', {})
     wsRegions4 = data.get('wsRegions4', {})
@@ -390,8 +394,6 @@ def compute_caf_values(data):
     mean_small_segment_length = total_words / num_small_segments if num_small_segments > 0 else 0
 
     # Print the results
-
-
     print("Speed Fluency:")
     print(f"- Speed rate: {speed_rate} words per second")
     print(f"- Articulation rate: {articulation_rate} words per second")
