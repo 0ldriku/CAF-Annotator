@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.css">
 <style>
-    .CodeMirror {
-        border: 1px solid #ccc;
-        height: auto;
-        width: 100%;
-    }
+  .CodeMirror {
+    border: 1px solid #ccc;
+    height: auto;
+    width: 100%;
+  }
 
     .CodeMirror-scroll {
         max-height: 300px;  /* Adjust height accordingly */
@@ -25,52 +25,47 @@
 <div class="navbar">MARUKO</div>
 
 <div class="container">
-    <h1>1. Transcribe</h1>
-    <h2>File Upload</h2>
-    <p>Please upload the audio file</p>
-    <div class="file-selector-container">
-      <select id="AudiofileSelector" class="file-box" multiple></select>
-    </div>
-    <button id="TranscribeBtn" class="loadbutton">Transcribe</button>
-    <button id="RefreshAudioListBtn" class="refreshbutton">Refresh</button>
+  <h1>1. Transcribe</h1>
+  <h2>File Upload</h2>
+  <p>Please upload the audio file.</p>
+  <div class="file-selector-container">
+    <select id="AudiofileSelector" class="file-box" multiple></select>
+  </div>
+  <button id="TranscribeBtn" class="loadbutton">Transcribe</button>
+  <button id="RefreshAudioListBtn" class="refreshbutton">Refresh</button>
 
+  <h2>Load the transcription</h2>
+  <p>If you have already transcribed the audio, load the file that ends with subtitle.txt.</p>
+  <div class="file-selector-container">
+    <select id="SubtitlefileSelector" class="file-box" multiple></select>
+  </div>
+  <button id="LoadSubtitleFromListBtn" class="loadbutton">Load Subtitle</button>
+  <button id="RefreshSubtitleListBtn" class="refreshbutton">Refresh</button>
 
-    <h2>Load the transcription</h2>
-    <p>If you have already transcribed the audio.<br>Load the file ends with subtitle.txt.</p>
-    <div class="file-selector-container">
-      <select id="SubtitlefileSelector" class="file-box" multiple></select>
-    </div>
-    <button id="LoadSubtitleFromListBtn" class="loadbutton">Load Subtitle</button>
-    <button id="RefreshSubtitleListBtn" class="refreshbutton">Refresh</button>
+  <br>
+  <h2>Small segments of transcription</h2>
+  <p>Edit the small segments (e.g., clauses) by adding or deleting lines.</p>
+  <div id="editor-small-segment"></div> <!-- Placeholder for CodeMirror -->
+  <br>
+  <p>Experimental feature</p>
+  <div id="editor-prompt-small-segment"></div>
+  <button id="save-button-small-segment" class="savebutton">Save Small Segments</button>
+  <button id="Ai-refine-button-small-segment">AI Segment</button>
+  <p>Don't forget to save the segment data.</p>
 
-    <br>
-    <h2>Small segments of transcription</h2>
-    <p>Edit the small segments (e.g., clause) by adding or deleting lines</p>
-    <div id="editor-small-segment"></div> <!-- Placeholder for CodeMirror -->
-    <br>
-    <p>Experimental feature</p>
-    <div id="editor-prompt-small-segment"></div>
-    <button id="save-button-small-segment" class="savebutton">Save Small Segments</button>
-    <button id="Ai-refine-button-small-segment">AI Segment</button>
-    <p>Don't forget to save the segment data.</p>
-
-    <h2>Big segments of transcription</h2>
-    <p>Edit the big segments (e.g., sentence, AS-unit) by adding or deleting lines</p>
-    <div id="editor-big-segment"></div> <!-- Placeholder for CodeMirror -->
-    <br>
-    <p>Experimental feature</p>
-    <div id="editor-prompt-big-segment"></div>
-    <button id="save-button-big-segment" class="savebutton">Save Big Segments</button>
-    <button id="Ai-refine-button-big-segment">AI Segment</button>
-    <p>Don't forget to save the segment data.</p>
-
+  <h2>Big segments of transcription</h2>
+  <p>Edit the big segments (e.g., sentences, AS-units) by adding or deleting lines.</p>
+  <div id="editor-big-segment"></div> <!-- Placeholder for CodeMirror -->
+  <br>
+  <p>Experimental feature</p>
+  <div id="editor-prompt-big-segment"></div>
+  <button id="save-button-big-segment" class="savebutton">Save Big Segments</button>
+  <button id="Ai-refine-button-big-segment">AI Segment</button>
+  <p>Don't forget to save the segment data.</p>
 </div>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.2/lib/codemirror.js"></script>
-
 
 <script type="importmap">
   {
@@ -80,40 +75,39 @@
   }
 </script>
 
-
 <script type="module" src="{{ url_for('static', filename='js/transcribe.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/geminiapi.js') }}"></script>
-<!-- below is the code editor for first container-->
-
+<!-- below is the code editor for the first container-->
 
 <div class="container">
-    <h1>2. Annotate</h1>
-    <ol>
-        <li>Edit the text of each segment in the first track.</li>
-        <li>Adjust the boundaries of each segment in first track (the track below the audiowave).</li>
-        <li>Adjust the boundaries of segments in track 3.</li>
-        <li>Ensure you finished the step 1-3 then go nex step.</li>
-        <li>Press the "Detect Silence" button to add pause segments in track "PAUSE". Once press the button, all segments in track "PAUSE" will be removed. It will label mid-pause with a "M" markder and end-pause with a "E" marker.</li>
-    </ol>
-    <hr>
-    
-    <h2>Load the audio</h2>
-    <div class="file-selector-container">
-      <select id="AudiofileSelector2" class="file-box" multiple></select>
-    </div>
-    <button id="LoadAudioFromListBtn2" class="loadbutton">Load Audio</button>
-    <button id="RefreshAudioListBtn2" class="refreshbutton">Refresh</button>
-    <hr>
+  <h1>2. Annotate</h1>
+  <ol>
+    <li>Edit the text of each segment in the first track.</li>
+    <li>Adjust the boundaries of each segment in the first track (the track below the audiowave).</li>
+    <li>Adjust the boundaries of segments in track 3.</li>
+    <li>Ensure you have finished steps 1-3, then go to the next step.</li>
+    <li>Press the "Detect Silence" button to add pause segments in track "PAUSE". Once pressed, all segments in track "PAUSE" will be removed. It will label mid-pause with an "M" marker and end-pause with an "E" marker.</li>
+  </ol>
+  <hr>
 
-    <h2>Small Segments</h2>
-    <p>Load the file ends with smallsegment.matched.json</p>
-    <button id="LoadSmallsegmentFromListBtn" class="loadbutton">Load Small Segments</button>
- 
-    <h2>Big Segments</h2>
-    <p>Load the file ends with bigsegment.matched.json</p>
-    <button id="LoadBigsegmentFromListBtn" class="loadbutton">Load Big Segments</button>
+  <h2>Load the audio</h2>
+  <p>Press the "Load Audio" button to remove all existing annotations in all tracks.</p>
+  <div class="file-selector-container">
+    <select id="AudiofileSelector2" class="file-box" multiple></select>
+  </div>
+  <button id="LoadAudioFromListBtn2" class="loadbutton">Load Audio</button>
+  <button id="RefreshAudioListBtn2" class="refreshbutton">Refresh</button>
+  <hr>
 
-    <hr>
+  <h2>Small Segments</h2>
+  <p>Load the file that ends with smallsegment.matched.json.</p>
+  <button id="LoadSmallsegmentFromListBtn" class="loadbutton">Load Small Segments</button>
+
+  <h2>Big Segments</h2>
+  <p>Load the file that ends with bigsegment.matched.json.</p>
+  <button id="LoadBigsegmentFromListBtn" class="loadbutton">Load Big Segments</button>
+
+  <hr>
 
 
     <div class="control-container">
@@ -121,82 +115,82 @@
       <div class="center-controls">
         <label class="zoom-label">
           Zoom:
-          <input type="range" id="zoom-slider" min="100" max="500" value="200">
+          <input type="range" id="zoom-slider" min="50" max="500" value="200">
         </label>
         <button id="play-pause-btn">Play/Pause</button>
       </div>
       <button id="save-region-data-btn" class="right-button savebutton">Save Region Data</button>
     </div>
     <br>
-      <div class="waveform1-container">
-        <div class="segment-button-container">
-          <div class="track1placeholder"></div>
-        </div>
-        <div id="waveform1" class="waveform1"></div>
+    <div class="waveform1-container">
+      <div class="segment-button-container">
+        <div class="track1placeholder"></div>
       </div>
-      
-      <div class="waveform-container">
-        <div class="segment-button-container">
-          <button id="addSegmentBtn2" class="segmentbutton">+ S-SEGT</button>
-        </div>
-        <div id="waveform2" class="waveform"></div>
-      </div>
-    
-      <div class="waveform-container">
-        <div class="segment-button-container">
-          <button id="addSegmentBtn3" class="segmentbutton">+ B-SEG</button>
-        </div>
-        <div id="waveform3" class="waveform"></div>
-      </div>
-    
-      <div class="waveform-container">
-        <div class="segment-button-container">
-          <button id="addSegmentBtn4" class="segmentbutton">+ PAUSE</button>
-        </div>
-        <div id="waveform4" class="waveform"></div>
-      </div>
-    
-      <div class="waveform-container">
-        <div class="segment-button-container">
-          <button id="addSegmentBtn5" class="segmentbutton">+ ACCURACY</button>
-        </div>
-        <div id="waveform5" class="waveform"></div>
-      </div>
+      <div id="waveform1" class="waveform1"></div>
+    </div>
 
-      <div class="waveform-container">
-        <div class="segment-button-container">
-          <button id="addSegmentBtn6" class="segmentbutton">+ DYSY</button>
-        </div>
-        <div id="waveform6" class="waveform"></div>
+    <div class="waveform-container">
+      <div class="segment-button-container">
+        <button id="addSegmentBtn2" class="segmentbutton">+ S-SEGT</button>
       </div>
+      <div id="waveform2" class="waveform"></div>
+    </div>
 
-      <script type="module" src="{{ url_for('static', filename='js/annotation.js') }}"></script>
-</div>
+    <div class="waveform-container">
+      <div class="segment-button-container">
+        <button id="addSegmentBtn3" class="segmentbutton">+ B-SEG</button>
+      </div>
+      <div id="waveform3" class="waveform"></div>
+    </div>
+
+    <div class="waveform-container">
+      <div class="segment-button-container">
+        <button id="addSegmentBtn4" class="segmentbutton">+ PAUSE</button>
+      </div>
+      <div id="waveform4" class="waveform"></div>
+    </div>
+
+    <div class="waveform-container">
+      <div class="segment-button-container">
+        <button id="addSegmentBtn5" class="segmentbutton">+ ACCURACY</button>
+      </div>
+      <div id="waveform5" class="waveform"></div>
+    </div>
+
+    <div class="waveform-container">
+      <div class="segment-button-container">
+        <button id="addSegmentBtn6" class="segmentbutton">+ DYSY</button>
+      </div>
+      <div id="waveform6" class="waveform"></div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='js/annotation.js') }}"></script>
+    </div>
 
 <div class="container">
     <h1>3. Calculation</h1>
-    <p>Calculate the results</p>
-    <p>Currently only support the below dimensions.</p>
+    <p>Calculate the results.</p>
+    <p>Currently, only support the following dimensions:</p>
     <h2>Speed Fluency</h2>
     <ul>
-        <li><strong>Speed rate:</strong> The mean number of words produced per second, divided by total audio duration.</li>
-        <li><strong>Articulation rate:</strong> The mean number of words per second, divided by total phonation time (i.e., total speech duration excluding pauses).</li>
+        <li><strong>Speed rate:</strong> The mean number of words produced per second, divided by the total audio duration.</li>
+        <li><strong>Articulation rate:</strong> The mean number of words per second, divided by the total phonation time (i.e., total speech duration excluding pauses).</li>
     </ul>
 
     <h2>Breakdown Fluency</h2>
     <ul>
-        <li><strong>Mid-clause pause ratio:</strong> The total number of unfilled pauses within clauses was divided by the total number of words.</li>
-        <li><strong>Final-clause pause ratio:</strong> The total number of unfilled pauses between clauses was divided by the total number of words.</li>
+        <li><strong>Mid-clause pause ratio:</strong> The total number of unfilled pauses within clauses divided by the total number of words.</li>
+        <li><strong>Final-clause pause ratio:</strong> The total number of unfilled pauses between clauses divided by the total number of words.</li>
         <li><strong>Mid-clause pause duration:</strong> Mean duration of pauses within clauses, expressed in seconds.</li>
         <li><strong>Final-clause pause duration:</strong> Mean duration of pauses between clauses, expressed in seconds.</li>
     </ul>
 
     <h2>Syntactic complexity</h2>
     <ul>
-    <li><strong>Mean length of small segment:</strong> The mean number of words produeced per small segment.</li>
+    <li><strong>Mean length of small segment:</strong> The mean number of words produced per small segment.</li>
     </ul>
     <hr>
-    <p>Load the file ends with reigionData.json</p>
+    <p>Load the file that ends with regionData.json.</p>
 
     <div class="file-selector-container">
       <select id="RegiondatafileSelector" class="file-box" multiple></select>

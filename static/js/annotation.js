@@ -155,13 +155,18 @@ wavesurfer1.on('ready', function() {
   wavesurfer4.load(audioFile, peaks, duration);
   wavesurfer5.load(audioFile, peaks, duration);
   wavesurfer6.load(audioFile, peaks, duration);
+  wsRegions2.clearRegions();
+  wsRegions3.clearRegions();
+  wsRegions4.clearRegions();
+  wsRegions5.clearRegions();
+  wsRegions6.clearRegions();
+  wavesurfer2.setVolume(0);
+  wavesurfer3.setVolume(0);
+  wavesurfer4.setVolume(0);
+  wavesurfer5.setVolume(0);
+  wavesurfer6.setVolume(0);
 });
 
-wavesurfer2.setVolume(0);
-wavesurfer3.setVolume(0);
-wavesurfer4.setVolume(0);
-wavesurfer5.setVolume(0);
-wavesurfer6.setVolume(0);
 
 
 
