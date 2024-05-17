@@ -30,15 +30,7 @@ function updateFileList(url, selectorId, fileExtensions) {
     document.getElementById('RefreshAudioListBtn2').addEventListener('click', function() {
       updateFileList('/audiofilelist2', 'AudiofileSelector2', ['.wav', '.mp3', '.ogg']); // Specify the audio file extensions
     });
-  
-    document.getElementById('RefreshSmallsegmentListBtn').addEventListener('click', function() {
-      updateFileList('/smallsegmentfilelist', 'SmallsegmentfileSelector', ['.smallsegment.matched.json']);
-    });
-  
-    document.getElementById('RefreshBigsegmentListBtn').addEventListener('click', function() {
-      updateFileList('/bigsegmentfilelist', 'BigsegmentfileSelector', ['.bigsegment.matched.json']);
-    });
-  
+    
     document.getElementById('RefreshRegiondataListBtn').addEventListener('click', function() {
       updateFileList('/regiondatafilelist', 'RegiondatafileSelector', ['.regionData.json']);
     });

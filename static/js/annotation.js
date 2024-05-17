@@ -102,6 +102,26 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('AudiofileSelector2').addEventListener('change', function() {
   audioFile = this.value;
   console.log('Selected audio file:', audioFile);
+  
+  // Declare CurrentAudioFile inside the event listener scope
+  const audioFileNameWithExt = audioFile.split('/').pop();
+  console.log('Current audio file name:', audioFileNameWithExt);
+  
+  // Send the current audio file name to Flask via AJAX
+  fetch('/set_current_file_audio', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ current_file_audio: audioFileNameWithExt }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Current audio file name set in Flask:', data.message);
+    })
+    .catch(error => {
+      console.error('Error setting current audio file name in Flask:', error);
+    });
 });
 
 document.getElementById('LoadAudioFromListBtn2').addEventListener('click', function() {
@@ -256,115 +276,72 @@ wavesurfers.forEach(ws => {
 // below is the code of matched json loading
 // new functions
 
-// read small segments
-let smallSegmentFile=null;
-
-document.addEventListener('DOMContentLoaded', function() {
-  fetch('/smallsegmentfilelist')
-    .then(response => response.json())
-    .then(files => {
-      const SmallsegmentfileSelector = document.getElementById('SmallsegmentfileSelector');
-      files.forEach(file => {
-        if (file.endsWith('.smallsegment.matched.json')) {
-          const option = document.createElement('option');
-          option.value = file;
-          option.textContent = file;
-          SmallsegmentfileSelector.appendChild(option);
-        }
-      });
-    });
-});
-
-document.getElementById('SmallsegmentfileSelector').addEventListener('change', function() {
-  smallSegmentFile = this.value;
-  console.log('Selected small segment file:', smallSegmentFile);
-});
-
 document.getElementById('LoadSmallsegmentFromListBtn').addEventListener('click', function() {
-  if (smallSegmentFile) {
-    fetch(`/smallsegmentfiles/${smallSegmentFile}`)
-      .then(response => response.json())
-      .then(subtitleData => {
-        console.log("Parsed data:", subtitleData);
-        wsRegions2.clearRegions();
-        subtitleData.forEach(region => {
-          const contentElement = document.createElement('div');
-          contentElement.textContent = region.subtitle;
-          if (region.end - region.start < 0.5) {
-            contentElement.style.textAlign = 'right';
+  fetch('/smallsegmentfile')
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          } else {
+              throw new Error('File not found');
           }
-          wsRegions2.addRegion({
-            start: region.start,
-            end: region.end,
-            content: contentElement,
-            contentEditable: true,
-            color: 'rgba(26, 101, 158, 0.2)',
+      })
+      .then(subtitleData => {
+          console.log("Parsed data:", subtitleData);
+          wsRegions2.clearRegions();
+          subtitleData.forEach(region => {
+              const contentElement = document.createElement('div');
+              contentElement.textContent = region.subtitle;
+              if (region.end - region.start < 0.5) {
+                  contentElement.style.textAlign = 'right';
+              }
+              wsRegions2.addRegion({
+                  start: region.start,
+                  end: region.end,
+                  content: contentElement,
+                  contentEditable: true,
+                  color: 'rgba(26, 101, 158, 0.2)',
+              });
           });
-        });
       })
       .catch(error => {
-        console.error("Error fetching small segment file:", error);
-        alert("Failed to load small segment file. Please try again.");
+          console.error("Error fetching small segment file:", error);
+          alert("Failed to load small segment file. Please try again.");
       });
-  } else {
-    alert("Please select a small segment file first.");
-  }
 });
 
 // read bigsements
 
-let bigSegmentFile=null;
-
-document.addEventListener('DOMContentLoaded', function() {
-  fetch('/bigsegmentfilelist')
-    .then(response => response.json())
-    .then(files => {
-      const BigsegmentfileSelector = document.getElementById('BigsegmentfileSelector');
-      files.forEach(file => {
-        if (file.endsWith('.bigsegment.matched.json')) {
-          const option = document.createElement('option');
-          option.value = file;
-          option.textContent = file;
-          BigsegmentfileSelector.appendChild(option);
-        }
-      });
-    });
-});
-
-document.getElementById('BigsegmentfileSelector').addEventListener('change', function() {
-  bigSegmentFile = this.value;
-  console.log('Selected big segment file:', bigSegmentFile);
-});
-
 document.getElementById('LoadBigsegmentFromListBtn').addEventListener('click', function() {
-  if (bigSegmentFile) {
-    fetch(`/bigsegmentfiles/${bigSegmentFile}`)
-      .then(response => response.json())
-      .then(subtitleData => {
-        console.log("Parsed data:", subtitleData);
-        wsRegions3.clearRegions();
-        subtitleData.forEach(region => {
-          const contentElement = document.createElement('div');
-          contentElement.textContent = region.subtitle;
-          if (region.end - region.start < 0.5) {
-            contentElement.style.textAlign = 'right';
+  fetch('/bigsegmentfile')
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          } else {
+              throw new Error('File not found');
           }
-          wsRegions3.addRegion({
-            start: region.start,
-            end: region.end,
-            content: contentElement,
-            contentEditable: true,
-            color: 'rgba(255, 107, 53, 0.2)',
+      })
+      .then(subtitleData => {
+          console.log("Parsed data:", subtitleData);
+          wsRegions3.clearRegions();
+          subtitleData.forEach(region => {
+              const contentElement = document.createElement('div');
+              contentElement.textContent = region.subtitle;
+              if (region.end - region.start < 0.5) {
+                  contentElement.style.textAlign = 'right';
+              }
+              wsRegions3.addRegion({
+                  start: region.start,
+                  end: region.end,
+                  content: contentElement,
+                  contentEditable: true,
+                  color: 'rgba(255, 107, 53, 0.2)',
+              });
           });
-        });
       })
       .catch(error => {
-        console.error("Error fetching big segment file:", error);
-        alert("Failed to load big segment file. Please try again.");
+          console.error("Error fetching big segment file:", error);
+          alert("Failed to load big segment file. Please try again.");
       });
-  } else {
-    alert("Please select a big segment file first.");
-  }
 });
 
 

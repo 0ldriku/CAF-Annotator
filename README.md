@@ -140,6 +140,7 @@ You can load the transcription file into the Maruko to continue the annotation s
 - [] The feature to export the data into csv file.
 - [] Make the annotated json file can be converted into Praat textgrid file.
 - [] Support for other languages than English.
+- [] Speaker diarization support.
 
 ## Contributing
 

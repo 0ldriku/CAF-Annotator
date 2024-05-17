@@ -132,8 +132,8 @@
   },
   {
     "start": 8.92,
-    "end": 17.76,
-    "subtitle": " That is to say, much of political philosophy develops theories that take no account",
+    "end": 12.38,
+    "subtitle": " That is to say, much of political philosophy",
     "word_timestamps": [
       {
         "start": 8.92,
@@ -174,7 +174,14 @@
         "start": 11.92,
         "end": 12.38,
         "text": " philosophy"
-      },
+      }
+    ]
+  },
+  {
+    "start": 13.66,
+    "end": 17.76,
+    "subtitle": " develops theories that take no account",
+    "word_timestamps": [
       {
         "start": 13.66,
         "end": 14.26,
@@ -209,8 +216,8 @@
   },
   {
     "start": 18.38,
-    "end": 25.06,
-    "subtitle": " of where we actually are and how the theories that people argue about in the journals",
+    "end": 22.88,
+    "subtitle": " of where we actually are and how the theories",
     "word_timestamps": [
       {
         "start": 18.38,
@@ -256,7 +263,14 @@
         "start": 22.5,
         "end": 22.88,
         "text": " theories"
-      },
+      }
+    ]
+  },
+  {
+    "start": 22.88,
+    "end": 25.06,
+    "subtitle": " that people argue about in the journals",
+    "word_timestamps": [
       {
         "start": 22.88,
         "end": 23.24,
@@ -296,8 +310,8 @@
   },
   {
     "start": 25.06,
-    "end": 29.2,
-    "subtitle": " and in the literature actually could be implemented in the world, if at all.",
+    "end": 27.68,
+    "subtitle": " and in the literature actually could be implemented",
     "word_timestamps": [
       {
         "start": 25.06,
@@ -338,7 +352,14 @@
         "start": 27.2,
         "end": 27.68,
         "text": " implemented"
-      },
+      }
+    ]
+  },
+  {
+    "start": 27.68,
+    "end": 29.2,
+    "subtitle": " in the world, if at all.",
+    "word_timestamps": [
       {
         "start": 27.68,
         "end": 27.94,
@@ -373,8 +394,8 @@
   },
   {
     "start": 29.2,
-    "end": 41.62,
-    "subtitle": " And this spills over into normative arguments made by other scholars. Thomas Piketty, in his book, Capital in the 21st Century,",
+    "end": 32.36,
+    "subtitle": " And this spills over into normative arguments",
     "word_timestamps": [
       {
         "start": 29.2,
@@ -410,7 +431,14 @@
         "start": 31.72,
         "end": 32.36,
         "text": " arguments"
-      },
+      }
+    ]
+  },
+  {
+    "start": 32.36,
+    "end": 35.28,
+    "subtitle": " made by other scholars.",
+    "word_timestamps": [
       {
         "start": 32.36,
         "end": 33.14,
@@ -430,7 +458,14 @@
         "start": 34.52,
         "end": 35.28,
         "text": " scholars."
-      },
+      }
+    ]
+  },
+  {
+    "start": 35.82,
+    "end": 41.62,
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century,",
+    "word_timestamps": [
       {
         "start": 35.82,
         "end": 36.08,
@@ -485,8 +520,8 @@
   },
   {
     "start": 42.0,
-    "end": 54.12,
-    "subtitle": " argues for a 4% global wealth tax. Well, good luck with that. Who's gonna implement a 4% global wealth tax?",
+    "end": 46.66,
+    "subtitle": " argues for a 4% global wealth tax.",
     "word_timestamps": [
       {
         "start": 42.0,
@@ -509,6 +544,11 @@
         "text": " 4"
       },
       {
+        "start": 44.0,
+        "end": 44.46,
+        "text": "%"
+      },
+      {
         "start": 44.46,
         "end": 45.62,
         "text": " global"
@@ -522,7 +562,14 @@
         "start": 46.12,
         "end": 46.66,
         "text": " tax."
-      },
+      }
+    ]
+  },
+  {
+    "start": 48.86,
+    "end": 49.92,
+    "subtitle": " Well, good luck with that.",
+    "word_timestamps": [
       {
         "start": 48.580000000000005,
         "end": 49.02,
@@ -547,7 +594,14 @@
         "start": 49.6,
         "end": 49.92,
         "text": " that."
-      },
+      }
+    ]
+  },
+  {
+    "start": 50.98,
+    "end": 54.12,
+    "subtitle": " Who's gonna implement a 4% global wealth tax?",
+    "word_timestamps": [
       {
         "start": 50.98,
         "end": 51.34,
@@ -572,6 +626,11 @@
         "start": 52.2,
         "end": 52.42,
         "text": " 4"
+      },
+      {
+        "start": 52.42,
+        "end": 52.66,
+        "text": "%"
       },
       {
         "start": 52.66,

@@ -99,25 +99,6 @@ $(document).ready(function() {
         }
     });
 
-    $('#upload-form').on('submit', function(event) {
-        event.preventDefault();
-        var formData = new FormData(this);
-        $.ajax({
-            type: 'POST',
-            url: '/upload',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-                myCodeMirror_small_segment.setValue(data);
-                myCodeMirror_big_segment.setValue(data);
-            },
-            error: function(response) {
-                console.error('Failed to process the file:', response.responseText);
-                alert('Failed to process the file.');
-            }
-        });
-    });
 
     $('#save-button-small-segment').click(function() {
         var textContent = myCodeMirror_small_segment.getValue();
@@ -153,8 +134,9 @@ $(document).ready(function() {
 
 export { myCodeMirror_small_segment, myCodeMirror_prompt_small_segment, myCodeMirror_prompt_big_segment, myCodeMirror_big_segment };
 
-let subtitleFile=null;
-// to read list of files of subtitles
+let subtitleFile = null;
+
+// To read the list of files of subtitles
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/subtitlefilelist')
       .then(response => response.json())
@@ -172,8 +154,27 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 document.getElementById('SubtitlefileSelector').addEventListener('change', function() {
-    subtitleFile = this.value;
-    console.log('Selected subtitle file:', subtitleFile); // Debugging line to check the selected file
+  subtitleFile = this.value;
+  console.log('Selected subtitle file:', subtitleFile);
+   // Declare CurrentFile inside the event listener scope
+  const fileNameWithExt = subtitleFile.split('/').pop();
+  const CurrentFile = fileNameWithExt.split('.').slice(0, -1).join('.');
+  console.log('Current file name:', CurrentFile);
+   // Send the current file name to Flask via AJAX
+  fetch('/set_current_file_subtitle', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ current_file_subtitle: CurrentFile }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Current file name set in Flask:', data.message);
+    })
+    .catch(error => {
+      console.error('Error setting current file name in Flask:', error);
+    });
 });
 
 document.getElementById('LoadSubtitleFromListBtn').addEventListener('click', function() {
@@ -216,9 +217,29 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.getElementById('AudiofileSelector').addEventListener('change', function() {
-  audioFile = this.value;
-  console.log('Selected audio file:', audioFile);
-});
+    audioFile = this.value;
+    console.log('Selected audio file:', audioFile);
+    
+    // Declare CurrentAudioFile inside the event listener scope
+    const audioFileNameWithExt = audioFile.split('/').pop();
+    console.log('Current audio file name:', audioFileNameWithExt);
+    
+    // Send the current audio file name to Flask via AJAX
+    fetch('/set_current_file_audio', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ current_file_audio: audioFileNameWithExt }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Current audio file name set in Flask:', data.message);
+      })
+      .catch(error => {
+        console.error('Error setting current audio file name in Flask:', error);
+      });
+  });
 
 document.getElementById('TranscribeBtn').addEventListener('click', function() {
   if (audioFile) {

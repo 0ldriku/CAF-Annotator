@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_from_directory, session, json, jsonify
+from flask import Flask, request, render_template, send_from_directory, session, json, jsonify, send_file
 import os
 import subprocess
 from werkzeug.utils import secure_filename
@@ -26,6 +26,30 @@ os.makedirs(app.config['ADJUSTEDREGIONS_FOLDER'], exist_ok=True)
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
+@app.route('/set_current_file_audio', methods=['POST'])
+def set_current_file_audio():
+    data = request.get_json()
+    current_file_audio = data.get('current_file_audio')
+    session['current_file_step1'] = current_file_audio
+    return jsonify({'message': 'Current audio file name set in Flask: ' + current_file_audio})
+
+@app.route('/set_current_file_subtitle', methods=['POST'])
+def set_current_file_subtitle():
+    data = request.get_json()
+    current_file_subtitle = data.get('current_file_subtitle')
+    
+    # Remove the last extension
+    file_parts = current_file_subtitle.split('.')
+    if len(file_parts) > 1:
+        current_file_subtitle = '.'.join(file_parts[:-1])
+    
+    session['current_file_step1'] = current_file_subtitle
+    return jsonify({'message': 'Current file in step 1 name set in Flask: ' + current_file_subtitle})
+
+
+
+
 
 @app.route('/node_modules/<path:filename>')
 def serve_node_module(filename):
@@ -69,13 +93,10 @@ def save_transcription_small_segment():
     text = data['text']
     
     # Retrieve the base filename from session or use a default filename
-    base_filename = session.get('uploaded_filename', 'default_filename')
-    
-    # Extract the base filename and extension
-    base_filename, file_extension = os.path.splitext(base_filename)
+    base_filename = session.get('current_file_step1', 'default_filename')
     
     # Construct the result filename with the .txt extension
-    result_filename = f"{base_filename}{file_extension}.smallsegment.txt"
+    result_filename = f"{base_filename}.smallsegment.txt"
     
     result_path = os.path.join(app.config['TEXT_FOLDER'], result_filename)
     
@@ -98,12 +119,11 @@ def save_transcription_small_segment():
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
 def run_sequence_matcher_small_segment(export_path=None):
-    base_filename = session.get('uploaded_filename', 'default_filename')
-    base_filename, file_extension = os.path.splitext(base_filename)
+    base_filename = session.get('current_file_step1', 'default_filename')
 
     # Paths for the text file and transcription file
-    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.smallsegment.txt")
-    trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}{file_extension}.transcribe.json")
+    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}.smallsegment.txt")
+    trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}.transcribe.json")
 
     # Check if the transcription file exists
     if not os.path.exists(trans_file_path):
@@ -119,9 +139,9 @@ def run_sequence_matcher_small_segment(export_path=None):
         raise RuntimeError(f"Sequence matcher failed: {result.stderr}")
 
     # Define source and destination for moving the generated file
-    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.smallsegment.matched.json")
+    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}.smallsegment.matched.json")
     destination_folder = app.config['JSON_FOLDER']
-    destination_file = os.path.join(destination_folder, f"{base_filename}{file_extension}.smallsegment.matched.json")
+    destination_file = os.path.join(destination_folder, f"{base_filename}.smallsegment.matched.json")
 
     # Move the file from TEXT_FOLDER to JSON_FOLDER
     shutil.move(source_file, destination_file)
@@ -133,13 +153,10 @@ def save_transcription_big_segment():
     text = data['text']
     
     # Retrieve the base filename from session or use a default filename
-    base_filename = session.get('uploaded_filename', 'default_filename')
-    
-    # Extract the base filename and extension
-    base_filename, file_extension = os.path.splitext(base_filename)
+    base_filename = session.get('current_file_step1', 'default_filename')
     
     # Construct the result filename with the .txt extension
-    result_filename = f"{base_filename}{file_extension}.bigsegment.txt"
+    result_filename = f"{base_filename}.bigsegment.txt"
     
     result_path = os.path.join(app.config['TEXT_FOLDER'], result_filename)
     
@@ -162,12 +179,11 @@ def save_transcription_big_segment():
         return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
 def run_sequence_matcher_big_segment(export_path=None):
-    base_filename = session.get('uploaded_filename', 'default_filename')
-    base_filename, file_extension = os.path.splitext(base_filename)
+    base_filename = session.get('current_file_step1', 'default_filename')
 
     # Paths for the text file and transcription file
-    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.bigsegment.txt")
-    trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}{file_extension}.transcribe.json")
+    text_file_path = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}.bigsegment.txt")
+    trans_file_path = os.path.join(app.config['TRANS_FOLDER'], f"{base_filename}.transcribe.json")
 
     # Check if the transcription file exists
     if not os.path.exists(trans_file_path):
@@ -183,9 +199,9 @@ def run_sequence_matcher_big_segment(export_path=None):
         raise RuntimeError(f"Sequence matcher failed: {result.stderr}")
 
     # Define source and destination for moving the generated file
-    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}{file_extension}.bigsegment.matched.json")
+    source_file = os.path.join(app.config['TEXT_FOLDER'], f"{base_filename}.bigsegment.matched.json")
     destination_folder = app.config['JSON_FOLDER']
-    destination_file = os.path.join(destination_folder, f"{base_filename}{file_extension}.bigsegment.matched.json")
+    destination_file = os.path.join(destination_folder, f"{base_filename}.bigsegment.matched.json")
 
     # Move the file from TEXT_FOLDER to JSON_FOLDER
     shutil.move(source_file, destination_file)
@@ -193,7 +209,7 @@ def run_sequence_matcher_big_segment(export_path=None):
 
 @app.route('/save-region-data', methods=['POST'])
 def save_region_data():
-    base_filename = session.get('uploaded_filename', 'default_filename')
+    base_filename = session.get('current_file_step1', 'default_filename')
     base_filename, file_extension = os.path.splitext(base_filename)
     data = request.get_json()
     file_path = os.path.join(app.config['ADJUSTEDREGIONS_FOLDER'], f"{base_filename}{file_extension}.regionData.json")
@@ -235,24 +251,28 @@ def serve_audio_file2(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 ## read the list of small segment files
-@app.route('/smallsegmentfilelist', methods=['GET'])
-def smallsegment_files():
-    files = os.listdir(os.path.join(app.config['JSON_FOLDER']))
-    return jsonify(files)
-
-@app.route('/smallsegmentfiles/<path:filename>', methods=['GET'])
-def serve_smallsegment_file(filename):
-    return send_from_directory(app.config['JSON_FOLDER'], filename)
+@app.route('/smallsegmentfile', methods=['GET'])
+def smallsegment_file():
+    current_file_step1 = session.get('current_file_step1', 'default_filename')
+    file_name = f"{current_file_step1}.smallsegment.matched.json"
+    file_path = os.path.join(app.config['JSON_FOLDER'], file_name)
+    
+    if os.path.exists(file_path):
+        return send_file(file_path)
+    else:
+        return jsonify({"error": "File not found"}), 404
 
 ## read the list of big segment files
-@app.route('/bigsegmentfilelist', methods=['GET'])
-def bigsegment_files():
-    files = os.listdir(os.path.join(app.config['JSON_FOLDER']))
-    return jsonify(files)
-
-@app.route('/bigsegmentfiles/<path:filename>', methods=['GET'])
-def serve_bigsegment_file(filename):
-    return send_from_directory(app.config['JSON_FOLDER'], filename)
+@app.route('/bigsegmentfile', methods=['GET'])
+def bigsegment_file():
+    current_file_step1 = session.get('current_file_step1', 'default_filename')
+    file_name = f"{current_file_step1}.bigsegment.matched.json"
+    file_path = os.path.join(app.config['JSON_FOLDER'], file_name)
+    
+    if os.path.exists(file_path):
+        return send_file(file_path)
+    else:
+        return jsonify({"error": "File not found"}), 404
 
 ## read the list of regiondata files
 @app.route('/regiondatafilelist', methods=['GET'])

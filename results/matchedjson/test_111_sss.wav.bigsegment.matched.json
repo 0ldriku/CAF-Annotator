@@ -48,8 +48,8 @@
   },
   {
     "start": 2.6,
-    "end": 4.5,
-    "subtitle": " And the answer that comes back is,",
+    "end": 6.76,
+    "subtitle": " And the answer that comes back is, well, I wouldn't start from here, Sonny.",
     "word_timestamps": [
       {
         "start": 2.6,
@@ -85,14 +85,7 @@
         "start": 4.22,
         "end": 4.5,
         "text": " is,"
-      }
-    ]
-  },
-  {
-    "start": 5.02,
-    "end": 6.76,
-    "subtitle": " well, I wouldn't start from here, Sonny.",
-    "word_timestamps": [
+      },
       {
         "start": 5.02,
         "end": 5.14,
@@ -373,8 +366,8 @@
   },
   {
     "start": 29.2,
-    "end": 41.62,
-    "subtitle": " And this spills over into normative arguments made by other scholars. Thomas Piketty, in his book, Capital in the 21st Century,",
+    "end": 35.28,
+    "subtitle": " And this spills over into normative arguments made by other scholars.",
     "word_timestamps": [
       {
         "start": 29.2,
@@ -430,7 +423,14 @@
         "start": 34.52,
         "end": 35.28,
         "text": " scholars."
-      },
+      }
+    ]
+  },
+  {
+    "start": 35.82,
+    "end": 46.66,
+    "subtitle": " Thomas Piketty, in his book, Capital in the 21st Century, argues for a 4% global wealth tax.",
+    "word_timestamps": [
       {
         "start": 35.82,
         "end": 36.08,
@@ -480,14 +480,7 @@
         "start": 41.2,
         "end": 41.62,
         "text": " Century,"
-      }
-    ]
-  },
-  {
-    "start": 42.0,
-    "end": 54.12,
-    "subtitle": " argues for a 4% global wealth tax. Well, good luck with that. Who's gonna implement a 4% global wealth tax?",
-    "word_timestamps": [
+      },
       {
         "start": 42.0,
         "end": 42.38,
@@ -522,7 +515,14 @@
         "start": 46.12,
         "end": 46.66,
         "text": " tax."
-      },
+      }
+    ]
+  },
+  {
+    "start": 48.580000000000005,
+    "end": 49.92,
+    "subtitle": " Well, good luck with that.",
+    "word_timestamps": [
       {
         "start": 48.580000000000005,
         "end": 49.02,
@@ -547,7 +547,14 @@
         "start": 49.6,
         "end": 49.92,
         "text": " that."
-      },
+      }
+    ]
+  },
+  {
+    "start": 50.98,
+    "end": 59.34,
+    "subtitle": " Who's gonna implement a 4% global wealth tax? So I, when I think about normative questions,",
+    "word_timestamps": [
       {
         "start": 50.98,
         "end": 51.34,
@@ -587,14 +594,7 @@
         "start": 53.8,
         "end": 54.12,
         "text": " tax?"
-      }
-    ]
-  },
-  {
-    "start": 54.12,
-    "end": 59.34,
-    "subtitle": " So I, when I think about normative questions,",
-    "word_timestamps": [
+      },
       {
         "start": 54.12,
         "end": 54.68,
