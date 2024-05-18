@@ -209,8 +209,7 @@ The AI segment feature is currently an experimental feature. The effectiveness o
 
 ## Contributing
 
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request. Make sure to follow the existing code style and guidelines.
-
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
 ## License
 
 This project is licensed under the [MIT License](https://github.com/0ldriku/Maruko/blob/main/LICENSE.md).
