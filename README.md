@@ -107,7 +107,7 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 
 ## About the Tracks in the Annotation Step
-
+![Annotation Screenshot](https://github.com/0ldriku/Maruko/blob/main/static/img/AnnotationScreenshot.png?raw=true)
 - **Track 1: Waveform**
   - Displays the waveform of the audio.
 
