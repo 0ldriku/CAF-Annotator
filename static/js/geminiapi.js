@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { myCodeMirror_prompt_small_segment, myCodeMirror_small_segment, myCodeMirror_prompt_big_segment, myCodeMirror_big_segment } from "./transcribe.js";
 
 // Access your API key (replace with your actual API key)
-const API_KEY = "AIzaSyB6GrxpK9LIQrRSQ54lhiiySNuUtz9RidM";
+const API_KEY = "ENTER YOUR API KEY HERE";
 
 const generateSmallSegmentBtn = document.getElementById("Ai-refine-button-small-segment");
 const generateBigSegmentBtn = document.getElementById("Ai-refine-button-big-segment");

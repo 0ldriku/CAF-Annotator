@@ -8,8 +8,7 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 ## Features
 
 - User-friendly interface for annotating audio files
-- Automatic annotation, segmentation, and pause detection.
-- Customizable annotation labels and categories
+- Automatic transcription, segmentation, annotation and pause detection.
 - Cross-platform compatibility
 
 ## Getting started
@@ -62,30 +61,99 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 ## Usage
 
-1. Upload an audio file or provide a URL to the audio file you want to annotate.
-2. Select the appropriate annotation labels and categories for your research.
-3. Listen to the audio and make annotations using the provided tools.
-4. Save your annotations and export them in your desired format.
-5. Repeat the process for additional audio files.
+1. Put you audio files in /files. Or use the google colab notebook to transcribe the audio files. in such case, put the generated files in /results/transcriptions.
+2. segment the text into the units you want to analyze. 
+3. load the audio 2. transcribe, load the segments.
+4. adjust the boundaries of the segments. the faster-whisper tool is not perfect, so you may need to adjust the boundaries of the segments. 
+5. edit the text in track 2 if necessary. the text in track 3 is not used to compute the CAF measures, so you dont have to edit the text in track 3.
+6. press the pause detection button to detect the pause duration automatically. and check whether the pause duration is correct. if not, you can adjust the pause duration manually.
+7. annotate the accuracy and dysfluency in track 5 and 6.
+8. save the annotations.
+9. load the annotations and compute the CAF measures.
 
-## About the tracks in annotation step
-Track 1 is the waveform of the audio.
-Track 2 is the track to annotate small segments of the audio. Small segments can be clauses or anything user wants to segment.
-Track 3 is the track to annotate big segments of the audio. Big segments can be setences, AS-units or anything user wants to segment.
-Track 4 is the track to annotate pause duration. Currently, Maruko supports automatic pause detection. The user can click the "Auto Detect Pause" button to automatically detect the pause duration. The pause inside a small segments will be labeled as "M". The pause between big segments will be labeled as "E". The user can also manually annotate the pause duration by clicking the "+ PAUSE".
-Track 5 is the track to annotate accuracy. 
-Track 6 is the track to annotate dysfluency.
+### Workflow Instructions
 
-The annotation for track 5 and 6 can only be done manually by the user currently.
+1. **Prepare Audio Files:**
+   - Place your audio files in `/files`.
+   - Alternatively, use the Google Colab notebook to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the ["The CPU Usage in the Transcription Step"](#the-cpu-usage-in-the-transcription-step) section for more information.
 
 
+2. **Segment Text:**
+   - Segment the text into the units you want to analyze.
 
-## Experimental Features
- 
-### Gemini API Integration
-Now the Gemini from google offers free api to access the LLM. I intergrated it to the segmentation step. The user can click the AI refine segement button to let Gemini to segment the transcription into clauses or AS-units. But the precision is highly depend on the prompt. For use this, user should get the API from gemini, and input it into /static/js/gemini.js file.
+3. **Adjust Segment Boundaries:**
+   - Load the audio in 2. Transcribe.
+   - Load the segmentation. After selecting the audio file, the system will automatically detect the segmentation files. Simply click the "Load Small/Big Segments" button to proceed.
+   - Since the faster-whisper tool is not perfect, you may need to add or delete regions, or adjust the boundaries of the segments as necessary.
+
+4. **Edit Text:**
+   - Edit the text in track 2 if necessary. The text in track 3 is not used to compute the CAF measures, so it does not require editing.
+
+5. **Pause Detection:**
+   - Press the pause detection button to automatically detect pause durations.
+   - Verify the accuracy of detected pauses and adjust manually if necessary.
+
+7. **Annotate Accuracy and Dysfluency:**
+   - Annotate the accuracy in track 5 and dysfluency in track 6.
+
+8. **Save Annotations:**
+   - Save all annotations upon completion.
+
+9. **Compute CAF Measures:**
+   - Load the annotations and compute the CAF measures.
+
+
+
+
+## About the Tracks in the Annotation Step
+
+- **Track 1: Waveform**
+  - Displays the waveform of the audio.
+
+- **Track 2: Small Segments Annotation**
+  - Used for annotating small segments of the audio, such as clauses or any other user-defined segments.
+
+- **Track 3: Large Segments Annotation**
+  - Used for annotating large segments of the audio, which can include sentences, AS-units, or any other user-defined segments.
+
+- **Track 4: Pause Duration Annotation**
+  - Maruko supports automatic pause detection. Users can click the "Auto Detect Pause" button to automatically detect pause durations. Pauses within small segments are labeled as "M," and pauses between large segments are labeled as "E." Users can also manually annotate pause durations by clicking the "+ PAUSE" button.
+
+- **Track 5: Accuracy Annotation**
+  - This track is designated for annotating accuracy in the audio. Currently can only be performed manually by the user.
+
+- **Track 6: Dysfluency Annotation**
+  - This track is designated for annotating dysfluency. Currently can only be performed manually by the user.
+
+
+## Data Structure
+
+- `/files`  
+  Place your audio files here.
+
+- `/results/transcriptions`  
+  Contains transcriptions of the audio files.  
+  - `[filename].[extension].transcribe.json`: File with word-level timestamps.  
+  - `[filename].[extension].subtitles.txt`: Plain text file containing only text without timestamps.
+
+- `/results/textfiles`  
+  Contains segmented files.  
+  - `[filename].[extension].bigsegment.txt`: Contains larger segments of text.  
+  - `[filename].[extension].smallsegment.txt`: Contains smaller segments of text.
+
+- `/results/matchedjson`  
+  Contains JSON files with word-level timestamps of segmented files.  
+  - `[filename].[extension].bigsegment.matched.json`: Matches for larger text segments.  
+  - `[filename].[extension].smallsegment.matched.json`: Matches for smaller text segments.
+
+- `/results/adjustedRegions`  
+  - `[filename].[extension].regionData.json`: Contains all annotations added in Step 2 (Annotate). Computations in Step 3 are based on this file.
+
+
 
 ## Supported CAF Measures
+
+For academic purposes, it is important to review the computation methods used. Please check the `compute_caf_values()` function defined in `app.py` for detailed implementation.
 
 
 - Syntactic complexity
@@ -103,44 +171,49 @@ Now the Gemini from google offers free api to access the LLM. I intergrated it t
   - Final-clause pause duration: Mean duration of pauses between clauses, expressed in seconds.
 
 ### CAF Measures on working
+
+- Syntactic complexity
+    - Mean length of noun phrases: The mean number of words per noun phrases. 
+- Lexical complexity
+    - Measure of textual lexical diversity (MTLD): The mean length of sequential word strings in a text that maintains a giventype-token ratio value. 
+    - CELEX log frequency: The averaged logarithmic frequency of content words produced in a text based on the CELEX corpus.
+    - Lexical density: The proportion of content words to the total words produced. 
+
 - Accuracy and Dysfluency
     - I have no idea how to auto detect the accuracy and dyfluency. The user can only manually annotate the accuracy and dysfluency. But I will make the function to computate accuracy and dysfluency soon.
 
-- Syntactic complexity
-    - Mean length of noun phrases: The mean number of words per noun phrases. -> maybe can use psyca or stanza.
 
-- Lexical complexity
-    - Measure of textual lexical diversity (MTLD): The mean length of sequential word strings in a text that maintains a giventype-token ratio value. -> maybe can use psyca or stanza. 
-    - CELEX log frequency: The averaged logarithmic frequency of content words produced in a text based on the CELEX corpus.
-    - Lexical density: The proportion of content words to the total words produced. -> maybe can use psyca or stanza.
 
-## Technologies Used
+## The CPU usage in the transcription step
+Many researchers in this field may not have a GPU or CUDA installed, so the default setting for the faster-whisper tool is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 1 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [LINK to the notebook](https://[LINK to the notebook]).
+
+
+
+
+## Experimental Features
+ 
+### Gemini API Integration
+The AI segment feature is currently an experimental feature. The effectiveness of this function heavily depends on the prompt provided. I have included an example prompt that you can use to segment text into clauses or sentences. You should modify it according to your needs. To use this feature, you need access to the Gemini API. Google offers free usage of Gemini; for details, please visit [this link](https://ai.google.dev/pricing). To integrate the API, enter your API key in the `/static/js/geminiapi.js` file.
+
+## Tools and Libraries
 
 ### Transcription
-faster-whisper -> currently set on CPU mode, if you want to use GPU mode, you can change the code in ....
-Gemini API
+- **Faster-Whisper**: [GitHub Repository](https://github.com/SYSTRAN/faster-whisper)
 
 ### Annotation
-Wavesurfer.js
+- **Wavesurfer.js**: [GitHub Repository](https://github.com/katspaugh/wavesurfer.js)
 
-
-
-## The CPU usage in the transcription step.
-In my setup, for 60 seconds audio file, the transcription step will take around 1 minute to finish.
-The transcription step will take a long time to finish due to the low CPU spec.
-If you want to speed up the transcription step, I recommend to use the below Google Colab notebook to generate the transcription file.
-The Google Colab offers free GPU runtime. The transcription step will be much faster than the local CPU.
-[LINKHERE]
-You can load the transcription file into the Maruko to continue the annotation step.
-
+### Google Colab Notebook
+- **N46Whisper**: [GitHub Repository](https://github.com/Ayanaminn/N46Whisper)
 
 ## Roadmap
 
-- [] Refine the file management system.
-- [] The feature to export the data into csv file.
-- [] Make the annotated json file can be converted into Praat textgrid file.
-- [] Support for other languages than English.
-- [] Speaker diarization support.
+- [x] Refine the file management system.
+- [ ] Implement the feature to export data into a CSV file.
+- [ ] Enable conversion of annotated JSON files into Praat TextGrid files.
+- [ ] Add support for languages other than English.
+- [ ] Integrate speaker diarization support.
+
 
 ## Contributing
 
@@ -152,4 +225,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or inquiries, please contact [Your Name] at [your-email@example.com].
+For any questions or inquiries, please contact me at [liquid.riku@gmail.com].

@@ -27,7 +27,11 @@
 <div class="container">
   <h1>1. Transcribe</h1>
   <h2>File Upload</h2>
-  <p>Please upload the audio file.</p>
+  <p>Upload and transcribe the audio file.</p>
+
+  <p>Many researchers in this field may not have a GPU or CUDA installed, so the default setting for the faster-whisper tool is to use the CPU mode for audio transcription. For example, on an Apple M1 Max CPU, it takes about 1 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: <a href="[LINK to the notebook]">[LINK to the notebook]</a>.</p>
+
+  <p>After transcribing the audio files in Google Colab, place the generated files named <code>[filename].[extension].subtitle.txt</code> and <code>[filename].[extension].transcribe.json</code> into the <code>/results/transcriptions</code> folder. Once the files are in the correct location, proceed to the next segmentation step.</p>
   <div class="file-selector-container">
     <select id="AudiofileSelector" class="file-box" multiple></select>
   </div>
@@ -48,10 +52,13 @@
   <div id="editor-small-segment"></div> <!-- Placeholder for CodeMirror -->
   <br>
   <p>Experimental feature</p>
+  <p>The AI segment feature is currently an experimental feature. The effectiveness of this function heavily depends on the prompt provided. I have included an example prompt that you can use to segment text into clauses or sentences. You should modify it according to your needs. To use this feature, you need access to the Gemini API. Google offers free usage of Gemini; for details, please visit <a href="https://ai.google.dev/pricing">this link</a>. To integrate the API, enter your API key in the <code>/static/js/geminiapi.js</code> file.</p>
   <div id="editor-prompt-small-segment"></div>
   <button id="save-button-small-segment" class="savebutton">Save Small Segments</button>
   <button id="Ai-refine-button-small-segment">AI Segment</button>
   <p>Don't forget to save the segment data.</p>
+
+
 
   <h2>Big segments of transcription</h2>
   <p>Edit the big segments (e.g., sentences, AS-units) by adding or deleting lines.</p>
@@ -81,6 +88,7 @@
 
 <div class="container">
   <h1>2. Annotate</h1>
+  <p>Below, I outline the suggested workflow for annotating audio: </p>
   <ol>
     <li>Edit the text of each segment in the first track.</li>
     <li>Adjust the boundaries of each segment in the first track (the track below the audiowave).</li>
