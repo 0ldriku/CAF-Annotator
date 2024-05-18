@@ -11,9 +11,10 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 - Automatic transcription, segmentation, annotation and pause detection.
 - Cross-platform compatibility
 
+## Requirements
+- Python 3.9 or greater
+
 ## Getting started
-
-
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/your-repo.git
