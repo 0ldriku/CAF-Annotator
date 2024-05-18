@@ -222,7 +222,7 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://github.com/0ldriku/Maruko/blob/main/LICENSE.md).
 
 ## Contact
 
