@@ -61,7 +61,7 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 ## Usage
 
-1. Put you audio files in /files. Or use the google colab notebook to transcribe the audio files. in such case, put the generated files in /results/transcriptions.
+1. Put you audio files in /files. Or use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb) to transcribe the audio files. in such case, put the generated files in /results/transcriptions.
 2. segment the text into the units you want to analyze. 
 3. load the audio 2. transcribe, load the segments.
 4. adjust the boundaries of the segments. the faster-whisper tool is not perfect, so you may need to adjust the boundaries of the segments. 
@@ -75,7 +75,8 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 1. **Prepare Audio Files and Transcriptions:**
    - Place your audio files in `/files`. Then click the transcribe button to transcribe the audio files. The transcriptions will be stored in `/results/transcriptions`.
-   - Alternatively, use the Google Colab notebook to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the ["The CPU Usage in the Transcription Step"](#the-cpu-usage-in-the-transcription-step) section for more information.
+   - - Alternatively, use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb) to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the ["The CPU Usage in the Transcription Step"](#the-cpu-usage-in-the-transcription-step) section for more information.
+
 
 
 2. **Segment Text:**
@@ -185,7 +186,7 @@ For academic purposes, it is important to review the computation methods used. P
 
 
 ## The CPU usage in the transcription step
-Many researchers in this field may not have a GPU or CUDA installed, so the default setting for the faster-whisper tool is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 1 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [LINK to the notebook](https://[LINK to the notebook]).
+Many researchers in this field may not have a GPU or CUDA installed, so the default setting for the faster-whisper tool is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 1 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [Click here](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb).
 
 
 
