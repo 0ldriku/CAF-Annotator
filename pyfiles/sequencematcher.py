@@ -12,11 +12,23 @@ json_file = sys.argv[2]
 
 # Read the JSON file
 with open(json_file) as json_data:
-    data = json.load(json_data)
+    json_string = json_data.read()
+
+# Replace all hyphens with spaces in the JSON string
+json_string = json_string.replace("-", " ")
+
+# Parse the modified JSON string
+data = json.loads(json_string)
 
 # Read the text file
 with open(text_file, 'r') as txt_data:
     text = txt_data.read()
+
+# Replace all hyphens with spaces in the text
+text = text.replace("-", " ")
+
+# Remove all non-English characters from the text
+text = re.sub(r'[^a-zA-Z0-9\s\n\.\,\?\!\'\"]', '', text)
 
 # Split the text into segments based on the edited segmentation
 segments = [segment for segment in text.split('\n') if segment.strip()]
@@ -38,15 +50,14 @@ for segment in segments:
     segment_timestamps = []
     start_time = None
     end_time = None
-
+    
     # Iterate over each word in the segment
     for word in words:
         # Remove non-alphanumeric characters from the word
         word_clean = re.sub(r'[^a-zA-Z0-9]', '', word)
-
+        
         # Find the corresponding timestamp for the word
         timestamp = next((ts for ts in word_timestamps if re.sub(r'[^a-zA-Z0-9]', '', ts['text'].strip()) == word_clean), None)
-
         if timestamp:
             if start_time is None:
                 start_time = timestamp['start']
@@ -54,7 +65,7 @@ for segment in segments:
             segment_timestamps.append(timestamp)
             # Remove the used timestamp to avoid confusion
             word_timestamps.remove(timestamp)
-
+    
     # Create a dictionary for the segment
     segment_dict = {
         "start": start_time,
@@ -62,7 +73,7 @@ for segment in segments:
         "subtitle": segment,
         "word_timestamps": segment_timestamps
     }
-
+    
     # Append the segment dictionary to the list
     segment_data.append(segment_dict)
 
