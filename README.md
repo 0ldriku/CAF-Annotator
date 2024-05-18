@@ -130,13 +130,13 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 - `/results/textfiles`  
   Contains segmented files.  
-  - `[filename].[extension].bigsegment.txt`: Contains larger segments of text.  
-  - `[filename].[extension].smallsegment.txt`: Contains smaller segments of text.
+  - `[filename].[extension].bigsegment.txt`: Contains big segments of text.  
+  - `[filename].[extension].smallsegment.txt`: Contains small segments of text.
 
 - `/results/matchedjson`  
   Contains JSON files with word-level timestamps of segmented files.  
-  - `[filename].[extension].bigsegment.matched.json`: Matches for larger text segments.  
-  - `[filename].[extension].smallsegment.matched.json`: Matches for smaller text segments.
+  - `[filename].[extension].bigsegment.matched.json`: Big segment file with timestamps.  
+  - `[filename].[extension].smallsegment.matched.json`: Small segment file with timestamps.  
 
 - `/results/adjustedRegions`  
   - `[filename].[extension].regionData.json`: Contains all annotations added in Step 2 (Annotate). Computations in Step 3 are based on this file.
