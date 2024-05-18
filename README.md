@@ -205,6 +205,7 @@ The AI segment feature is currently an experimental feature. The effectiveness o
 - [ ] Enable conversion of annotated JSON files into Praat TextGrid files.
 - [ ] Add support for languages other than English.
 - [ ] Integrate speaker diarization support.
+- [ ] Support to computate lexical complexity.
 
 
 ## Contributing
