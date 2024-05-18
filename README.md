@@ -60,17 +60,7 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 5. Access the application through your web browser at `http://localhost:5000` (or the appropriate URL).
 
-## Usage
 
-1. Put you audio files in /files. Or use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb) to transcribe the audio files. in such case, put the generated files in /results/transcriptions.
-2. segment the text into the units you want to analyze. 
-3. load the audio 2. transcribe, load the segments.
-4. adjust the boundaries of the segments. the faster-whisper tool is not perfect, so you may need to adjust the boundaries of the segments. 
-5. edit the text in track 2 if necessary. the text in track 3 is not used to compute the CAF measures, so you dont have to edit the text in track 3.
-6. press the pause detection button to detect the pause duration automatically. and check whether the pause duration is correct. if not, you can adjust the pause duration manually.
-7. annotate the accuracy and dysfluency in track 5 and 6.
-8. save the annotations.
-9. load the annotations and compute the CAF measures.
 
 ### Workflow Instructions
 
