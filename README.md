@@ -73,8 +73,8 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 ### Workflow Instructions
 
-1. **Prepare Audio Files:**
-   - Place your audio files in `/files`.
+1. **Prepare Audio Files and Transcriptions:**
+   - Place your audio files in `/files`. Then click the transcribe button to transcribe the audio files. The transcriptions will be stored in `/results/transcriptions`.
    - Alternatively, use the Google Colab notebook to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the ["The CPU Usage in the Transcription Step"](#the-cpu-usage-in-the-transcription-step) section for more information.
 
 
