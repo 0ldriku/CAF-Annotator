@@ -60,7 +60,8 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 5. Access the application through your web browser at `http://localhost:5000` (or the appropriate URL).
 
-
+### Compatibility
+Best work with Chrome and Edge. Safari is not recommended.
 
 ### Workflow Instructions
 
