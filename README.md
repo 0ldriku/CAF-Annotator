@@ -72,11 +72,15 @@ Maruko aims to simplify and streamline this process by integrating the entire wo
 
 2. **Segment Text:**
    - Segment the text into the units you want to analyze.
+   - You can't change the words in this step. You can only add or remove lines.
+   - Auto segmentation can be done with NLP tools like Stanza or SpaCy, but they may not be as accurate for spoken language as they are for written text. Therefore, I decided to let the user manually adjust the segments for now. If you want, you can use those tools to segment and load the data in the next steps.
+
 
 3. **Adjust Segment Boundaries:**
    - Load the audio in 2. Transcribe.
    - Load the segmentation. After selecting the audio file, the system will automatically detect the segmentation files. Simply click the "Load Small/Big Segments" button to proceed.
    - Since the faster-whisper tool is not perfect, you may need to add or delete regions, or adjust the boundaries of the segments as necessary.
+
 
 4. **Edit Text:**
    - Edit the text in track 2 if necessary. The text in track 3 is not used to compute the CAF measures, so it does not require editing.
