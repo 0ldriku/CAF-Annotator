@@ -4,6 +4,7 @@ import subprocess
 from werkzeug.utils import secure_filename
 import shutil
 import glob
+from lexicalrichness import LexicalRichness
 
 app = Flask(__name__)
 
@@ -366,7 +367,17 @@ def compute_caf_values(data):
     wsRegions4 = data.get('wsRegions4', {})
     
     # Calculate total words and audio duration
-    total_words = sum(len(region['content'].split()) for region in wsRegions2.values())
+
+    # Concatenate all text segments from each region into one large text
+    full_text = ' '.join(region['content'] for region in wsRegions2.values())
+
+    # Initialize the LexicalRichness object with the full text
+    lex = LexicalRichness(full_text)
+
+    # Get the total word count using lexicalrichness
+    total_words = lex.words
+    #old code
+    #total_words = sum(len(region['content'].split()) for region in wsRegions2.values())
     total_audio_duration = max(region['end'] for region in wsRegions2.values())
     
     # Calculate total speech duration excluding pauses
@@ -393,6 +404,12 @@ def compute_caf_values(data):
     num_small_segments = sum(1 for region in wsRegions2.values() if 'end' in region)
     mean_small_segment_length = total_words / num_small_segments if num_small_segments > 0 else 0
 
+
+    # Calculate the Lexical Complexity measures using lexicalrichness
+    mtld = lex.mtld(threshold=0.72)
+    
+
+
     # Print the results
     print("Speed Fluency:")
     print(f"- Speed rate: {speed_rate} words per second")
@@ -404,9 +421,12 @@ def compute_caf_values(data):
     print(f"- Mid-clause pause duration: {avg_mid_clause_pause_duration} seconds on average")
     print(f"- Final-clause pause duration: {avg_final_clause_pause_duration} seconds on average")
     print()
-    print("Complexity:")
+    print("Syntatic Complexity:")
     print(f"- Number of small segments: {num_small_segments}")
     print(f"- Mean length of small segment length: {mean_small_segment_length}")
+    print()
+    print("Lexical Complexity:")
+    print(f"- MTLD: {mtld}")
 
     results = {
         'speed_rate': speed_rate,
@@ -416,7 +436,8 @@ def compute_caf_values(data):
         'mid_clause_pause_duration': avg_mid_clause_pause_duration,
         'final_clause_pause_duration': avg_final_clause_pause_duration,
         'num_small_segments': num_small_segments,
-        'mean_small_segment_length': mean_small_segment_length
+        'mean_small_segment_length': mean_small_segment_length,
+        'mtld': mtld
     }
     
     return results
