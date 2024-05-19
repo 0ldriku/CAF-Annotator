@@ -4,7 +4,7 @@ import subprocess
 from werkzeug.utils import secure_filename
 import shutil
 import glob
-from lexicalrichness import LexicalRichness
+#from lexicalrichness import LexicalRichness
 
 app = Flask(__name__)
 
@@ -369,15 +369,15 @@ def compute_caf_values(data):
     # Calculate total words and audio duration
 
     # Concatenate all text segments from each region into one large text
-    full_text = ' '.join(region['content'] for region in wsRegions2.values())
+    #full_text = ' '.join(region['content'] for region in wsRegions2.values())
 
     # Initialize the LexicalRichness object with the full text
-    lex = LexicalRichness(full_text)
+    #lex = LexicalRichness(full_text)
 
     # Get the total word count using lexicalrichness
-    total_words = lex.words
+    #total_words = lex.words
     #old code
-    #total_words = sum(len(region['content'].split()) for region in wsRegions2.values())
+    total_words = sum(len(region['content'].split()) for region in wsRegions2.values())
     total_audio_duration = max(region['end'] for region in wsRegions2.values())
     
     # Calculate total speech duration excluding pauses
@@ -406,9 +406,9 @@ def compute_caf_values(data):
 
 
     # Calculate the Lexical Complexity measures using lexicalrichness
-    mtld = lex.mtld(threshold=0.72)
-    
-
+    ## MTLD
+    #mtld = lex.mtld(threshold=0.72)
+  
 
     # Print the results
     print("Speed Fluency:")
@@ -424,9 +424,9 @@ def compute_caf_values(data):
     print("Syntatic Complexity:")
     print(f"- Number of small segments: {num_small_segments}")
     print(f"- Mean length of small segment length: {mean_small_segment_length}")
-    print()
-    print("Lexical Complexity:")
-    print(f"- MTLD: {mtld}")
+    #print()
+    #print("Lexical Complexity:")
+    #print(f"- MTLD: {mtld}")
 
     results = {
         'speed_rate': speed_rate,
@@ -437,7 +437,7 @@ def compute_caf_values(data):
         'final_clause_pause_duration': avg_final_clause_pause_duration,
         'num_small_segments': num_small_segments,
         'mean_small_segment_length': mean_small_segment_length,
-        'mtld': mtld
+        ##'mtld': mtld
     }
     
     return results
