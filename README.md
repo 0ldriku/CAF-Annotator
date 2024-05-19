@@ -78,7 +78,7 @@ Best work with Chrome and Edge. Safari is not recommended.
 
 
 3. **Adjust Segment Boundaries:**
-   - Load the audio in 2. Transcribe.
+   - Load the transcribed audio.
    - Load the segmentation. After selecting the audio file, the system will automatically detect the segmentation files. Simply click the "Load Small/Big Segments" button to proceed.
    - Since the faster-whisper tool is not perfect, you may need to add or delete regions, or adjust the boundaries of the segments as necessary.
 
