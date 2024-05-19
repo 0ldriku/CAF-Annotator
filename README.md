@@ -67,7 +67,7 @@ Best work with Chrome and Edge. Safari is not recommended.
 
 1. **Prepare Audio Files and Transcriptions:**
    - Place your audio files in `/files`. Then click the transcribe button to transcribe the audio files. The transcriptions will be stored in `/results/transcriptions`.
-   - - Alternatively, use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb) to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the ["The CPU Usage in the Transcription Step"](#the-cpu-usage-in-the-transcription-step) section for more information.
+   - - Alternatively, use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb) to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the [The CPU Usage in the Transcription Step](#the-cpu-usage-in-the-transcription-step) section for more information.
 
 
 
@@ -168,6 +168,10 @@ For academic purposes, it is important to review the computation methods used. P
   - Final-clause pause duration: Mean duration of pauses between clauses, expressed in seconds.
 
 ### CAF Measures on working
+I plan to implement the following measures on a separate page. Since initializing the NLP tools can be time-consuming, this will be set up on a different page to optimize performance.
+
+***Important Note:***
+The labeling of content words and the total word count heavily depend on the configuration of the NLP tools. I strongly recommend verifying the labeling results before proceeding with the analysis.
 
 - Syntactic complexity
     - Mean length of noun phrases: The mean number of words per noun phrases. 
