@@ -60,7 +60,7 @@ def index():
 
 # Function to run transcription using a subprocess
 def run_transcription(audio_path):
-    script_path = os.path.join(app.root_path, 'pyfiles', 'fasterwhisper.py')
+    script_path = os.path.join(app.root_path, 'pyfiles', 'whispertimestamped.py')
     command = ['python', script_path, audio_path, 'large-v2', 'en']
     result = subprocess.run(command, capture_output=True, text=True)
 

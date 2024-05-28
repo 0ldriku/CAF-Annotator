@@ -172,8 +172,8 @@
   },
   {
     "start": 13.02,
-    "end": 17.78,
-    "subtitle": " develops theories that take no account",
+    "end": 22.86,
+    "subtitle": " develops theories that take no account of where we actually are and how the theories",
     "word_timestamps": [
       {
         "start": 13.02,
@@ -204,14 +204,7 @@
         "start": 17.52,
         "end": 17.78,
         "text": "account"
-      }
-    ]
-  },
-  {
-    "start": 18.58,
-    "end": 25.1,
-    "subtitle": " of where we actually are and how the theories that people argue about in the journals",
-    "word_timestamps": [
+      },
       {
         "start": 18.58,
         "end": 18.8,
@@ -256,7 +249,14 @@
         "start": 22.46,
         "end": 22.86,
         "text": "theories"
-      },
+      }
+    ]
+  },
+  {
+    "start": 22.86,
+    "end": 29.22,
+    "subtitle": " that people argue about in the journals and in the literature actually could be implemented in the world, if at all.",
+    "word_timestamps": [
       {
         "start": 22.86,
         "end": 23.14,
@@ -291,14 +291,7 @@
         "start": 24.7,
         "end": 25.1,
         "text": "journals"
-      }
-    ]
-  },
-  {
-    "start": 25.1,
-    "end": 29.22,
-    "subtitle": " and in the literature actually could be implemented in the world, if at all.",
-    "word_timestamps": [
+      },
       {
         "start": 25.1,
         "end": 25.34,
@@ -373,8 +366,8 @@
   },
   {
     "start": 29.22,
-    "end": 35.28,
-    "subtitle": " And this spills over into normative arguments made by other scholars.",
+    "end": 32.36,
+    "subtitle": " And this spills over into normative arguments",
     "word_timestamps": [
       {
         "start": 29.22,
@@ -410,7 +403,14 @@
         "start": 31.74,
         "end": 32.36,
         "text": "arguments"
-      },
+      }
+    ]
+  },
+  {
+    "start": 32.98,
+    "end": 35.28,
+    "subtitle": " made by other scholars.",
+    "word_timestamps": [
       {
         "start": 32.98,
         "end": 33.14,
@@ -435,8 +435,8 @@
   },
   {
     "start": 35.72,
-    "end": 46.66,
-    "subtitle": " Thomas Piketty, in his book Capital in the 21st Century, argues for a 4 global wealth tax.",
+    "end": 41.24,
+    "subtitle": " Thomas Piketty, in his book Capital in the 21st Century,",
     "word_timestamps": [
       {
         "start": 35.72,
@@ -487,7 +487,14 @@
         "start": 41.18,
         "end": 41.24,
         "text": "Century,"
-      },
+      }
+    ]
+  },
+  {
+    "start": 41.9,
+    "end": 46.66,
+    "subtitle": " argues for a 4 global wealth tax.",
+    "word_timestamps": [
       {
         "start": 41.9,
         "end": 42.34,
@@ -559,8 +566,8 @@
   },
   {
     "start": 51.04,
-    "end": 54.14,
-    "subtitle": " Who's gonna implement a 4 global wealth tax?",
+    "end": 59.32,
+    "subtitle": " Who's gonna implement a 4 global wealth tax? So when I think about normative questions,",
     "word_timestamps": [
       {
         "start": 51.04,
@@ -601,14 +608,7 @@
         "start": 53.78,
         "end": 54.14,
         "text": "tax?"
-      }
-    ]
-  },
-  {
-    "start": 54.14,
-    "end": 59.32,
-    "subtitle": " So when I think about normative questions,",
-    "word_timestamps": [
+      },
       {
         "start": 54.14,
         "end": 54.72,

@@ -3,7 +3,7 @@ Maruko is an annotation tool designed to help researchers and students in the fi
 
 ## Motivation
 Currently, when extracting CAF measures from audio files, researchers often use a complex workflow involving multiple tools. They may use Praat for annotation, a separate transcription tool for transcribing the audio, and tools like Coh-Metrix to calculate transcription-based measures. This fragmented workflow can be time-consuming and cumbersome.
-Maruko aims to simplify and streamline this process by integrating the entire workflow into a single web application. By leveraging Speech-to-Text models and JavaScript for waveform rendering and annotation, this tool enables researchers to perform transcription, annotation, and computation tasks within a unified interface.
+Maruko aims to simplify and streamline this process by integrating the entire workflow into a single web application. This tool enables researchers to perform transcription, annotation, and computation tasks within a unified interface.
 
 ## Features
 
