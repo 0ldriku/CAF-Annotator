@@ -1,8 +1,8 @@
 [
   {
     "start": 0.3,
-    "end": 8.34,
-    "subtitle": " THE RIME OF THE ANCIENT MARINER Parts 1-4 of 7 by Samuel Taylor Coleridge",
+    "end": 12.62,
+    "subtitle": " THE RIME OF THE ANCIENT MARINER Parts 14 of 7 by Samuel Taylor Coleridge COFFEE BREAK COLLECTION 25 WATER",
     "word_timestamps": [
       {
         "start": 0.3,
@@ -73,14 +73,7 @@
         "start": 7.34,
         "end": 8.34,
         "text": "Coleridge"
-      }
-    ]
-  },
-  {
-    "start": 8.88,
-    "end": 11.1,
-    "subtitle": " COFFEE BREAK COLLECTION 25",
-    "word_timestamps": [
+      },
       {
         "start": 8.88,
         "end": 9.76,
@@ -100,14 +93,7 @@
         "start": 10.56,
         "end": 11.1,
         "text": "25"
-      }
-    ]
-  },
-  {
-    "start": 11.76,
-    "end": 12.62,
-    "subtitle": " WATER",
-    "word_timestamps": [
+      },
       {
         "start": 11.76,
         "end": 12.62,
@@ -117,8 +103,8 @@
   },
   {
     "start": 27.86,
-    "end": 35.44,
-    "subtitle": " THE RIME OF THE ANCIENT MARINER Part 1",
+    "end": 40.31,
+    "subtitle": " THE RIME OF THE ANCIENT MARINER Part 1 It is an ancient mariner, and he stoppeth one of three",
     "word_timestamps": [
       {
         "start": 27.86,
@@ -159,14 +145,7 @@
         "start": 34.64,
         "end": 35.44,
         "text": "1"
-      }
-    ]
-  },
-  {
-    "start": 36.33,
-    "end": 40.31,
-    "subtitle": " It is an ancient mariner, and he stoppeth one of three",
-    "word_timestamps": [
+      },
       {
         "start": 36.33,
         "end": 36.89,
@@ -305,8 +284,8 @@
   },
   {
     "start": 46.23,
-    "end": 50.25,
-    "subtitle": " The bridegroom's doors are opened wide, And I am next of kin.",
+    "end": 54.65,
+    "subtitle": " The bridegroom's doors are opened wide, And I am next of kin. The guests are met, the feast is set, Mayst hear the merry din.",
     "word_timestamps": [
       {
         "start": 46.23,
@@ -367,14 +346,7 @@
         "start": 49.93,
         "end": 50.25,
         "text": "kin."
-      }
-    ]
-  },
-  {
-    "start": 50.27,
-    "end": 54.65,
-    "subtitle": " The guests are met, the feast is set, Mayst hear the merry din.",
-    "word_timestamps": [
+      },
       {
         "start": 50.27,
         "end": 50.83,
@@ -444,8 +416,8 @@
   },
   {
     "start": 55.39,
-    "end": 57.77,
-    "subtitle": " He holds him with his skinny hand.",
+    "end": 61.43,
+    "subtitle": " He holds him with his skinny hand. There was a ship, quoth he. Hold off!",
     "word_timestamps": [
       {
         "start": 55.39,
@@ -481,14 +453,7 @@
         "start": 57.33,
         "end": 57.77,
         "text": "hand."
-      }
-    ]
-  },
-  {
-    "start": 57.79,
-    "end": 60.25,
-    "subtitle": " There was a ship, quoth he.",
-    "word_timestamps": [
+      },
       {
         "start": 57.79,
         "end": 58.33,
@@ -518,14 +483,7 @@
         "start": 59.87,
         "end": 60.25,
         "text": "he."
-      }
-    ]
-  },
-  {
-    "start": 60.55,
-    "end": 61.43,
-    "subtitle": " Hold off!",
-    "word_timestamps": [
+      },
       {
         "start": 60.55,
         "end": 61.11,
@@ -540,8 +498,8 @@
   },
   {
     "start": 61.55,
-    "end": 63.37,
-    "subtitle": " Unhand me, grey-beard loon!",
+    "end": 73.59,
+    "subtitle": " Unhand me, greybeard loon! Eftsoons his hand dropped he. He holds me with his glittering eye. The wedding guest stood still, And listens like a threeyear's child.",
     "word_timestamps": [
       {
         "start": 61.55,
@@ -562,14 +520,7 @@
         "start": 62.75,
         "end": 63.37,
         "text": "loon!"
-      }
-    ]
-  },
-  {
-    "start": 63.37,
-    "end": 65.97,
-    "subtitle": " Eftsoons his hand dropped he.",
-    "word_timestamps": [
+      },
       {
         "start": 63.37,
         "end": 64.51,
@@ -594,14 +545,7 @@
         "start": 65.57,
         "end": 65.97,
         "text": "he."
-      }
-    ]
-  },
-  {
-    "start": 66.59,
-    "end": 69.15,
-    "subtitle": " He holds me with his glittering eye.",
-    "word_timestamps": [
+      },
       {
         "start": 66.59,
         "end": 67.17,
@@ -636,14 +580,7 @@
         "start": 68.61,
         "end": 69.15,
         "text": "eye."
-      }
-    ]
-  },
-  {
-    "start": 69.15,
-    "end": 73.59,
-    "subtitle": " The wedding guest stood still, And listens like a three-year's child.",
-    "word_timestamps": [
+      },
       {
         "start": 69.15,
         "end": 69.49,
@@ -703,8 +640,8 @@
   },
   {
     "start": 73.59,
-    "end": 75.83,
-    "subtitle": " The mariner hath his will.",
+    "end": 91.51,
+    "subtitle": " The mariner hath his will. The wedding guest sat on a stone, He cannot choose but hear, And thus spake on that ancient man, The brighteyed mariner. The ship was cheered, the harbour cleared, Merrily did we drop.",
     "word_timestamps": [
       {
         "start": 73.59,
@@ -730,14 +667,7 @@
         "start": 75.37,
         "end": 75.83,
         "text": "will."
-      }
-    ]
-  },
-  {
-    "start": 76.63,
-    "end": 80.89,
-    "subtitle": " The wedding guest sat on a stone, He cannot choose but hear,",
-    "word_timestamps": [
+      },
       {
         "start": 76.63,
         "end": 77.19,
@@ -797,14 +727,7 @@
         "start": 80.51,
         "end": 80.89,
         "text": "hear,"
-      }
-    ]
-  },
-  {
-    "start": 80.99,
-    "end": 85.43,
-    "subtitle": " And thus spake on that ancient man, The bright-eyed mariner.",
-    "word_timestamps": [
+      },
       {
         "start": 80.99,
         "end": 81.51,
@@ -854,14 +777,7 @@
         "start": 84.67,
         "end": 85.43,
         "text": "mariner."
-      }
-    ]
-  },
-  {
-    "start": 86.53,
-    "end": 91.51,
-    "subtitle": " The ship was cheered, the harbour cleared, Merrily did we drop.",
-    "word_timestamps": [
+      },
       {
         "start": 86.53,
         "end": 87.13,
@@ -921,8 +837,8 @@
   },
   {
     "start": 91.65,
-    "end": 95.95,
-    "subtitle": " Below the kirk, below the hill, Below the lighthouse-top.",
+    "end": 104.53,
+    "subtitle": " Below the kirk, below the hill, Below the lighthousetop. The sun came up upon the left, Out of the sea came he, And he shone bright, and on the right Went down into the sea.",
     "word_timestamps": [
       {
         "start": 91.65,
@@ -968,14 +884,7 @@
         "start": 94.89,
         "end": 95.95,
         "text": "lighthouse-top."
-      }
-    ]
-  },
-  {
-    "start": 96.17,
-    "end": 100.17,
-    "subtitle": " The sun came up upon the left, Out of the sea came he,",
-    "word_timestamps": [
+      },
       {
         "start": 96.17,
         "end": 96.77,
@@ -1040,14 +949,7 @@
         "start": 99.81,
         "end": 100.17,
         "text": "he,"
-      }
-    ]
-  },
-  {
-    "start": 100.21,
-    "end": 104.53,
-    "subtitle": " And he shone bright, and on the right Went down into the sea.",
-    "word_timestamps": [
+      },
       {
         "start": 100.21,
         "end": 100.73,
@@ -1117,8 +1019,8 @@
   },
   {
     "start": 105.13,
-    "end": 109.03,
-    "subtitle": " Higher and higher every day, Till over the mast at noon.",
+    "end": 113.19,
+    "subtitle": " Higher and higher every day, Till over the mast at noon. The wedding guest here beat his breast, For he heard the loud bassoon.",
     "word_timestamps": [
       {
         "start": 105.13,
@@ -1174,14 +1076,7 @@
         "start": 108.59,
         "end": 109.03,
         "text": "noon."
-      }
-    ]
-  },
-  {
-    "start": 109.25,
-    "end": 113.19,
-    "subtitle": " The wedding guest here beat his breast, For he heard the loud bassoon.",
-    "word_timestamps": [
+      },
       {
         "start": 109.25,
         "end": 109.81,
@@ -1251,8 +1146,8 @@
   },
   {
     "start": 113.29,
-    "end": 117.29,
-    "subtitle": " The bride hath paced into the hall, Red as a rose is she,",
+    "end": 125.83,
+    "subtitle": " The bride hath paced into the hall, Red as a rose is she, Nodding their heads before her goes The merry minstrely. The wedding guest he beat his breast, Yet he cannot choose but hear,",
     "word_timestamps": [
       {
         "start": 113.29,
@@ -1318,14 +1213,7 @@
         "start": 116.97,
         "end": 117.29,
         "text": "she,"
-      }
-    ]
-  },
-  {
-    "start": 117.53,
-    "end": 120.97,
-    "subtitle": " Nodding their heads before her goes The merry minstrely.",
-    "word_timestamps": [
+      },
       {
         "start": 117.53,
         "end": 118.17,
@@ -1370,14 +1258,7 @@
         "start": 119.99,
         "end": 120.97,
         "text": "minstrely."
-      }
-    ]
-  },
-  {
-    "start": 121.63,
-    "end": 125.83,
-    "subtitle": " The wedding guest he beat his breast, Yet he cannot choose but hear,",
-    "word_timestamps": [
+      },
       {
         "start": 121.63,
         "end": 122.19,
@@ -1448,7 +1329,7 @@
   {
     "start": 125.93,
     "end": 130.19,
-    "subtitle": " And thus spake on that ancient man, The bright-eyed mariner.",
+    "subtitle": " And thus spake on that ancient man, The brighteyed mariner.",
     "word_timestamps": [
       {
         "start": 125.93,
@@ -1505,7 +1386,7 @@
   {
     "start": 131.32,
     "end": 135.86,
-    "subtitle": " And now the storm-blast came, And he was tyrannous and strong.",
+    "subtitle": " And now the stormblast came, And he was tyrannous and strong.",
     "word_timestamps": [
       {
         "start": 131.32,
@@ -1912,7 +1793,7 @@
   {
     "start": 163.66,
     "end": 169.18,
-    "subtitle": " And ice-mast high came floating by, As green as emerald.",
+    "subtitle": " And icemast high came floating by, As green as emerald.",
     "word_timestamps": [
       {
         "start": 163.66,
@@ -7043,7 +6924,7 @@
   {
     "start": 568.35,
     "end": 575.93,
-    "subtitle": " The sun's rim dips, the stars rush out, at one stride comes the dark, with far-heard",
+    "subtitle": " The sun's rim dips, the stars rush out, at one stride comes the dark, with farheard",
     "word_timestamps": [
       {
         "start": 568.35,
@@ -7512,7 +7393,7 @@
   {
     "start": 605.64,
     "end": 613.74,
-    "subtitle": " One after one by the star-dogged moon, too quick for groan or sigh, each turned his face",
+    "subtitle": " One after one by the stardogged moon, too quick for groan or sigh, each turned his face",
     "word_timestamps": [
       {
         "start": 605.64,
@@ -8053,7 +7934,7 @@
   {
     "start": 649.56,
     "end": 652.3,
-    "subtitle": " brown, as is the ribbed sea-sand.",
+    "subtitle": " brown, as is the ribbed seasand.",
     "word_timestamps": [
       {
         "start": 649.56,

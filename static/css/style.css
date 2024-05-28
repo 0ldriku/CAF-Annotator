@@ -144,6 +144,12 @@
     margin-right: auto;
   }
   
+  .left-button-container {
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+  }
+
   .center-controls {
     display: flex;
     justify-content: center;

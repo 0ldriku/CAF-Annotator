@@ -791,3 +791,44 @@ document.getElementById('silence-detection').addEventListener('click', function(
       });
   }
 });
+
+// Event listener for dsfy detection
+document.getElementById('dsfy-detection').addEventListener('click', function() {
+  fetch('/transcriptionfile')
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('File not found');
+      }
+    })
+    .then(subtitleData => {
+      console.log("Parsed data:", subtitleData);
+      wsRegions6.clearRegions();
+
+      subtitleData.forEach(region => {
+        region.word_timestamps.forEach(word => {
+          if (word.text === "[*]") {
+            wsRegions6.addRegion({
+              start: word.start,
+              end: word.end,
+              color: 'rgba(26, 101, 158, 0.2)',
+              content: 'D',
+            });
+          }
+        });
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching small segment file:", error);
+      alert("Failed to load small segment file. Please try again.");
+    });
+});
+
+// hotkeys
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'Space') { // Change 'Space' to the desired key code
+    event.preventDefault(); // Prevent the default action of the key press
+    document.getElementById('play-pause-btn').click(); // Trigger the button click
+  }
+});

@@ -253,6 +253,18 @@ def audio_files2():
 def serve_audio_file2(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+# Get the transcribe.json file
+@app.route('/transcriptionfile', methods=['GET'])
+def transcription_file():
+    current_file_step1 = session.get('current_file_step1', 'default_filename')
+    file_name = f"{current_file_step1}.transcribe.json"
+    file_path = os.path.join(app.config['TRANS_FOLDER'], file_name)
+    
+    if os.path.exists(file_path):
+        return send_file(file_path)
+    else:
+        return jsonify({"error": "File not found"}), 404
+
 # Get the small segment JSON file
 @app.route('/smallsegmentfile', methods=['GET'])
 def smallsegment_file():
