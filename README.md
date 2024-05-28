@@ -186,7 +186,7 @@ The labeling of content words and the total word count heavily depend on the con
 
 
 ## The CPU usage in the transcription step
-Many researchers in this field may not have a GPU or CUDA installed, so the default setting for the faster-whisper tool is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 1 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [Click here](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb).
+Many researchers in this field may not have a GPU or CUDA installed, so the default setting for  whisper-timestamped is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 3 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [Click here](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb).
 
 
 
@@ -196,9 +196,10 @@ Many researchers in this field may not have a GPU or CUDA installed, so the defa
 ### Gemini API Integration
 The AI segment feature is currently an experimental feature. The effectiveness of this function heavily depends on the prompt provided. I have included an example prompt that you can use to segment text into clauses or sentences. You should modify it according to your needs. To use this feature, you need access to the Gemini API. Google offers free usage of Gemini; for details, please visit [this link](https://ai.google.dev/pricing). To integrate the API, enter your API key in the `/static/js/geminiapi.js` file.
 
-## Tools and Libraries
+## Acknowledgements
 
 ### Transcription
+- **Whisper-timestamped**: [GitHub Repository](https://github.com/linto-ai/whisper-timestamped)
 - **Faster-Whisper**: [GitHub Repository](https://github.com/SYSTRAN/faster-whisper)
 
 ### Annotation

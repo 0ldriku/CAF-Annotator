@@ -1,3 +1,6 @@
 Flask==3.0.3
 Werkzeug==3.0.2
-faster-whisper==1.0.2
+ffmpeg==1.4
+whisper-timestamped==1.15.4
+auditok==0.2.0
+
