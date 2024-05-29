@@ -792,8 +792,8 @@ document.getElementById('silence-detection').addEventListener('click', function(
   }
 });
 
-// Event listener for dsfy detection
-document.getElementById('dsfy-detection').addEventListener('click', function() {
+// Event listener for dysf detection
+document.getElementById('dysf-detection').addEventListener('click', function() {
   fetch('/transcriptionfile')
     .then(response => {
       if (response.ok) {

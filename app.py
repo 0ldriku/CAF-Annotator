@@ -377,7 +377,7 @@ def compute_caf():
 def compute_caf_values(data):
     wsRegions2 = data.get('wsRegions2', {})
     wsRegions4 = data.get('wsRegions4', {})
-    
+    wsRegions6 = data.get('wsRegions6', {})
     # Calculate total words and audio duration
 
     # Concatenate all text segments from each region into one large text
@@ -420,7 +420,10 @@ def compute_caf_values(data):
     # Calculate the Lexical Complexity measures using lexicalrichness
     ## MTLD
     #mtld = lex.mtld(threshold=0.72)
-  
+
+    # Dysfluency measures
+    dysf_number = len(wsRegions6)
+
 
     # Print the results
     print("Speed Fluency:")
@@ -439,6 +442,9 @@ def compute_caf_values(data):
     #print()
     #print("Lexical Complexity:")
     #print(f"- MTLD: {mtld}")
+    print()
+    print("Dysfluency:")
+    print(f"- Number of dysfluencies: {dysf_number} ")
 
     results = {
         'speed_rate': speed_rate,
@@ -449,6 +455,7 @@ def compute_caf_values(data):
         'final_clause_pause_duration': avg_final_clause_pause_duration,
         'num_small_segments': num_small_segments,
         'mean_small_segment_length': mean_small_segment_length,
+        'dysf_number': dysf_number,
         ##'mtld': mtld
     }
     

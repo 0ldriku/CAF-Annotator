@@ -84,6 +84,7 @@ function computeCAF(data) {
                 <p>Final-Clause Pause Duration: ${data.final_clause_pause_duration.toFixed(3)}</p>
                 <p>Number of small segments: ${data.num_small_segments.toFixed(3)}</p>
                 <p>Mean length of small segments: ${data.mean_small_segment_length.toFixed(3)}</p>
+                <p>Number of dysfluencies: ${data.dysf_number.toFixed(3)}</p>
             `;
         }
     })
