@@ -68,6 +68,7 @@ Best work with Chrome and Edge. Safari is not recommended.
 1. **Prepare Audio Files and Transcriptions:**
    - Place your audio files in `/files`. Then click the transcribe button to transcribe the audio files. The transcriptions will be stored in `/results/transcriptions`.
    - - Alternatively, use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/Maruko/blob/main/Maruko_Whisper.ipynb) to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the [The CPU Usage in the Transcription Step](#the-cpu-usage-in-the-transcription-step) section for more information.
+   - - If your ethics review allows you to upload audio files to the internet, you can use this Google Colab notebook. However, make sure to carefully consider the privacy implications and get explicit permission before uploading any audio data, especially if it contains personally identifiable information or sensitive content.
 
 
 
