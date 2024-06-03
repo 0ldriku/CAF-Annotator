@@ -1,14 +1,14 @@
-# Maruko
-Maruko is an annotation tool designed to help researchers and students in the field of Second Language Acquisition (SLA) efficiently transcribe, annotate, computate CAF (Complexity, Accuracy, and Fluency) measures for audio files.
+# CAF-Annotator
+CAF-Annotator is an annotation tool designed to help researchers and students in the field of Second Language Acquisition (SLA) efficiently transcribe, annotate, computate CAF (Complexity, Accuracy, and Fluency) measures for audio files.
 
 ## Motivation
 Currently, when extracting CAF measures from audio files, researchers often use a complex workflow involving multiple tools. They may use Praat for annotation, a separate transcription tool for transcribing the audio, and tools like Coh-Metrix to calculate transcription-based measures. This fragmented workflow can be time-consuming and cumbersome.
-Maruko aims to simplify and streamline this process by integrating the entire workflow into a single web application. This tool enables researchers to perform transcription, annotation, and computation tasks within a unified interface.
+CAF-Annotator aims to simplify and streamline this process by integrating the entire workflow into a single web application. This tool enables researchers to perform transcription, annotation, and computation tasks within a unified interface.
 
 ## Features
 
 - User-friendly interface for annotating audio files
-- Automatic transcription, segmentation, annotation and pause detection.
+- Automatic transcription, annotation and pause detection.
 - Cross-platform compatibility
 
 ## Requirements
@@ -91,6 +91,11 @@ Best work with Chrome and Edge. Safari is not recommended.
    - Press the pause detection button to automatically detect pause durations.
    - Verify the accuracy of detected pauses and adjust manually if necessary.
 
+6. **Dysfluency Detection:**
+   - Press the dysfluency detection button to automatically detect dysfluencies.
+   - Verify the accuracy of detected dysfluencies and adjust manually if necessary.
+   - Dysfluencies are detected based on the results of whisper-timstamped [GitHub Repository](https://github.com/linto-ai/whisper-timestamped). The tool may not be able to detect all dysfluencies, so manual verification is necessary.
+
 7. **Annotate Accuracy and Dysfluency:**
    - Annotate the accuracy in track 5 and dysfluency in track 6.
 
@@ -115,7 +120,7 @@ Best work with Chrome and Edge. Safari is not recommended.
   - Used for annotating large segments of the audio, which can include sentences, AS-units, or any other user-defined segments.
 
 - **Track 4: Pause Duration Annotation**
-  - Maruko supports automatic pause detection. Users can click the "Auto Detect Pause" button to automatically detect pause durations. Pauses within small segments are labeled as "M," and pauses between large segments are labeled as "E." Users can also manually annotate pause durations by clicking the "+ PAUSE" button.
+  - CAF-Annotator supports automatic pause detection. Users can click the "Auto Detect Pause" button to automatically detect pause durations. Pauses within small segments are labeled as "M," and pauses between large segments are labeled as "E." Users can also manually annotate pause durations by clicking the "+ PAUSE" button.
 
 - **Track 5: Accuracy Annotation**
   - This track is designated for annotating accuracy in the audio. Currently can only be performed manually by the user.
@@ -153,6 +158,7 @@ Best work with Chrome and Edge. Safari is not recommended.
 
 For academic purposes, it is important to review the computation methods used. Please check the `compute_caf_values()` function defined in `app.py` for detailed implementation.
 
+The results of the annotation process are saved in JSON file format. This file contains the transcriptions, timestamps, and annotations of each audio data track. Although the tool offers basic metrics of CAF measures, it acknowledges that current Natural Language Processing (NLP) tools may not adequately capture the unique linguistic features and errors typical in L2 learners' speech. Users can implement and apply their preferred methods and metrics base on the JSON file.
 
 - Syntactic complexity
   - Mean length of clause: The mean number of words produeced per segment.
@@ -168,6 +174,9 @@ For academic purposes, it is important to review the computation methods used. P
   - Mid-clause pause duration: Mean duration of pauses within clauses, expressed in seconds.
   - Final-clause pause duration: Mean duration of pauses between clauses, expressed in seconds.
 
+- Repair fluency
+  - Dysfluency rate: The mean number of dysfluencies per second, divided by total speech duration.
+
 ### CAF Measures on working
 I plan to implement the following measures on a separate page. Since initializing the NLP tools can be time-consuming, this will be set up on a different page to optimize performance.
 
@@ -181,9 +190,8 @@ The labeling of content words and the total word count heavily depend on the con
     - CELEX log frequency: The averaged logarithmic frequency of content words produced in a text based on the CELEX corpus.
     - Lexical density: The proportion of content words to the total words produced. 
 
-- Accuracy and Dysfluency
-    - I have no idea how to auto detect the accuracy and dyfluency. The user can only manually annotate the accuracy and dysfluency. But I will make the function to computate accuracy and dysfluency soon.
-
+- Accuracy
+    - I have no idea how to auto detect the accuracy. The user can only manually annotate the accuracy and dysfluency. 
 
 
 ## The CPU usage in the transcription step
@@ -224,7 +232,7 @@ The AI segment feature is currently an experimental feature. The effectiveness o
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
 ## License
 
-This project is licensed under the [MIT License](https://github.com/0ldriku/Maruko/blob/main/LICENSE.md).
+This project is licensed under the [MIT License](https://github.com/0ldriku/CAF-Annotator/blob/main/LICENSE.md).
 
 ## Contact
 
