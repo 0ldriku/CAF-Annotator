@@ -217,14 +217,6 @@ The AI segment feature is currently an experimental feature. The effectiveness o
 ### Google Colab Notebook
 - **N46Whisper**: [GitHub Repository](https://github.com/Ayanaminn/N46Whisper)
 
-## Roadmap
-
-- [x] Refine the file management system.
-- [ ] Implement the feature to export data into a CSV file.
-- [ ] Enable conversion of annotated JSON files into Praat TextGrid files.
-- [ ] Add support for languages other than English.
-- [ ] Integrate speaker diarization support.
-- [ ] Support to computate lexical complexity.
 
 
 ## Contributing
