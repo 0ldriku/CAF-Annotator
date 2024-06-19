@@ -191,7 +191,7 @@ The labeling of content words and the total word count heavily depend on the con
     - Lexical density: The proportion of content words to the total words produced. 
 
 - Accuracy
-    - I have no idea how to auto detect the accuracy. The user can only manually annotate the accuracy and dysfluency. 
+    - I have no idea how to auto detect the accuracy. The user can only manually annotate the accuracy now.
 
 
 ## The CPU usage in the transcription step
