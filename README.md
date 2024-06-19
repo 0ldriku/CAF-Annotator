@@ -175,7 +175,7 @@ The results of the annotation process are saved in JSON file format. This file c
   - Final-clause pause duration: Mean duration of pauses between clauses, expressed in seconds.
 
 - Repair fluency
-  - Dysfluency rate: The mean number of dysfluencies per second, divided by total speech duration.
+  - Dysfluency rate: The mean number of dysfluencies per second, divided by total speech duration. Detected by time-stamped whisper, but the accuracy is not guaranteed. 
 
 ### CAF Measures on working
 I plan to implement the following measures on a separate page. Since initializing the NLP tools can be time-consuming, this will be set up on a different page to optimize performance.
