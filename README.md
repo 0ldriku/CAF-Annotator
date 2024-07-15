@@ -67,7 +67,7 @@ Best work with Chrome and Edge. Safari is not recommended.
 
 1. **Prepare Audio Files and Transcriptions:**
    - Place your audio files in `/files`. Then click the transcribe button to transcribe the audio files. The transcriptions will be stored in `/results/transcriptions`.
-   - - Alternatively, use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/CAF-Annotator/blob/main/CAF-Annotator_Whisper.ipynb) to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the [The CPU Usage in the Transcription Step](#the-cpu-usage-in-the-transcription-step) section for more information.
+   - - Alternatively, use the [Google Colab notebook](https://colab.research.google.com/github/0ldriku/CAF-Annotator/blob/main/CAF_Annotator_Whisper.ipynb) to transcribe the audio files and store the generated files in `/results/transcriptions`. Check the [The CPU Usage in the Transcription Step](#the-cpu-usage-in-the-transcription-step) section for more information.
    - - If your ethics review allows you to upload audio files to the internet, you can use this Google Colab notebook. However, make sure to carefully consider the privacy implications and get explicit permission before uploading any audio data, especially if it contains personally identifiable information or sensitive content.
 
 
@@ -195,7 +195,7 @@ The labeling of content words and the total word count heavily depend on the con
 
 
 ## The CPU usage in the transcription step
-Many researchers in this field may not have a GPU or CUDA installed, so the default setting for  whisper-timestamped is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 3 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [Click here](https://colab.research.google.com/github/0ldriku/CAF-Annotator/blob/main/CAF-Annotator_Whisper.ipynb).
+Many researchers in this field may not have a GPU or CUDA installed, so the default setting for  whisper-timestamped is to use the CPU mode for audio transcription. On an Apple M1 Max CPU, it takes about 3 minute to transcribe a 1-minute audio file. However, if your CPU is not very powerful, transcribing audio can be time-consuming. For those without a powerful computer or who prefer not to strain their system, I recommend using Google Colab, which provides free access to T4 GPUs. I have created a Google Colab notebook that implements this feature. You can access the notebook here: [Click here](https://colab.research.google.com/github/0ldriku/CAF-Annotator/blob/main/CAF_Annotator_Whisper.ipynb).
 
 
 
